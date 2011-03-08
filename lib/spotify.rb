@@ -6,29 +6,37 @@ require "lib/spotify/artist"
 class Spotify
   attr_writer :url
   
-  def songs
-    return @songs if @songs
-
-    @songs = []; content["tracks"].each do |song|
-      song = SpotifyContainer::Song.new(song)      
-      @songs << song if song.valid?
-    end
+  def initialize
+    @methods = {
+      :artists => {
+        :selector => :artists,
+        :class => SpotifyContainer::Artist
+      }, 
+      :songs => {
+        :selector => :tracks,
+        :class => SpotifyContainer::Song
+      }
+    }
     
-    @songs
+    @cache = {}
   end
   
-  def artists
-    return @artists if @artists
-
-    @artists = []; content["artists"].each do |artist|
-      artist = SpotifyContainer::Artist.new(artist)      
-      @artists << artist if artist.valid?
-    end
-    
-    @artists
+  def method_missing(method, *args, &block)
+    @methods.keys.include?(method) ? scrape(method.to_sym) : super(method, *args, &block)
   end
   
   private
+    
+    def scrape(type)
+      return @cache[type] if @cache[type]
+
+      @cache[type] = []; content[@methods[type][:selector].to_s].each do |item|
+        item = @methods[type][:class].new(item) 
+        @cache[type] << @cache[type] if item.valid?
+      end
+      
+      @cache[type]
+    end
     
     def content
       @content ||= JSON.parse(download)

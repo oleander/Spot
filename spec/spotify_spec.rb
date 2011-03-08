@@ -16,7 +16,7 @@ describe Spotify do
     
     it "should contain the right amounts of songs" do
       set_up(100, true)
-      @spotify.should have(100).songs
+      @spotify.songs.count.should eq(100)
     end
     
     it "should call SpotifyContainer::Song with the right arguments" do
@@ -40,7 +40,7 @@ describe Spotify do
     
     it "should not have any songs if nothing is valid" do
       set_up(100, false)
-      @spotify.should have(0).songs
+      @spotify.songs.count.should eq(0)
     end
   end
   
@@ -56,7 +56,7 @@ describe Spotify do
     end
     
     it "should contain the right amounts of songs" do
-      @spotify.should have(100).artists
+      @spotify.artists.count.should eq(100)
     end
     
     it "should call SpotifyContainer::Artist with the right arguments" do
@@ -77,7 +77,7 @@ describe Spotify do
     
     it "should not have any songs if nothing is valid" do
       set_up(100, false, SpotifyContainer::Artist)
-      @spotify.should have(0).artists
+      @spotify.artists.count.should eq(0)
     end
   end
   
