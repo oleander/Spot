@@ -1,3 +1,3 @@
 class Spotify
-  # Your code goes here...
+  
 end

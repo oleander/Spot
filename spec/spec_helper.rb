@@ -1,5 +1,5 @@
 require "rspec"
-require "automatic"
+require "spotify"
 
 RSpec.configure do |config|
   config.mock_with :rspec
