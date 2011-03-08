@@ -1,4 +1,5 @@
 require "rspec"
+require "webmock/rspec"
 require "spotify"
 
 RSpec.configure do |config|
