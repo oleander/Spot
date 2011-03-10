@@ -3,6 +3,7 @@ require "rest-client"
 require "lib/spotify/song"
 require "lib/spotify/artist"
 require "lib/spotify/album"
+require "lib/spotify/exception"
 
 class Spotify
   attr_writer :url
@@ -49,5 +50,14 @@ class Spotify
     
     def download
       @download ||= RestClient.get @url, :timeout => 10
+    rescue => request
+      errors(request)
+    end
+    
+    def errors(request)
+      case request.to_s
+      when "403 Forbidden"
+        raise SpotifyContainer::RequestLimitError.new(@url)
+      end
     end
 end

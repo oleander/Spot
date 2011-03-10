@@ -129,6 +129,16 @@ describe Spotify do
   end
   
   context "error" do
+    it "should be able to handle 403 - The rate limiting has kicked in" do
+      albums_url = "http://ws.spotify.com/search/1/album.json?q=a"
+      @spotify.url = albums_url
+      spec_error(albums_url, 403)
+      lambda { @spotify.albums }.should raise_error(SpotifyContainer::RequestLimitError)
+    end
+    
+    def spec_error(url, code)
+      stub_request(:get, url).to_return(:body => "", :status => code)
+    end
   end
   
   def mock_media(ret)
