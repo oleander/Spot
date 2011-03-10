@@ -136,8 +136,15 @@ describe Spotify do
       lambda { @spotify.albums }.should raise_error(SpotifyContainer::RequestLimitError)
     end
     
+    it "should handle invalid JSON strings" do
+      albums_url = "http://ws.spotify.com/search/1/album.json?q=a"
+      @spotify.url = albums_url
+      stub_request(:get, albums_url).to_return(:body => "{value key}", :status => 200)
+      lambda { @spotify.albums }.should raise_error(SpotifyContainer::InvalidReturnTypeError)
+    end
+    
     def spec_error(url, code)
-      stub_request(:get, url).to_return(:body => "", :status => code)
+      stub_request(:get, url).to_return(:body => File.read("spec/fixtures/album.json"), :status => code)
     end
   end
   

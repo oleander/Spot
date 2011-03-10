@@ -46,16 +46,18 @@ class Spotify
     
     def content
       @content ||= JSON.parse(download)
+    rescue JSON::ParserError
+      raise SpotifyContainer::InvalidReturnTypeError.new
     end
     
     def download
       @download ||= RestClient.get @url, :timeout => 10
-    rescue => request
+    rescue StandardError => request
       errors(request)
     end
     
-    def errors(request)
-      case request.to_s
+    def errors(error)
+      case error.to_s
       when "403 Forbidden"
         raise SpotifyContainer::RequestLimitError.new(@url)
       end
