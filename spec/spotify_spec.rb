@@ -3,47 +3,53 @@ describe Spotify do
     @spotify = Spotify.new
   end
   
-  # context "tracks if success" do    
-  #   before(:each) do
-  #     @tracks_url = "http://ws.spotify.com/search/1/track.json?q=kaizers+orchestra"
-  #     @spotify.url = @tracks_url
-  #     stub_request(:get, @tracks_url).to_return(:body => File.read("spec/fixtures/track.json"), :status => 200)
-  #   end
-  #   
-  #   after(:each) do
-  #     a_request(:get, @tracks_url).should have_been_made.once
-  #   end
-  #   
-  #   it "should contain the right amounts of songs" do
-  #     set_up(100, true)
-  #     @spotify.songs.count.should eq(100)
-  #   end
-  #   
-  #   it "should call SpotifyContainer::Song with the right arguments" do
-  #     SpotifyContainer::Song.should_receive(:new) do |args|
-  #       args["name"].should_not be_empty
-  #       args["popularity"].should match(/[0-9\.]+/)
-  #       args["album"]["availability"]["territories"].should match(/[A-Z]{2}/)
-  #       args["length"].should be_instance_of(Float)
-  #       args["href"].should match(/^spotify\:track\:[a-zA-Z0-9]+$/)
-  #       args["artists"].should be_instance_of(Array)
-  #       mock_media(true)
-  #     end.exactly(100).times
-  #     
-  #     @spotify.songs
-  #   end
-  #   
-  #   it "should be able to cache a request" do
-  #     set_up(100, true)
-  #     10.times { @spotify.songs }
-  #   end
-  #   
-  #   it "should not have any songs if nothing is valid" do
-  #     set_up(100, false)
-  #     @spotify.songs.count.should eq(0)
-  #   end
-  # end
-  # 
+  context "tracks if success" do    
+    before(:each) do
+      @tracks_url = "http://ws.spotify.com/search/1/track.json?q=kaizers+orchestra"
+      @spotify.url = @tracks_url
+      stub_request(:get, @tracks_url).to_return(:body => File.read("spec/fixtures/track.json"), :status => 200)
+    end
+    
+    after(:each) do
+      a_request(:get, @tracks_url).should have_been_made.once
+    end
+    
+    it "should contain the right amounts of songs" do
+      set_up(100, true)
+      @spotify.songs.count.should eq(100)
+    end
+    
+    it "should call SpotifyContainer::Song with the right arguments" do
+      SpotifyContainer::Song.should_receive(:new) do |args|
+        args["album"]["released"].should match(/^\d{4}$/)
+        args["album"]["href"].should match(/^spotify\:album\:[a-zA-Z0-9]+$/)
+        args["album"]["name"].should_not be_empty
+        args["album"]["availability"]["territories"].should match(/[A-Z]{2}/)
+        
+        args["name"].should_not be_empty
+        args["popularity"].should match(/[0-9\.]+/)
+        args["length"].should be_instance_of(Float)
+        args["href"].should match(/^spotify\:track\:[a-zA-Z0-9]+$/)
+        
+        validate_artists(args["artists"])
+        
+        mock_media(true)
+      end.exactly(100).times
+      
+      @spotify.songs
+    end
+    
+    it "should be able to cache a request" do
+      set_up(100, true)
+      10.times { @spotify.songs }
+    end
+    
+    it "should not have any songs if nothing is valid" do
+      set_up(100, false)
+      @spotify.songs.count.should eq(0)
+    end
+  end
+  
   context "artists if success" do
     before(:each) do
       @artists_url = "http://ws.spotify.com/search/1/artist.json?q=foo"
@@ -98,10 +104,7 @@ describe Spotify do
     
     it "should call SpotifyContainer::Artist with the right arguments" do
       SpotifyContainer::Album.should_receive(:new) do |args|
-        args["artists"].each do |artist|
-          artist["name"].should_not be_empty
-          artist["href"].to_s.should match(/^spotify\:artist\:[a-zA-Z0-9]+|.{0}$/) # Can be blank
-        end
+        validate_artists(args["artists"])
         
         args["href"].should match(/^spotify\:album\:[a-zA-Z0-9]+$/)
         
@@ -132,6 +135,13 @@ describe Spotify do
     song = mock(Object.new)
     song.should_receive(:valid?).any_number_of_times.and_return(ret)
     song
+  end
+  
+  def validate_artists(artists)
+    artists.each do |artist|
+      artist["name"].should_not be_empty
+      artist["href"].to_s.should match(/^spotify\:artist\:[a-zA-Z0-9]+|.{0}$/) # Can be blank
+    end
   end
   
   def set_up(times = 100, ret = true, klass = SpotifyContainer::Song)
