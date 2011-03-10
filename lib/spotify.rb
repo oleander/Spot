@@ -2,6 +2,7 @@ require "json/pure"
 require "rest-client"
 require "lib/spotify/song"
 require "lib/spotify/artist"
+require "lib/spotify/album"
 
 class Spotify
   attr_writer :url
@@ -15,6 +16,10 @@ class Spotify
       :songs => {
         :selector => :tracks,
         :class => SpotifyContainer::Song
+      },
+      :albums => {
+        :selector => :albums,
+        :class => SpotifyContainer::Album
       }
     }
     
@@ -29,7 +34,7 @@ class Spotify
     
     def scrape(type)
       return @cache[type] if @cache[type]
-
+      
       @cache[type] = []; content[@methods[type][:selector].to_s].each do |item|
         item = @methods[type][:class].new(item) 
         @cache[type] << @cache[type] if item.valid?
