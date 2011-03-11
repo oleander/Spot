@@ -3,9 +3,11 @@ require "lib/spotify/base"
 module SpotifyContainer
   class Song < SpotifyContainer::Base
     attr_reader :length
+    attr_writer :territory
     
+    # Is valid if the territory exists or if no territory is given
     def valid?
-      true
+      available?(@territory) or !@territory
     end
     
     def available?(territory = nil)
@@ -18,6 +20,12 @@ module SpotifyContainer
     
     def album
       @_album ||= SpotifyContainer::Album.new(@album)
+    end
+    
+    # Returns a value from 0 to 1
+    # The return type if float
+    def popularity
+      @_popularity ||= @popularity.to_f
     end
     
     private

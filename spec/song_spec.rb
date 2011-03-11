@@ -27,4 +27,25 @@ describe SpotifyContainer::Song do
   it "should have the correct accessors" do
     @song.length.should be_instance_of(Float)
   end
+  
+  context "the valid? method" do
+    it "should not be valid due to the non existing territory" do
+      @song.territory = "RANDOM"
+      @song.should_not be_valid
+    end
+    
+    it "should not be valid due to the non existing territory" do
+      @song.territory = "AM"
+      @song.should be_valid
+    end
+    
+    it "should be valid if no territory if passed" do
+      @song.should be_valid
+    end
+  end
+  
+  it "should contain the correct accessors" do
+    @song.popularity.should eq(0.79999)
+  end
+  
 end
