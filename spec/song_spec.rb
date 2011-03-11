@@ -27,5 +27,4 @@ describe SpotifyContainer::Song do
   it "should have the correct accessors" do
     @song.length.should be_instance_of(Float)
   end
-  
 end
