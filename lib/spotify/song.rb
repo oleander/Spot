@@ -2,6 +2,8 @@ require "lib/spotify/base"
 
 module SpotifyContainer
   class Song < SpotifyContainer::Base
+    attr_reader :length
+    
     def valid?
       true
     end
@@ -11,12 +13,16 @@ module SpotifyContainer
     end
     
     def artist
-      @artist ||= SpotifyContainer::Artist.new(@artists.first)
+      @_artist ||= SpotifyContainer::Artist.new(@artists.first)
+    end
+    
+    def album
+      @_album ||= SpotifyContainer::Album.new(@album)
     end
     
     private
       def territories
-        @territories ||= @album["availability"]["territories"].split(" ")
+        @_territories ||= @album["availability"]["territories"].split(" ")
       end
   end
 end

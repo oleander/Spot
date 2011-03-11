@@ -2,7 +2,7 @@ require "abstract"
 
 module SpotifyContainer
   class Base
-    attr_accessor :popularity, :name, :href
+    attr_reader :popularity, :name, :href
     
     def initialize(args)
       args.keys.each { |name| instance_variable_set "@" + name.to_s.gsub(/[^a-z]/i, ''), args[name]}

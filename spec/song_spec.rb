@@ -20,4 +20,12 @@ describe SpotifyContainer::Song do
     @song.artist.should be_instance_of(SpotifyContainer::Artist)
   end
   
+  it "should have an album" do
+    @song.album.should be_instance_of(SpotifyContainer::Album)
+  end
+  
+  it "should have the correct accessors" do
+    @song.length.should be_instance_of(Float)
+  end
+  
 end
