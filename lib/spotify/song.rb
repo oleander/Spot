@@ -22,12 +22,6 @@ module SpotifyContainer
       @_album ||= SpotifyContainer::Album.new(@album)
     end
     
-    # Returns a value from 0 to 1
-    # The return type if float
-    def popularity
-      @_popularity ||= @popularity.to_f
-    end
-    
     private
       def territories
         @_territories ||= @album["availability"]["territories"].split(" ")

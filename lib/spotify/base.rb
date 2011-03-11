@@ -2,7 +2,7 @@ require "abstract"
 
 module SpotifyContainer
   class Base
-    attr_reader :popularity, :name
+    attr_reader :name
     
     def initialize(args)
       args.keys.each { |name| instance_variable_set "@" + name.to_s.gsub(/[^a-z]/i, ''), args[name] }
@@ -26,6 +26,12 @@ module SpotifyContainer
     # spotify => spotify:track:5DhDGwNXRPHsMApbtVKvFb
     def href(type = "spotify")
       send("href_#{type}")
+    end
+    
+    # Returns a value from 0 to 1
+    # The return type if float
+    def popularity
+      @_popularity ||= @popularity.to_f
     end
     
     private

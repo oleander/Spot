@@ -43,9 +43,4 @@ describe SpotifyContainer::Song do
       @song.should be_valid
     end
   end
-  
-  it "should contain the correct accessors" do
-    @song.popularity.should eq(0.79999)
-  end
-  
 end
