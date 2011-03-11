@@ -1,9 +1,7 @@
+require "lib/spotify/base"
+
 module SpotifyContainer
-  class Artist
-    def initialize(args)
-       args.keys.each { |name| instance_variable_set "@" + name.to_s, args[name] unless name.match /[^a-z]/}
-    end
-    
+  class Artist < SpotifyContainer::Base 
     def valid?
       true
     end
