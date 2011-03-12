@@ -140,7 +140,6 @@ describe Spotify do
   end
   
   context "find_*" do
-    
     after(:each) do
       a_request(:get, @url).should have_been_made.once
     end
@@ -153,6 +152,10 @@ describe Spotify do
       Spotify.find_song("kaizers orchestra").result.should be_instance_of(SpotifyContainer::Song)
     end
   end
+  
+  it "should be possible to set a page variable"
+  it "should by default get the best match when fetching one item"
+  it "should be possible to clean ingoing argument and use it in a search"
   
   def mock_media(ret)
     song = mock(Object.new)
