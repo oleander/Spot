@@ -5,4 +5,12 @@ describe SpotifyContainer::Artist do
   before(:each) do
     @artist = SpotifyContainer::Artist.new(JSON.load(File.read("spec/fixtures/artist.json"))["artists"].first)
   end
+  
+  it "should always be valid" do
+    @artist.should be_valid
+  end
+  
+  it "should always be available" do
+    @artist.should be_available
+  end
 end
