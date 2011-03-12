@@ -7,24 +7,22 @@ require "lib/spotify/album"
 require "lib/spotify/exception"
 
 class Spotify
-  attr_writer :url
-  
   def initialize
     @methods = {
       :artists => {
         :selector => :artists,
         :class    => SpotifyContainer::Artist,
-        :url      => "http://ws.spotify.com/search/1/artist.json?q=<SEARCH>&page=<PAGE>"
+        :url      => generate_url("artist")
       }, 
       :songs => {
         :selector => :tracks,
         :class    => SpotifyContainer::Song,
-        :url      => "http://ws.spotify.com/search/1/track.json?q=<SEARCH>&page=<PAGE>"
+        :url      => generate_url("track")
       },
       :albums => {
         :selector => :albums,
         :class    => SpotifyContainer::Album,
-        :url      => "http://ws.spotify.com/search/1/album.json?q=<SEARCH>&page=<PAGE>"
+        :url      => generate_url("album")
       }
     }
     
@@ -57,7 +55,9 @@ class Spotify
   
   private
     def url
-      @url ||= @methods[@type.to_sym][:url].gsub(/<SEARCH>/, URI.escape(@search)).gsub(/<PAGE>/, (@page || 1).to_s)
+      @url ||= @methods[@type][:url].
+        gsub(/<SEARCH>/, URI.escape(@search)).
+        gsub(/<PAGE>/, (@page || 1).to_s)
     end
   
     def scrape
@@ -88,5 +88,9 @@ class Spotify
       when "403 Forbidden"
         raise SpotifyContainer::RequestLimitError.new(url)
       end
+    end
+    
+    def generate_url(type)
+      "http://ws.spotify.com/search/1/#{type}.json?q=<SEARCH>&page=<PAGE>"
     end
 end
