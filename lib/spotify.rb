@@ -88,6 +88,8 @@ class Spotify
       when "403 Forbidden"
         raise SpotifyContainer::RequestLimitError.new(url)
       end
+      
+      # TODO: Add a default error
     end
     
     def generate_url(type)
