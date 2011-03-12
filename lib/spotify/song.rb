@@ -22,5 +22,7 @@ module SpotifyContainer
       def territories
         @_territories ||= @album["availability"]["territories"].split(" ")
       end
+    
+    alias_method :title, :name
   end
 end

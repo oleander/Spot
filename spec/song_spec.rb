@@ -47,4 +47,8 @@ describe SpotifyContainer::Song do
   it "should inherit from base" do
     @song.class.ancestors.should include(SpotifyContainer::Base)
   end
+  
+  it "should have a title method that equals the name method" do
+    @song.title.should eq(@song.name)
+  end
 end
