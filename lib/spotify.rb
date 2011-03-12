@@ -32,7 +32,7 @@ class Spotify
   end
   
   def self.method_missing(method, *args, &blk)
-    return Spotify.new.find($2, args.first) if method.to_s =~ /^find(_all)?_(.+)$/
+    return Spotify.new.find($2, !!$1, args.first) if method.to_s =~ /^find(_all)?_(.+)$/
     
     super(method, *args, &block)
   end
@@ -41,12 +41,18 @@ class Spotify
     @page = value; self
   end
   
-  def find(type, search)
-    @search, @type = search, type.to_sym; self
+  def find(type, all, search)
+    @search = search
+    @type = all ? type.to_sym : "#{type}s".to_sym
+    self
   end
   
   def results
     @_results ||= scrape
+  end
+  
+  def result
+    results.first
   end
   
   private
@@ -59,7 +65,7 @@ class Spotify
       
       @cache[@type] = []; content[@methods[@type][:selector].to_s].each do |item|
         item = @methods[@type][:class].new(item) 
-        @cache[@type] << @cache[@type] if item.valid?
+        @cache[@type] << item if item.valid?
       end
       
       @cache[@type]

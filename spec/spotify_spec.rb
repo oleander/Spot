@@ -3,17 +3,6 @@ describe Spotify do
     @spotify = Spotify.new
   end
   
-  def stubs(type, search, page = 1)
-    url = generate_url(type, search, page)
-    stub_request(:get, url).
-      to_return(:body => File.read("spec/fixtures/#{type}.json"), :status => 200)
-    url
-  end
-  
-  def generate_url(type, search, page = 1)
-    "http://ws.spotify.com/search/1/#{type}.json?q=#{URI.escape(search)}&page=#{page}"
-  end
-  
   context "tracks if success" do
     after(:each) do
       a_request(:get, @url).should have_been_made.once
@@ -150,6 +139,21 @@ describe Spotify do
     end
   end
   
+  context "find_by_*" do
+    
+    after(:each) do
+      a_request(:get, @url).should have_been_made.once
+    end
+    
+    before(:each) do
+      @url = stubs("track", "kaizers orchestra")
+    end
+    
+    it "should only return one element" do
+      Spotify.find_song("kaizers orchestra").result.should be_instance_of(SpotifyContainer::Song)
+    end
+  end
+  
   def mock_media(ret)
     song = mock(Object.new)
     song.should_receive(:valid?).any_number_of_times.and_return(ret)
@@ -165,5 +169,16 @@ describe Spotify do
   
   def set_up(times = 100, ret = true, klass = SpotifyContainer::Song)
     klass.should_receive(:new).exactly(times).times.and_return(mock_media(ret))
+  end
+  
+  def generate_url(type, search, page = 1)
+    "http://ws.spotify.com/search/1/#{type}.json?q=#{URI.escape(search)}&page=#{page}"
+  end
+  
+  def stubs(type, search, page = 1)
+    url = generate_url(type, search, page)
+    stub_request(:get, url).
+      to_return(:body => File.read("spec/fixtures/#{type}.json"), :status => 200)
+    url
   end
 end
