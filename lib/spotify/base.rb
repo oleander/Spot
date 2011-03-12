@@ -17,7 +17,7 @@ module SpotifyContainer
     # Where {territory} can be any string representation of the ISO 3166-1 alpha-2 table
     # Read more about it here: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
     def available?(territory = nil)
-      not_implemented
+      territories.include?(territory)
     end
     
     # Returns a URL for the object
@@ -34,6 +34,11 @@ module SpotifyContainer
       @_popularity ||= @popularity.to_f
     end
     
+    protected
+      def territories
+        not_implemented
+      end
+      
     private
       def href_http
         "http://open.spotify.com/#{$1}/#{$2}" if href_spotify.to_s =~ /spotify:(\w+):(\w+)/

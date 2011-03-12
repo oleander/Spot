@@ -10,10 +10,6 @@ module SpotifyContainer
       available?(@territory) or !@territory
     end
     
-    def available?(territory = nil)
-      territories.include?(territory)
-    end
-    
     def artist
       @_artist ||= SpotifyContainer::Artist.new(@artists.first)
     end
@@ -22,7 +18,7 @@ module SpotifyContainer
       @_album ||= SpotifyContainer::Album.new(@album)
     end
     
-    private
+    protected
       def territories
         @_territories ||= @album["availability"]["territories"].split(" ")
       end
