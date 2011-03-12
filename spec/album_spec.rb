@@ -13,4 +13,14 @@ describe SpotifyContainer::Album do
   it "should inherit from base" do
     @album.class.ancestors.should include(SpotifyContainer::Base)
   end
+  
+  context "the available? method" do
+    it "should contain the AG territory" do
+      @album.should be_available("AG")
+    end
+    
+    it "should not contain the RANDOM territory" do
+      @album.should_not be_available("RANDOM")
+    end
+  end
 end
