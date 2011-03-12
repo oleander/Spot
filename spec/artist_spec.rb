@@ -13,4 +13,8 @@ describe SpotifyContainer::Artist do
   it "should always be available" do
     @artist.should be_available
   end
+  
+  it "should inherit from base" do
+    @artist.class.ancestors.should include(SpotifyContainer::Base)
+  end
 end

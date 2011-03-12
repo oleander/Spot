@@ -43,4 +43,8 @@ describe SpotifyContainer::Song do
       @song.should be_valid
     end
   end
+  
+  it "should inherit from base" do
+    @song.class.ancestors.should include(SpotifyContainer::Base)
+  end
 end
