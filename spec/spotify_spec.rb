@@ -139,7 +139,7 @@ describe Spotify do
     end
   end
   
-  context "find_by_*" do
+  context "find_*" do
     
     after(:each) do
       a_request(:get, @url).should have_been_made.once
