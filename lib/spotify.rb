@@ -1,6 +1,7 @@
 require "json/pure"
 require "rest-client"
 require "uri"
+require "levenshteinish"
 require "lib/spotify/song"
 require "lib/spotify/artist"
 require "lib/spotify/album"
@@ -55,8 +56,8 @@ class Spotify
     @_results ||= scrape
   end
   
-  def result
-    results.first
+  def result      
+    @prime ? results.sort_by{ |r| Levenshtein.distance(clean_search_value, clean!(r.to_s)) }.first : results.first
   end
   
   private
@@ -87,6 +88,27 @@ class Spotify
       @download ||= RestClient.get url, :timeout => 10
     rescue StandardError => request
       errors(request)
+    end
+    
+    def clean_search_value
+      @_clean_search_value ||= clean!(@search)
+    end
+    
+    def clean!(string)
+      # Song - A + B + C => Song - A
+      # Song - A abc/def => Song - A abc
+      # Song - A & abc def => Song - A
+      # Song - A "abc def" => Song - A
+      # Song - A [B + C] => Song - A
+      [/[&|\/|\+|-][^\z]*/, /\[[^\]]*\]/, /".*"/].each do |reg|
+        string.gsub!(reg, '')
+      end
+
+      [/\(.+?\)/i, /feat[^\s]+/i, / &amp; /i, /[\s]+/i].each do |reg|
+         string.gsub!(reg, ' ')
+      end
+
+      string.gsub(/\A\s|\s\z/, '').strip.downcase
     end
     
     def errors(error)
