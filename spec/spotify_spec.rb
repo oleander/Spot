@@ -167,8 +167,18 @@ describe Spotify do
     end
   end
   
-  it "should be possible to clean ingoing argument and use it in a search"
+  context "the cleaner" do
+    it "should be possible to clean ingoing argument and use it in a search" do
+      url = stubs("track", "this is a string")
+      Spotify.strip.find_song("this is a string - this to").result
+      a_request(:get, url).should have_been_made.once
+    end
+    
+    it "should have a lot more tests this cleaning method"
+  end
+  
   it "should raise an error if the given method doesn't exist"
+  it "should be able to handle 'song - artist' strings"
   
   def mock_media(ret)
     song = mock(Object.new)

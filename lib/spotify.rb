@@ -46,8 +46,8 @@ class Spotify
     @prime = self
   end
   
-  def find(type, all, search)
-    @search = search
+  def find(type, all, s)
+    @search = s
     @type = all ? type.to_sym : "#{type}s".to_sym
     self
   end
@@ -56,17 +56,25 @@ class Spotify
     @_results ||= scrape
   end
   
+  def strip
+    @strip = self
+  end
+  
   def result      
-    @prime ? results.sort_by{ |r| Levenshtein.distance(clean_search_value, clean!(r.to_s)) }.first : results.first
+    @prime ? results.sort_by{ |r| Levenshtein.distance(search(true), clean!(r.to_s)) }.first : results.first
   end
   
   private
     def url
       @url ||= @methods[@type][:url].
-        gsub(/<SEARCH>/, URI.escape(@search)).
+        gsub(/<SEARCH>/, URI.escape(search)).
         gsub(/<PAGE>/, (@page || 1).to_s)
     end
   
+    def search(force = false)
+      @_search ||= ((@strip or force) ? clean!(@search) : @search)
+    end
+    
     def scrape
       return @cache[@type] if @cache[@type]
       
@@ -88,10 +96,6 @@ class Spotify
       @download ||= RestClient.get url, :timeout => 10
     rescue StandardError => request
       errors(request)
-    end
-    
-    def clean_search_value
-      @_clean_search_value ||= clean!(@search)
     end
     
     def clean!(string)
