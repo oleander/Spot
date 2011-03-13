@@ -41,6 +41,10 @@ class Spotify
     @page = value; self
   end
   
+  def prime
+    @prime = self
+  end
+  
   def find(type, all, search)
     @search = search
     @type = all ? type.to_sym : "#{type}s".to_sym

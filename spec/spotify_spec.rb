@@ -161,10 +161,14 @@ describe Spotify do
   
   context "the prime method" do
     it "should return the best match" do
+      url = stubs("track", "kaizers orchestra")
+      Spotify.prime.find_song("kaizers orchestra").result.title.should match(/kaizers orchestra/)
+      a_request(:get, url).should have_been_made.once
     end
   end
   
   it "should be possible to clean ingoing argument and use it in a search"
+  it "should raise an error if the given method doesn't exist"
   
   def mock_media(ret)
     song = mock(Object.new)
