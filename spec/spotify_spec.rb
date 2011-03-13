@@ -159,7 +159,11 @@ describe Spotify do
     a_request(:get, url).should have_been_made.once
   end
   
-  it "should by default get the best match when fetching one item"
+  context "the prime method" do
+    it "should return the best match" do
+    end
+  end
+  
   it "should be possible to clean ingoing argument and use it in a search"
   
   def mock_media(ret)
