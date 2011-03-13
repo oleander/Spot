@@ -30,9 +30,11 @@ class Spotify
   end
   
   def self.method_missing(method, *args, &blk)
-    return Spotify.new.find($2, !!$1, args.first) if method.to_s =~ /^find(_all)?_(.+)$/
-    
-    super(method, *args, &block)
+    Spotify.new.send(method, *args, &blk)
+  end
+  
+  def method_missing(method, *args, &blk)
+    find($2, !!$1, args.first) if method.to_s =~ /^find(_all)?_(.+)$/
   end
   
   def page(value)
@@ -87,9 +89,9 @@ class Spotify
       case error.to_s
       when "403 Forbidden"
         raise SpotifyContainer::RequestLimitError.new(url)
+      else
+        raise error
       end
-      
-      # TODO: Add a default error
     end
     
     def generate_url(type)

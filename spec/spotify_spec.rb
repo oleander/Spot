@@ -153,7 +153,12 @@ describe Spotify do
     end
   end
   
-  it "should be possible to set a page variable"
+  it "should be possible to set a page variable" do
+    url = stubs("track", "kaizers orchestra", 11)
+    Spotify.page(11).find_song("kaizers orchestra").result.should be_instance_of(SpotifyContainer::Song)
+    a_request(:get, url).should have_been_made.once
+  end
+  
   it "should by default get the best match when fetching one item"
   it "should be possible to clean ingoing argument and use it in a search"
   
