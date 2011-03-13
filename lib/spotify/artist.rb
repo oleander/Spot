@@ -6,6 +6,7 @@ module SpotifyContainer
     
     protected
       def territories; []; end
+    alias_method :to_s, :name
   end
 end
 

@@ -24,5 +24,6 @@ module SpotifyContainer
       end
     
     alias_method :title, :name
+    alias_method :to_s, :name
   end
 end

@@ -13,4 +13,8 @@ describe SpotifyContainer::Artist do
   it "should inherit from base" do
     @artist.class.ancestors.should include(SpotifyContainer::Base)
   end
+  
+  it "should have a working to string method" do
+    @artist.to_s.should eq(@artist.name)
+  end
 end

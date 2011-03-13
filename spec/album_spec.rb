@@ -23,4 +23,8 @@ describe SpotifyContainer::Album do
       @album.should_not be_available("RANDOM")
     end
   end
+  
+  it "should have a working to string method" do
+    @album.to_s.should eq(@album.name)
+  end
 end

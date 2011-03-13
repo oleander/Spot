@@ -28,6 +28,11 @@ module SpotifyContainer
       send("href_#{type}")
     end
     
+    # Returns a string representation of the item
+    def to_s
+      not_implemented
+    end
+    
     # Returns a value from 0 to 1
     # The return type if float
     def popularity

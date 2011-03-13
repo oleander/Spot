@@ -12,5 +12,6 @@ module SpotifyContainer
       def territories
         @availability["territories"]
       end
+    alias_method :to_s, :name
   end
 end
