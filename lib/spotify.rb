@@ -99,20 +99,24 @@ class Spotify
     end
     
     def clean!(string)
+      string.strip!
+      
       # Song - A + B + C => Song - A
       # Song - A abc/def => Song - A abc
       # Song - A & abc def => Song - A
       # Song - A "abc def" => Song - A
       # Song - A [B + C] => Song - A
-      [/[&|\/|\+|-][^\z]*/, /\[[^\]]*\]/, /".*"/].each do |reg|
-        string.gsub!(reg, '')
+      # Song A B.mp3 => Song A B
+      # 10. Song => Song
+      [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^\d+(\.)?/].each do |reg|
+        string = string.gsub(reg, '').strip
+      end
+      
+      [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m].each do |reg|
+         string = string.gsub(reg, ' ').strip
       end
 
-      [/\(.+?\)/i, /feat[^\s]+/i, / &amp; /i, /[\s]+/i].each do |reg|
-         string.gsub!(reg, ' ')
-      end
-
-      string.gsub(/\A\s|\s\z/, '').strip.downcase
+      string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
     end
     
     def errors(error)

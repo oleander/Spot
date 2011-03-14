@@ -168,20 +168,99 @@ describe Spotify do
   end
   
   context "the cleaner" do
-    it "should be possible to clean ingoing argument and use it in a search" do
-      url = stubs("track", "this is a string")
-      Spotify.strip.find_song("this is a string - this to").result
-      a_request(:get, url).should have_been_made.once
+    after(:each) do
+      a_request(:get, @url).should have_been_made.once
     end
     
-    it "should have a lot more tests this cleaning method"
+    it "Song - Artist => Song Artist" do
+      @url = stubs("track", "this is a string this to")
+      Spotify.strip.find_song("this is a string - this to").result
+    end
+    
+    it "Song - A + B + C => Song A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song - A + B + C").result
+    end
+    
+    it "Song - A abc/def => Song - A abc" do
+      @url = stubs("track", "song a abc")
+      Spotify.strip.find_song("Song - A abc/def").result
+    end
+    
+    it "Song - A & abc def => Song - A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song - A & abc def").result
+    end
+    
+    it "Song A \"abc def\" => Song - A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song A \"abc def\"").result
+    end
+    
+    it "Song - A [B + C] => Song - A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song - A [B + C]").result
+    end
+    
+    it "Song - A (Super Song) => Song - A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song - A (Super Song)").result
+    end
+    
+    it "Song A feat. (Super Song) => Song A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song A feat. (Super Song)").result
+    end
+    
+    it "Song A feat.(Super Song) => Song A" do
+      @url = stubs("track", "song a")
+      Spotify.strip.find_song("Song A feat. (Super Song)").result
+    end
+    
+    it "Song A feat.Super B C => Song A B C" do
+      @url = stubs("track", "song a b c")
+      Spotify.strip.find_song("Song A feat.Super B C").result
+    end
+    
+    it "Song A feat Super B C => Song A B C" do
+      @url = stubs("track", "song a b c")
+      Spotify.strip.find_song("Song A feat Super B C").result
+    end
+    
+    it "A -- B => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song("A -- B").result
+    end
+    
+    it "123 A B => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song("123 A B").result
+    end
+    
+    it "123 A B.mp3 => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song("123 A B.mp3").result
+    end
+    
+    it "01. A B => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song("01. A B").result
+    end
+    
+    it " 01. A B => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song(" 01. A B").result
+    end
+    
+    it "123 A B.mp3(whitespace) => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song("123 A B.mp3 ").result
+    end
   end
   
   it "should raise an error if the given method doesn't exist" do
     lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
   end
-  
-  it "should be able to handle 'song - artist' strings"
   
   def mock_media(ret)
     song = mock(Object.new)
