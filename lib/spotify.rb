@@ -2,10 +2,10 @@ require "json/pure"
 require "rest-client"
 require "uri"
 require "levenshteinish"
-require "lib/spotify/song"
-require "lib/spotify/artist"
-require "lib/spotify/album"
-require "lib/spotify/exception"
+require "spotify/song"
+require "spotify/artist"
+require "spotify/album"
+require "spotify/exception"
 
 class Spotify
   def initialize

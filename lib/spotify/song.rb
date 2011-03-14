@@ -1,4 +1,4 @@
-require "lib/spotify/base"
+require "spotify/base"
 
 module SpotifyContainer
   class Song < SpotifyContainer::Base
