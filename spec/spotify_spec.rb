@@ -162,7 +162,8 @@ describe Spotify do
   context "the prime method" do
     it "should return the best match" do
       url = stubs("track", "kaizers orchestra")
-      Spotify.prime.find_song("kaizers orchestra").result.artist.name.should match(/kaizers orchestra/i)
+      Levenshtein.should_receive(:distance).exactly(100).times.and_return(1)
+      Spotify.prime.find_song("kaizers orchestra").result
       a_request(:get, url).should have_been_made.once
     end
   end
