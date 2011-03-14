@@ -166,6 +166,8 @@ describe Spotify do
       Spotify.prime.find_song("kaizers orchestra").result
       a_request(:get, url).should have_been_made.once
     end
+    
+    it "should use the popularity value to calculate points for the given argument"
   end
   
   context "the cleaner" do
@@ -259,10 +261,22 @@ describe Spotify do
     end
   end
   
-  it "should raise an error if the given method doesn't exist" do
-    lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
+  context "method does not exist" do
+    it "should raise no method error if the method does't exist (plain value)" do
+      lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
+    end
+    
+    it "should raise an error if the method matches find_*_*" do
+      lambda { Spotify.find_song("string").find_by_song }.should raise_error(NoMethodError)
+    end
+    
+    it "should raise an error if the method matches find_all_* " do
+      lambda { Spotify.find_song("string").find_all_random }.should raise_error(NoMethodError)
+    end
   end
   
   it "should raise an error if the JSON method raises one"
   it "should do the same as above if the scrape raise an error"
+  it 'should have some info (like this => {"num_results": 44118, "limit": 100, "offset": 0, "query": "a", "type": "album", "page": 1})'
+  
 end
