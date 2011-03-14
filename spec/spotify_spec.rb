@@ -262,6 +262,9 @@ describe Spotify do
     lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
   end
   
+  it "should raise an error if the JSON method raises one"
+  it "should do the same as above if the scrape raise an error"
+  
   def mock_media(ret)
     song = mock(Object.new)
     song.should_receive(:valid?).any_number_of_times.and_return(ret)
