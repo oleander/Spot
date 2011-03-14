@@ -177,7 +177,10 @@ describe Spotify do
     it "should have a lot more tests this cleaning method"
   end
   
-  it "should raise an error if the given method doesn't exist"
+  it "should raise an error if the given method doesn't exist" do
+    lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
+  end
+  
   it "should be able to handle 'song - artist' strings"
   
   def mock_media(ret)

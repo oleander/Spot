@@ -35,7 +35,7 @@ class Spotify
   end
   
   def method_missing(method, *args, &blk)
-    find($2, !!$1, args.first) if method.to_s =~ /^find(_all)?_(.+)$/
+    method.to_s =~ /^find(_all)?_(.+)$/ ? find($2, !!$1, args.first) : super(method, *args, &blk)
   end
   
   def page(value)
