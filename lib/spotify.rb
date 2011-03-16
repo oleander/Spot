@@ -5,8 +5,6 @@ require "levenshteinish"
 require "spotify/song"
 require "spotify/artist"
 require "spotify/album"
-require "spotify/exception"
-require "spotify/error"
 
 class Spotify
   def initialize
@@ -36,7 +34,7 @@ class Spotify
   end
   
   def method_missing(method, *args, &blk)
-    method.to_s =~ /^find(_all)?_(.+)$/ ? find($2, !!$1, args.first) : super(method, *args, &blk)
+    method.to_s =~ /^find(_all)?_([a-z]+)$/i ? find($2, !!$1, args.first) : super(method, *args, &blk)
   end
   
   def page(value)
@@ -50,6 +48,7 @@ class Spotify
   def find(type, all, s)
     @search = s
     @type = all ? type.to_sym : "#{type}s".to_sym
+    raise NoMethodError.new(@type) unless @methods.keys.include?(@type)
     self
   end
   
@@ -89,14 +88,10 @@ class Spotify
     
     def content
       @content ||= JSON.parse(download)
-    rescue StandardError => error
-      raise SourceHasBeenChangedError.new(error, url)
     end
     
     def download
-      @download ||= RestClient.get url, :timeout => 10
-    rescue StandardError => request
-      errors(request)
+      @download ||= RestClient.get(url, :timeout => 10)
     end
     
     def clean!(string)
