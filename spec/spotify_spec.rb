@@ -275,7 +275,15 @@ describe Spotify do
     end
   end
   
-  it "should raise an error if the JSON method raises one"
+  it "should raise an error if the JSON method raises one" do
+    stub_request(:get, "http://ws.spotify.com/search/1/track.json?page=1&q=value").to_return(:body => "")
+    JSON.should_receive(:parse).and_return do
+      raise StandardError.new
+    end
+    
+    lambda { Spotify.find_song("value").result }.should raise_error(SourceHasBeenChangedError)
+  end
+  
   it "should do the same as above if the scrape raise an error"
   it 'should have some info (like this => {"num_results": 44118, "limit": 100, "offset": 0, "query": "a", "type": "album", "page": 1})'
   

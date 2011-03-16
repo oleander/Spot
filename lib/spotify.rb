@@ -6,6 +6,7 @@ require "spotify/song"
 require "spotify/artist"
 require "spotify/album"
 require "spotify/exception"
+require "spotify/error"
 
 class Spotify
   def initialize
@@ -88,8 +89,8 @@ class Spotify
     
     def content
       @content ||= JSON.parse(download)
-    rescue JSON::ParserError
-      raise SpotifyContainer::InvalidReturnTypeError.new
+    rescue StandardError => error
+      raise SourceHasBeenChangedError.new(error, url)
     end
     
     def download
