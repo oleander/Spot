@@ -34,7 +34,13 @@ class Spotify
   end
   
   def method_missing(method, *args, &blk)
-    method.to_s =~ /^find(_all)?_([a-z]+)$/i ? find($2, !!$1, args.first) : super(method, *args, &blk)
+    if method.to_s =~ /^find(_all)?_([a-z]+)$/i 
+      find($2, !!$1, args.first)
+    elsif scrape and content["info"].keys.include?(method.to_s)
+       content["info"][method.to_s]
+    else
+      super(method, *args, &blk)
+    end
   end
   
   def page(value)

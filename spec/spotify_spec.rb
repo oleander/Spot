@@ -263,6 +263,20 @@ describe Spotify do
     end
   end
   
-  it 'should have some info (like this => {"num_results": 44118, "limit": 100, "offset": 0, "query": "a", "type": "album", "page": 1})'
-  
+  context "the info method" do
+    after(:each) do
+      a_request(:get, @url).should have_been_made.once
+    end
+    
+    it "should have some info" do
+      @url = stubs("track", "kaizers orchestra")
+      spotify = Spotify.strip.find_song("kaizers orchestra")
+      spotify.num_results.should eq(188)
+      spotify.limit.should eq(100)
+      spotify.offset.should eq(0)
+      spotify.query.should eq("kaizers orchestra")
+      spotify.type.should eq("track")
+      spotify.page.should eq(1)
+    end
+  end  
 end
