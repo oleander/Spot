@@ -250,6 +250,10 @@ describe Spotify do
   end
   
   context "method does not exist" do
+    before(:each) do
+      stubs("track", "string")
+    end
+    
     it "should raise no method error if the method does't exist (plain value)" do
       lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
     end
@@ -269,14 +273,12 @@ describe Spotify do
     end
     
     it "should have some info" do
-      @url = stubs("track", "kaizers orchestra")
+      @url = stubs("track", "kaizers orchestra")      
       spotify = Spotify.strip.find_song("kaizers orchestra")
       spotify.num_results.should eq(188)
       spotify.limit.should eq(100)
       spotify.offset.should eq(0)
       spotify.query.should eq("kaizers orchestra")
-      spotify.type.should eq("track")
-      spotify.page.should eq(1)
     end
   end  
 end
