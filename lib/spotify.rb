@@ -67,7 +67,9 @@ class Spotify
   end
   
   def result      
-    @prime ? results.sort_by{ |r| Levenshtein.distance(search(true), clean!(r.to_s)) }.first : results.first
+    @prime ? results.sort_by do |r| 
+      Levenshtein.distance(search(true), clean!(r.to_s)) - r.popularity
+    end.first : results.first
   end
   
   private

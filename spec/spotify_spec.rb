@@ -148,14 +148,18 @@ describe Spotify do
   end
   
   context "the prime method" do
-    it "should return the best match" do
-      url = stubs("track", "kaizers orchestra")
-      Levenshtein.should_receive(:distance).exactly(100).times.and_return(1)
-      Spotify.prime.find_song("kaizers orchestra").result
-      a_request(:get, url).should have_been_made.once
+    before(:each) do
+      @url = stubs("track", "kaizers orchestra")
     end
     
-    it "should use the popularity value to calculate points for the given argument"
+    after(:each) do
+      a_request(:get, @url).should have_been_made.once
+    end
+    
+    it "should return the best match" do
+      Levenshtein.should_receive(:distance).exactly(100).times.and_return(1)
+      Spotify.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
+    end
   end
   
   context "the cleaner" do
@@ -267,7 +271,7 @@ describe Spotify do
     end
   end
   
-  context "the info method" do
+  context "the info values" do
     after(:each) do
       a_request(:get, @url).should have_been_made.once
     end
