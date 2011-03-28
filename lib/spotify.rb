@@ -95,7 +95,7 @@ class Spotify
     end
     
     def content
-      @content ||= JSON.parse(download)
+      @content ||= JSON.parse(download.force_encoding("UTF-8"))
     end
     
     def download
