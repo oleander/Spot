@@ -5,6 +5,8 @@ require "levenshteinish"
 require "spotify/song"
 require "spotify/artist"
 require "spotify/album"
+require "rchardet19"
+require "iconv"
 
 class Spotify
   def initialize
@@ -95,7 +97,10 @@ class Spotify
     end
     
     def content
-      @content ||= JSON.parse(download.force_encoding("UTF-8"))
+      data = download
+      cd = CharDet.detect(data)
+      data = cd.confidence > 0.6 ? Iconv.conv(cd.encoding, "UTF-8", data) : data
+      @content ||= JSON.parse(data)
     end
     
     def download
