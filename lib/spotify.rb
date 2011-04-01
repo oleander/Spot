@@ -75,6 +75,27 @@ class Spotify
     end.first : results.first
   end
   
+  def clean!(string)
+    string.strip!
+    
+    # Song - A + B + C => Song - A
+    # Song - A abc/def => Song - A abc
+    # Song - A & abc def => Song - A
+    # Song - A "abc def" => Song - A
+    # Song - A [B + C] => Song - A
+    # Song A B.mp3 => Song A B
+    # 10. Song => Song
+    [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^\d+(\.)?/].each do |reg|
+      string = string.gsub(reg, '').strip
+    end
+    
+    [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./].each do |reg|
+       string = string.gsub(reg, ' ').strip
+    end
+
+    string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
+  end
+  
   private
     def url
       @url ||= @methods[@type][:url].
@@ -106,27 +127,6 @@ class Spotify
     
     def download
       @download ||= RestClient.get(url, :timeout => 10)
-    end
-    
-    def clean!(string)
-      string.strip!
-      
-      # Song - A + B + C => Song - A
-      # Song - A abc/def => Song - A abc
-      # Song - A & abc def => Song - A
-      # Song - A "abc def" => Song - A
-      # Song - A [B + C] => Song - A
-      # Song A B.mp3 => Song A B
-      # 10. Song => Song
-      [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^\d+(\.)?/].each do |reg|
-        string = string.gsub(reg, '').strip
-      end
-      
-      [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./].each do |reg|
-         string = string.gsub(reg, ' ').strip
-      end
-
-      string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
     end
     
     def errors(error)
