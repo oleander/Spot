@@ -9,6 +9,7 @@ require "rchardet19"
 require "iconv"
 
 class Spotify
+  attr_accessor :aa
   def initialize
     @methods = {
       :artists => {
@@ -121,7 +122,7 @@ class Spotify
         string = string.gsub(reg, '').strip
       end
       
-      [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m].each do |reg|
+      [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./].each do |reg|
          string = string.gsub(reg, ' ').strip
       end
 

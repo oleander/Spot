@@ -251,6 +251,11 @@ describe Spotify do
       @url = stubs("track", "a b")
       Spotify.strip.find_song("123 A B.mp3 ").result
     end
+    
+    it "A 1.2.3.4.5 => A 1 2 3 4 5" do
+       @url = stubs("track", "a 1 2 3 4 5")
+       Spotify.strip.find_song("A 1.2.3.4.5").result
+     end
   end
   
   context "method does not exist" do
