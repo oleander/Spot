@@ -36,7 +36,7 @@ class Spotify
     @config = {
       :exclude => 2,
       :popularity => 1.2,
-      :limit => 0.5
+      :limit => 0.7
     }
     
     @options = {}
