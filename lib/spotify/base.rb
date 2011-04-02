@@ -16,6 +16,8 @@ module SpotifyContainer
     # Is the object available in {territory}?
     # Where {territory} can be any string representation of the ISO 3166-1 alpha-2 table
     # Read more about it here: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+    # Sweden => SE
+    # Norway => NO
     def available?(territory = nil)
       territories.include?(territory)
     end

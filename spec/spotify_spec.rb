@@ -299,6 +299,25 @@ describe Spotify do
       end
     end
   end
+  
+  context "territory" do
+    before(:each) do
+      stubs("track", "search")
+    end
+    
+    it "should not find any songs when using a non valid territory" do
+      @spotify.territory("RANDOM").find_all_songs("search").results.should be_empty
+    end
+    
+    it "should find some songs when using a valid territory" do
+      @spotify.territory("SE").find_all_songs("search").results.should_not be_empty
+    end
+    
+    it "should be ignored if nil" do
+      @spotify.territory(nil).find_all_songs("search").results.count.should eq(@spotify.find_all_songs("search").results.count)
+    end
+  end
+  
   context "the info values" do
     after(:each) do
       a_request(:get, @url).should have_been_made.once

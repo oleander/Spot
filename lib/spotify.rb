@@ -39,6 +39,8 @@ class Spotify
       :popularity => 1.2,
       :limit => 0.5
     }
+    
+    @options = {}
   end
   
   def self.method_missing(method, *args, &blk)
@@ -76,6 +78,10 @@ class Spotify
   
   def strip
     @strip = self
+  end
+  
+  def territory(value)
+    tap { @options.merge!(:territory => value) }
   end
   
   def result 
@@ -133,7 +139,7 @@ class Spotify
       return @cache[@type] if @cache[@type]
       
       @cache[@type] = []; content[@methods[@type][:selector].to_s].each do |item|
-        item = @methods[@type][:class].new(item) 
+        item = @methods[@type][:class].new(item.merge(@options)) 
         @cache[@type] << item if item.valid?
       end
       
