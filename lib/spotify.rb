@@ -35,7 +35,7 @@ class Spotify
     
     @config = {
       :exclude => 2,
-      :popularity => 1.2,
+      :popularity => 4,
       :limit => 0.7
     }
     
@@ -153,6 +153,7 @@ class Spotify
     end
     
     def download
+      puts "URL: #{url}\n"
       @download ||= RestClient.get(url, :timeout => 10)
     end
     
