@@ -7,6 +7,7 @@ require "spotify/artist"
 require "spotify/album"
 require "rchardet19"
 require "iconv"
+require "yaml"
 
 class Spotify
   attr_accessor :aa
@@ -30,6 +31,8 @@ class Spotify
     }
     
     @cache = {}
+    
+    @exclude = YAML.load(File.read("./lib/spotify/exclude.yml"))
   end
   
   def self.method_missing(method, *args, &blk)
@@ -96,13 +99,17 @@ class Spotify
     string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
   end
   
+  def exclude?(compare)
+    @exclude.map { |value| !! compare.match(/#{value}/i) }.any?
+  end
+  
   private
     def url
       @url ||= @methods[@type][:url].
         gsub(/<SEARCH>/, URI.escape(search)).
         gsub(/<PAGE>/, (@page || 1).to_s)
     end
-  
+    
     def search(force = false)
       @_search ||= ((@strip or force) ? clean!(@search) : @search)
     end

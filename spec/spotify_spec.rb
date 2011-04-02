@@ -280,8 +280,22 @@ describe Spotify do
     it "should contain a list of non wanted words" do
       @spotify.instance_eval do
         ["tribute", "cover", "remix", "live", "club mix"].each do |value|
-          @exclude.should include(value)
+          @exclude.include?(value).should == true
         end
+      end
+    end
+    
+    it "should have a working exclude? method" do
+      {
+        "tribute" => true, 
+        "random" => false, 
+        "cover random" => true, 
+        "live" => true, 
+        "club mix random" => true, 
+        "club random mix" => false,
+        "LIVE" => true
+      }.each do |comp, outcome|
+        @spotify.exclude?(comp).should eq(outcome)
       end
     end
   end
