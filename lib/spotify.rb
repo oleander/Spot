@@ -10,7 +10,6 @@ require "iconv"
 require "yaml"
 
 class Spotify
-  attr_accessor :aa
   def initialize
     @methods = {
       :artists => {
@@ -32,7 +31,7 @@ class Spotify
     
     @cache = {}
     
-    @exclude = YAML.load(File.read("./lib/spotify/exclude.yml"))
+    @exclude = YAML.load(File.read("#{File.dirname(__FILE__)}/spotify/exclude.yml"))
     
     @config = {
       :exclude => 2,
