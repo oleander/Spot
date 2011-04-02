@@ -276,6 +276,15 @@ describe Spotify do
     end
   end
   
+  context "exclude" do
+    it "should contain a list of non wanted words" do
+      @spotify.instance_eval do
+        ["tribute", "cover", "remix", "live", "club mix"].each do |value|
+          @exclude.should include(value)
+        end
+      end
+    end
+  end
   context "the info values" do
     after(:each) do
       a_request(:get, @url).should have_been_made.once
