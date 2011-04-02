@@ -101,6 +101,7 @@ class Spotify
     # Song - A "abc def" => Song - A
     # Song - A [B + C] => Song - A
     # Song A B.mp3 => Song A B
+    # Song a.b.c.d.e => Song a b c d e
     # 10. Song => Song
     [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^\d+(\.)?/].each do |reg|
       string = string.gsub(reg, '').strip
