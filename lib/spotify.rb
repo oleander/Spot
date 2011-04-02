@@ -58,11 +58,11 @@ class Spotify
   end
   
   def page(value)
-    @page = value; self
+    tap { @page = value }
   end
   
   def prime
-    @prime = self
+    tap { @prime = true }
   end
   
   def find(type, all, s)
@@ -77,7 +77,7 @@ class Spotify
   end
   
   def strip
-    @strip = self
+    tap { @strip = true }
   end
   
   def territory(value)
