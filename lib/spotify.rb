@@ -33,6 +33,12 @@ class Spotify
     @cache = {}
     
     @exclude = YAML.load(File.read("./lib/spotify/exclude.yml"))
+    
+    @config = {
+      :exclude => 2,
+      :popularity => 1.2,
+      :limit => 0.5
+    }
   end
   
   def self.method_missing(method, *args, &blk)
@@ -72,10 +78,18 @@ class Spotify
     @strip = self
   end
   
-  def result      
-    @prime ? results.sort_by do |r| 
-      Levenshtein.distance(search(true), clean!(r.to_s)) - r.popularity
-    end.first : results.first
+  def result 
+    @prime ? results.map do |r| 
+      [(
+        Levenshtein.distance(search(true), clean!(r.to_s)) - 
+        r.popularity/@config[:popularity] + 
+        (exclude?(r.to_s) ? @config[:exclude] : 0)
+      ), r]
+    end.reject do |distance, _|
+      distance >= @config[:limit]
+    end.sort_by do |distance, _|
+      distance
+    end.map(&:last).first : results.first
   end
   
   def clean!(string)
