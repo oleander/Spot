@@ -18,15 +18,12 @@ module SpotifyContainer
       @_album ||= SpotifyContainer::Album.new(@album)
     end
     
-    def to_s
-      @_to_s ||= "#{title} - #{artist.name}"
-    end
-    
     protected
       def territories
         @_territories ||= @album["availability"]["territories"].split(" ")
       end
     
     alias_method :title, :name
+    alias_method :to_s, :title
   end
 end

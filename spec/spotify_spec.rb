@@ -257,6 +257,11 @@ describe Spotify do
       Spotify.strip.find_song("A_B_C_D_E").result
     end
     
+    it "100_A=> A" do
+      @url = stubs("track", "a")
+      Spotify.strip.find_song("100_A").result
+    end
+    
     it "A 1.2.3.4.5 => A 1 2 3 4 5" do
        @url = stubs("track", "a 1 2 3 4 5")
        Spotify.strip.find_song("A 1.2.3.4.5").result
@@ -299,7 +304,8 @@ describe Spotify do
         "club mix random" => true, 
         "club random mix" => false,
         "LIVE" => true,
-        "karaoKE" => true
+        "karaoKE" => true,
+        "Karaoke - Won't Get Fooled Again" => true
       }.each do |comp, outcome|
         @spotify.exclude?(comp).should eq(outcome)
       end

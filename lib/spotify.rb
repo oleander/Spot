@@ -35,7 +35,7 @@ class Spotify
     
     @config = {
       :exclude => 2,
-      :popularity => 4,
+      :popularity => 10,
       :limit => 0.7
     }
     
@@ -84,13 +84,30 @@ class Spotify
   end
   
   def result 
-    @prime ? results.map do |r| 
+    @prime ? results.map do |r|
       [(
-        Levenshtein.distance(search(true), clean!(r.to_s)) -
-        (exclude?(r.to_s) ? @config[:exclude] : 0)
+        if @search.split("-").count == 1
+          points = Levenshtein.distance(clean!(@search), clean!(r.to_s))
+        else
+          if @type == :songs
+            artist = r.artist.name
+            song = r.name
+          elsif @type == :artists
+            artist = r.name
+            song = r.song.title
+          else
+            artist = r.artist
+            song = ""
+          end
+          
+          points = Levenshtein.distance(clean!(@search.split("-").first), clean!(artist))
+          points += Levenshtein.distance(clean!(@search.split("-").last), clean!(song))
+        end
+
+        points - r.popularity/@config[:popularity]
       ), r]
-    end.reject do |distance, _|
-      distance >= @config[:limit]
+    end.reject do |distance, value|
+      exclude?(value.to_s)
     end.sort_by do |distance, _|
       distance
     end.map(&:last).first : results.first
