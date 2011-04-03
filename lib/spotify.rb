@@ -93,14 +93,14 @@ class Spotify
         points += Levenshtein.distance(clean!(@search.split("-").last), clean!(song))
       else
         raw = clean!(@search).split(" ")
-        raw = song.split(" ")
         list = []
+        
         1.upto(raw.length - 1) do |n|
           list << [raw.slice(0,n).join(" "), raw.slice(n, raw.length).join(" ")]
         end
         
-        list.map do |a, s|
-          Levenshtein.distance(a, clean!(artist)) + Levenshtein.distance(s, clean!(song))
+        points = list.map do |data|
+          Levenshtein.distance(data.first, clean!(artist)) + Levenshtein.distance(data.last, clean!(song))
         end.sort.first
       end
 
@@ -113,13 +113,13 @@ class Spotify
   end
   
   def type_of(r)
-    # if @type == :songs
-    #   return r.name, r.artist.name
-    # elsif @type == :artists
-    #   return r.song.title, r.name
-    # else
-    #   return "", r.artist
-    # end
+    if @type == :songs
+      return r.name.to_s, r.artist.name.to_s
+    elsif @type == :artists
+      return r.song.title.to_s, r.name.to_s
+    else
+      return "", r.artist.to_s
+    end
   end
   
   def clean!(string)

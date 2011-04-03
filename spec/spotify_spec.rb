@@ -330,6 +330,16 @@ describe Spotify do
     end
   end
   
+  context "bugs" do
+    before(:each) do
+      stub_request(:get, /.*/).to_return(:body => File.read("spec/fixtures/track.json"), :status => 200)
+    end
+    
+    it "should not raise an error" do
+      lambda { Spotify.prime.strip.find_song("013 - The Rolling Stones - It's Only Rock 'N Roll.mp3").result }.should_not raise_error
+    end
+  end
+  
   context "the info values" do
     after(:each) do
       a_request(:get, @url).should have_been_made.once
