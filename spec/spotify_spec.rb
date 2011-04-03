@@ -252,6 +252,11 @@ describe Spotify do
       Spotify.strip.find_song("123 A B.mp3 ").result
     end
     
+    it "A_B_C_D_E => A B C D E" do
+      @url = stubs("track", "a b c d e")
+      Spotify.strip.find_song("A_B_C_D_E").result
+    end
+    
     it "A 1.2.3.4.5 => A 1 2 3 4 5" do
        @url = stubs("track", "a 1 2 3 4 5")
        Spotify.strip.find_song("A 1.2.3.4.5").result

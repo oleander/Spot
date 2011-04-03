@@ -86,8 +86,7 @@ class Spotify
   def result 
     @prime ? results.map do |r| 
       [(
-        Levenshtein.distance(search(true), clean!(r.to_s)) - 
-        r.popularity/@config[:popularity] + 
+        Levenshtein.distance(search(true), clean!(r.to_s)) -
         (exclude?(r.to_s) ? @config[:exclude] : 0)
       ), r]
     end.reject do |distance, _|
@@ -112,7 +111,7 @@ class Spotify
       string = string.gsub(reg, '').strip
     end
     
-    [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./].each do |reg|
+    [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./, /\_/].each do |reg|
        string = string.gsub(reg, ' ').strip
     end
 
@@ -153,7 +152,6 @@ class Spotify
     end
     
     def download
-      puts "URL: #{url}\n"
       @download ||= RestClient.get(url, :timeout => 10)
     end
     
