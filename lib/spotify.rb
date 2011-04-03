@@ -85,32 +85,41 @@ class Spotify
   
   def result 
     @prime ? results.map do |r|
-      [(
-        if @search.split("-").count == 1
-          points = Levenshtein.distance(clean!(@search), clean!(r.to_s))
-        else
-          if @type == :songs
-            artist = r.artist.name
-            song = r.name
-          elsif @type == :artists
-            artist = r.name
-            song = r.song.title
-          else
-            artist = r.artist
-            song = ""
-          end
-          
-          points = Levenshtein.distance(clean!(@search.split("-").first), clean!(artist))
-          points += Levenshtein.distance(clean!(@search.split("-").last), clean!(song))
+      song, artist = type_of(r)
+      if @search.split("-").count == 1
+        points = Levenshtein.distance(clean!(@search), clean!(r.to_s))
+      elsif @search.split("-").count == 2
+        points = Levenshtein.distance(clean!(@search.split("-").first), clean!(artist))
+        points += Levenshtein.distance(clean!(@search.split("-").last), clean!(song))
+      else
+        raw = clean!(@search).split(" ")
+        raw = song.split(" ")
+        list = []
+        1.upto(raw.length - 1) do |n|
+          list << [raw.slice(0,n).join(" "), raw.slice(n, raw.length).join(" ")]
         end
+        
+        list.map do |a, s|
+          Levenshtein.distance(a, clean!(artist)) + Levenshtein.distance(s, clean!(song))
+        end.sort.first
+      end
 
-        points - r.popularity/@config[:popularity]
-      ), r]
+      [points - r.popularity/@config[:popularity], r]
     end.reject do |distance, value|
       exclude?(value.to_s)
     end.sort_by do |distance, _|
       distance
     end.map(&:last).first : results.first
+  end
+  
+  def type_of(r)
+    # if @type == :songs
+    #   return r.name, r.artist.name
+    # elsif @type == :artists
+    #   return r.song.title, r.name
+    # else
+    #   return "", r.artist
+    # end
   end
   
   def clean!(string)
@@ -124,7 +133,7 @@ class Spotify
     # Song A B.mp3 => Song A B
     # Song a.b.c.d.e => Song a b c d e
     # 10. Song => Song
-    [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^\d+(\.)?/].each do |reg|
+    [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^(\d+.*?[^a-z]+?)/i].each do |reg|
       string = string.gsub(reg, '').strip
     end
     

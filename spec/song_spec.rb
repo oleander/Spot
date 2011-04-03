@@ -53,6 +53,6 @@ describe SpotifyContainer::Song do
   end
   
   it "should have a working to string method" do
-    @song.to_s.should eq("#{@song.title}")
+    @song.to_s.should eq("#{@song.title} - #{@song.artist.name}")
   end
 end
