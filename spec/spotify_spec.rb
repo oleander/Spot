@@ -297,7 +297,8 @@ describe Spotify do
           "karaoke", 
           "club version",
           "remaster",
-          "demo"
+          "demo",
+          "made famous by"
         ].each do |value|
           @exclude.include?(value).should == true
         end
@@ -309,14 +310,15 @@ describe Spotify do
         "tribute" => true, 
         "random" => false, 
         "cover random" => true, 
-        "live" => true, 
+        "live" => true,
         "club mix random" => true, 
         "club random mix" => false,
         "LIVE" => true,
         "karaoKE" => true,
         "Karaoke - Won't Get Fooled Again" => true,
         "club version" => true,
-        "demo" => true
+        "demo" => true,
+        "made famous by" => true
       }.each do |comp, outcome|
         @spotify.exclude?(comp).should eq(outcome)
       end
