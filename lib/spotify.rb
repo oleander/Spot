@@ -103,7 +103,6 @@ class Spotify
         res = diff.length.to_f/raw.length
       end
       
-      
       if diff.length > 1 and not match.map{ |m| diff.include?(m) }.all?
         res =+ diff.map do |value|
           match.map do |m|
