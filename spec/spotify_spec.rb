@@ -340,6 +340,17 @@ describe Spotify do
     end
   end
   
+  context "prefix" do    
+    it "should be possible to add a prefix" do
+      @url = stubs("track", "a b c c")
+      @spotify.prefix("A B C").find_song("C").result
+    end
+    
+    after(:each) do
+      a_request(:get, @url).should have_been_made.once
+    end
+  end
+  
   context "the info values" do
     after(:each) do
       a_request(:get, @url).should have_been_made.once
