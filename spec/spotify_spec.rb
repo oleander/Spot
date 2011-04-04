@@ -346,6 +346,16 @@ describe Spotify do
       @spotify.prefix("-A B C").find_song("C").result
     end
     
+    it "should be possible to add a prefix - with strip" do
+      @url = stubs("track", "a b c c")
+      @spotify.strip.prefix("-A B C").find_song("C").result
+    end
+    
+    it "should be possible to add a prefix, 123 A B.mp3=> A B" do
+      @url = stubs("track", "random a b")
+      @spotify.strip.prefix("random").find_song("123 A B.mp3 ").result
+    end
+    
     after(:each) do
       a_request(:get, @url).should have_been_made.once
     end
