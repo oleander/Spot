@@ -299,7 +299,7 @@ describe Spotify do
           "remaster",
           "demo",
           "made famous by",
-          "remixes"
+          "remixes"       
         ].each do |value|
           @exclude.include?(value).should == true
         end
