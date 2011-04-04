@@ -64,6 +64,10 @@ class Spotify
     tap { @prime = true }
   end
   
+  def prefix(value)
+    tap { @prefix = value }
+  end
+  
   def find(type, all, s)
     @search = s
     @type = all ? type.to_sym : "#{type}s".to_sym
@@ -156,7 +160,10 @@ class Spotify
     end
     
     def search(force = false)
-      @_search ||= ((@strip or force) ? clean!(@search) : @search)
+      return @_search if @_search
+      @_search = ""
+      @_search = ((@strip or force) ? clean!(@prefix) + " " : @prefix + " ") if @prefix
+      @_search += ((@strip or force) ? clean!(@search) : @search)
     end
     
     def scrape

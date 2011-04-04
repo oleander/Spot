@@ -341,9 +341,9 @@ describe Spotify do
   end
   
   context "prefix" do    
-    it "should be possible to add a prefix" do
-      @url = stubs("track", "a b c c")
-      @spotify.prefix("A B C").find_song("C").result
+    it "should be possible to add a prefix - without strip" do
+      @url = stubs("track", "-A B C C")
+      @spotify.prefix("-A B C").find_song("C").result
     end
     
     after(:each) do
