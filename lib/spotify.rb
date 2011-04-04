@@ -34,9 +34,10 @@ class Spotify
     @exclude = YAML.load(File.read("#{File.dirname(__FILE__)}/spotify/exclude.yml"))
     
     @config = {
-      :exclude => 2,
+      :exclude    => 2,
       :popularity => 7,
-      :limit => 0.7
+      :limit      => 0.7,
+      :offset     => 10
     }
     
     @options = {}
@@ -108,7 +109,7 @@ class Spotify
           match.map do |m|
             Levenshtein.distance(value, m)
           end.inject(:+)
-        end.inject(:+)
+        end.inject(:+) / @config[:offset]
       end
       
       [res - r.popularity/@config[:popularity], r]
