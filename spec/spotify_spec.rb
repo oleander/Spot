@@ -157,7 +157,6 @@ describe Spotify do
     end
     
     it "should return the best match" do
-      Levenshtein.should_receive(:distance).exactly(100).times.and_return(1)
       Spotify.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
     end
   end
