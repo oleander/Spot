@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 describe Spotify do
   before(:each) do
     @spotify = Spotify.new
@@ -262,9 +264,24 @@ describe Spotify do
     end
     
     it "A 1.2.3.4.5 => A 1 2 3 4 5" do
-       @url = stubs("track", "a 1 2 3 4 5")
-       Spotify.strip.find_song("A 1.2.3.4.5").result
-     end
+      @url = stubs("track", "a 1 2 3 4 5")
+      Spotify.strip.find_song("A 1.2.3.4.5").result
+    end
+    
+    it "ÅÄÖ åäö å ä ö Å Ä Ö => AAO aao a a o A A O" do
+      @url = stubs("track", "aao aao a a o a a o")
+      Spotify.strip.find_song("ÅÄÖ åäö å ä ö Å Ä Ö").result
+    end
+    
+    it "don't => don't (no change)" do
+      @url = stubs("track", "don't")
+      Spotify.strip.find_song("don't").result
+    end
+    
+    it "A 'don' B => A B" do
+      @url = stubs("track", "a b")
+      Spotify.strip.find_song("A 'don' B").result
+    end
   end
   
   context "method does not exist" do

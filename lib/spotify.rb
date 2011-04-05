@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 require "json/pure"
 require "rest-client"
 require "uri"
@@ -147,7 +149,11 @@ class Spotify
     [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./, /\_/].each do |reg|
        string = string.gsub(reg, ' ').strip
     end
-
+    
+    {"ä" => "a", "å" => "a", "ö" => "o"}.each do |from, to|
+      string.gsub!(/#{from}/i, to)
+    end
+    
     string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
   end
   
