@@ -155,6 +155,8 @@ class Spotify
     end
     
     string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
+  rescue Encoding::CompatibilityError
+    return string
   end
   
   def exclude?(compare)

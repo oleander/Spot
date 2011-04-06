@@ -406,5 +406,5 @@ describe Spotify do
       spotify.offset.should eq(0)
       spotify.query.should eq("kaizers orchestra")
     end
-  end  
+  end
 end
