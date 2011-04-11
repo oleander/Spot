@@ -72,10 +72,11 @@ class Spotify
   end
   
   def find(type, all, s)
-    @search = s
-    @type = all ? type.to_sym : "#{type}s".to_sym
-    raise NoMethodError.new(@type) unless @methods.keys.include?(@type)
-    self
+    tap {
+      @search = s
+      @type = all ? type.to_sym : "#{type}s".to_sym
+      raise NoMethodError.new(@type) unless @methods.keys.include?(@type)
+    }
   end
   
   def results
@@ -90,12 +91,14 @@ class Spotify
     tap { @options.merge!(:territory => value) }
   end
   
-  def result 
+  def result
     @prime ? results.map do |r|
+      
       song, artist = type_of(r)
       
       match = "#{song} #{artist}".split(" ")
       raw = clean!(search).split(" ")
+
       
       if raw.length < match.length
         diff = match - raw
@@ -104,7 +107,7 @@ class Spotify
         diff = raw - match
         res = diff.length.to_f/raw.length
       end
-      
+
       if diff.length > 1 and not match.map{ |m| diff.include?(m) }.all?
         res =+ diff.map do |value|
           match.map do |m|
@@ -184,7 +187,6 @@ class Spotify
         item = @methods[@type][:class].new(item.merge(@options)) 
         @cache[@type] << item if item.valid?
       end
-      
       @cache[@type]
     end
     

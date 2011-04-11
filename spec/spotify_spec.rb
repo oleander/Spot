@@ -367,7 +367,8 @@ describe Spotify do
   
   context "bugs" do
     before(:each) do
-      stub_request(:get, /.*/).to_return(:body => File.read("spec/fixtures/track.json"), :status => 200)
+      stub_request(:get, "http://ws.spotify.com/search/1/track.json?page=1&q=the%20rolling%20stones%20itn%20roll").
+        to_return(:body => File.read("spec/fixtures/track.json"), :status => 200)
     end
     
     it "should not raise an error" do
