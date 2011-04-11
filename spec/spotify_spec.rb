@@ -316,7 +316,8 @@ describe Spotify do
           "remaster",
           "demo",
           "made famous by",
-          "remixes"       
+          "remixes",
+          "instrumental(s)?"
         ].each do |value|
           @exclude.include?(value).should == true
         end
@@ -333,8 +334,10 @@ describe Spotify do
         "club random mix" => false,
         "LIVE" => true,
         "karaoKE" => true,
+        "instrumental" => true,
         "Karaoke - Won't Get Fooled Again" => true,
         "club version" => true,
+        "instrumentals" => true,
         "demo" => true,
         "made famous by" => true,
         "remixes" => true
