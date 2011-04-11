@@ -99,7 +99,6 @@ class Spotify
       match = "#{song} #{artist}".split(" ")
       raw = clean!(search).split(" ")
 
-      
       if raw.length < match.length
         diff = match - raw
         res = diff.length.to_f/match.length
