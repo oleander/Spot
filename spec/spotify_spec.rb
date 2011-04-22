@@ -376,6 +376,17 @@ describe Spotify do
     end
   end
   
+  context "tribute" do
+    before(:each) do
+      stub_request(:get, "http://ws.spotify.com/search/1/track.json?page=1&q=britney%20spears%20tribute").
+        to_return(:body => File.read("spec/fixtures/exclude.tribute.json"), :status => 200)
+    end
+    
+    it "should not return anything" do
+      Spotify.prime.strip.find_song("Britney Spears Tribute").result.should be_nil
+    end
+  end
+  
   context "prefix" do    
     it "should be possible to add a prefix - without strip" do
       @url = stubs("track", "-A B C C")
