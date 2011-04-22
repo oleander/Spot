@@ -317,7 +317,8 @@ describe Spotify do
           "demo",
           "made famous by",
           "remixes",
-          "instrumental(s)?"
+          "instrumental(s)?",
+           "ringtone(s)?"
         ].each do |value|
           @exclude.include?(value).should == true
         end
@@ -340,7 +341,8 @@ describe Spotify do
         "instrumentals" => true,
         "demo" => true,
         "made famous by" => true,
-        "remixes" => true
+        "remixes" => true,
+        "ringtone" => true
       }.each do |comp, outcome|
         @spotify.exclude?(comp).should eq(outcome)
       end
