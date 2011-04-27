@@ -1,6 +1,6 @@
 # Spotify
 
-An sophisticated implementation of the [Spotify Meta API](http://developer.spotify.com/en/metadata-api/overview/).
+An implementation of the [Spotify Meta API](http://developer.spotify.com/en/metadata-api/overview/).
 
 The Spotify gem is being used internally in the [Radiofy](http://radiofy.se) project.
 

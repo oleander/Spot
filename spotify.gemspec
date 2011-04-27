@@ -3,13 +3,13 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "spotify"
-  s.version     = "0.0.1"
+  s.version     = "0.0.2"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Linus Oleander"]
   s.email       = ["linus@oleander.nu"]
-  s.homepage    = ""
-  s.summary     = %q{An sophisticated implementation of the Spotify API}
-  s.description = %q{An sophisticated implementation of the Spotify API for Ruby}
+  s.homepage    = "https://github.com/oleander/Spotify"
+  s.summary     = %q{An implementation of the Spotify Meta API}
+  s.description = %q{An implementation of the Spotify Meta API.}
 
   s.rubyforge_project = "spotify"
 
