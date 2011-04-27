@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
-require "./lib/spot/song"
-require "./lib/spot/artist"
-require "./lib/spot/album"
+require "spot/song"
+require "spot/artist"
+require "spot/album"
 require "json/pure"
 require "rest-client"
 require "uri"

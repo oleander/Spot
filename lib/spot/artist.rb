@@ -1,4 +1,4 @@
-require "./lib/spot/base"
+require "spot/base"
 
 module SpotContainer
   class Artist < SpotContainer::Base 
