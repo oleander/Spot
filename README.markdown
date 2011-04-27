@@ -176,18 +176,34 @@ Here is the methods available for the `Artist` class.
 
 ### Album
     
-### The X class
+- **artist** (*Artist*) The artist.
 
-TODO: Describe what data to work with.
+### Spotify
+
+This one is easier to explain in code.
+
+```` ruby
+spotify = Spotify.find_song("kaizers orchestra")
+
+puts spotify.num_results # => 188
+puts spotify.limit       # => 100
+puts spotify.offset      # => 0
+puts spotify.query       # => "kaizers orchestra"
+````
+
+- **num_results** (*Fixnum*) The amount of results.
+- **limit** (*Fixnum*) The amount of results on each page.
+- **offset** (*Fixnum*) Unknown.
+- **query** (*String*) The search param that was passed to Spotify.
 
 ## How do install
 
-    [sudo] gem install APPLICATION_PACKAGE
+    [sudo] gem install spotify
 
 ## Requirements
 
-*APPLICATION_TITLE* is tested in **OS** using Ruby **x** and **x**.
+*Spotify* is tested in *OS X 10.6.7* using Ruby *1.8.7*, *1.9.2*.
 
 ## License
 
-*APPLICATION_TITLE* is released under the **Question mark** license.
+*Spotify* is released under the *MIT license*.
