@@ -117,6 +117,10 @@ describe Spotify do
       Spotify.find_all_albums("kaizers orchestra").results
     end
     
+    it "should be possible to specify a territories" do
+      Spotify.territory("RANDOM").find_all_albums("kaizers orchestra").results.should be_empty
+    end
+    
     it "should be able to cache a request" do
       set_up(100, true, SpotifyContainer::Album)
       spotify = Spotify.find_all_albums("kaizers orchestra")

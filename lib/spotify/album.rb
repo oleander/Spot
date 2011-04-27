@@ -2,7 +2,9 @@ require "./lib/spotify/base"
 
 module SpotifyContainer
   class Album < SpotifyContainer::Base
-    def valid?; true; end
+    def valid?
+      available?(@territory) or !@territory
+    end
     
     def artist
       @_artist ||= SpotifyContainer::Artist.new(@artists.first)
