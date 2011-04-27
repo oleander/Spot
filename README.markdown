@@ -1,8 +1,10 @@
 # Spotify
 
-An implementation of the [Spotify Meta API](http://developer.spotify.com/en/metadata-api/overview/).
+A Ruby implementation of the [Spotify Meta API](http://developer.spotify.com/en/metadata-api/overview/).
 
-The Spotify gem is being used internally in the [Radiofy](http://radiofy.se) project.
+This gem is used internally at the [Radiofy](http://radiofy.se) project.
+
+Follow me on [Twitter](http://twitter.com/linusoleander) for more info and updates.
 
 ## How to use
 
@@ -54,9 +56,9 @@ The `find_all_albums` method returns a list of `Album` objects.
 Spotify.find_all_albums("Old Skool Of Rock")
 ````
 
-### Find the best match
+### Find best match
 
-The `prime` method makes it possible to filter out the best match based on the ingoing argument.
+The `prime` method makes it possible to fetch the best matching result based on the ingoing argument.
 
 Here is what is being returned *without* the `prime` method.
  
@@ -86,14 +88,14 @@ Here is the short version.
 - instrumental
 - ringtone
 
-Take a look at the [source code](https://github.com/oleander/Spotify/blob/master/lib/spotify.rb#L94) if you want to find out more.
+Take a look at the [source code](https://github.com/oleander/Spotify/blob/master/lib/spotify.rb#L94) for more information.
 
 ### Specify a territory
 
 All songs in Spotify isn't available everywhere.  
 Therefore it might be usefull to specify a location, also know as a *territory*.
 
-If you for example want to find all songs available in Sweden, then you might do something like.
+If you for example want to find all songs available in Sweden, then you might do something like this.
 
 ```` ruby
 Spotify.territory("SE").find_song("Sweet Home Alabama")
@@ -103,7 +105,7 @@ You can find the complete territory list [here](http://en.wikipedia.org/wiki/ISO
 
 ### Filter ingoing arguments
 
-Sometimes it might be useful to filer ingoing params.  
+Sometimes it may be useful to filer ingoing params.  
 You can filter the ingoing string by using the `strip` method.
 
 ```` ruby
@@ -118,23 +120,35 @@ Take a look at the [source code](https://github.com/oleander/Spotify/blob/master
 
 ### Specify a page
 
-You easely select any page you want by defining the `page` method.
+You can easily select any page you want by defining the `page` method.
 
 ```` ruby
 Spotify.page(11).find_song("sweet home")
 ````
 
-The default page is of course `1` :)
+The default page is of course `1`. :)
+
+### Combine methods
+
+You can easily combine method like this.
+
+```` ruby
+Spotify.page(11).territory("SE").prime.strip.find_song("sweet home")
+````
 
 ## Data to work with
 
-As soon as the `result` or `results` method is applyed to the query a request to Spotify is made.
+As soon as the `result` or `results` method is applied to the query a request to Spotify is made.
 
 Here is an example using the `result` method.
 
     >> song = Spotify.find_song("sweet home").result
+    
     >> puts song.title
     => Home Sweet Home
+    
+    >> puts song.class
+    => SpotifyContainer::Song
  
 Here is an example using the `results` method.
    
@@ -150,16 +164,16 @@ All classes, `Song`, `Artist` and `Album` share these methods.
 - **href** (*String*) Url for the specific object.
 Default is a spotify url on this format: `spotify:track:5DhDGwNXRPHsMApbtVKvFb`.
 `http` may be passed as a string, which will return an Spotify HTTP Url on this format: `http://open.spotify.com/track/5DhDGwNXRPHsMApbtVKvFb`.
-- **available?** (*Boolean*) Takes one argument, a territory. Returns true if the object is accessible in the particular region.
-Read more about it in the *Specify a territory* part above.
+- **available?** (*Boolean*) Takes one argument, a territory. Returns true if the object is accessible in the given region.
+Read more about it in the *Specify a territory* section above.
 - **to_s** (*String*) A string representation of the object.
 - **valid?** (*Boolean*) Returns true if the object is valid, a.k.a is accessible in the given territory. 
-If no territory is given, then this will be true.
-- **name** (*String*) Name of the `Song`, `Artist` or `Album`. This method will return the same thing as `Song.title`.
+If no territory is given, this will be true.
+- **name** (*String*) Name of the `Song`, `Artist` or `Album`. This method will return the same thing as `Song#title`.
 
 ### Song
 
-Here is the methods available for the `Song` class.
+Methods available for the `Song` class.
 
 - **length** (*Fixnum*) Length in seconds.
 - **title** (*String*) Song title.
@@ -169,18 +183,20 @@ Here is the methods available for the `Song` class.
 
 ### Artist
 
-Here is the methods available for the `Artist` class.
+Methods available for the `Artist` class.
 
 - **name** (*String*) Name of the artist.
 - **to_s** (*String*) Same as above.
 
 ### Album
+
+Methods available for the `Album` class.
     
 - **artist** (*Artist*) The artist.
 
 ### Spotify
 
-This one is easier to explain in code.
+This one is easier to explain in plain code.
 
 ```` ruby
 spotify = Spotify.find_song("kaizers orchestra")
@@ -191,10 +207,40 @@ puts spotify.offset      # => 0
 puts spotify.query       # => "kaizers orchestra"
 ````
 
-- **num_results** (*Fixnum*) The amount of results.
+- **num_results** (*Fixnum*) The amount of hits.
 - **limit** (*Fixnum*) The amount of results on each page.
 - **offset** (*Fixnum*) Unknown.
 - **query** (*String*) The search param that was passed to Spotify.
+
+## Request limit!
+
+**Be aware**: Spotify has an request limit set for 10 requests per second.  
+Which means that you can't just use it like this.
+
+```` ruby
+["song1", "song2" ... ].each do |song|
+  Spotify.find_song(song)
+  # Do something with the data.
+end
+````
+
+Instead use something like [Wire](https://github.com/oleander/Wire) to limit the amount of requests per seconds.
+
+```` ruby
+require "rubygems"
+require "wire"
+require "spotify"
+
+wires = []
+["song1", "song2" ... ].each do |s|
+  wires << Wire.new(max: 10, wait: 1, vars: [s]) do |song|
+    Spotify.find_song(song)
+    # Do something with the data.
+  end
+end
+
+wires.map(&:join)
+````
 
 ## How do install
 

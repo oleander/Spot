@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Linus Oleander"]
   s.email       = ["linus@oleander.nu"]
   s.homepage    = "https://github.com/oleander/Spotify"
-  s.summary     = %q{An implementation of the Spotify Meta API}
-  s.description = %q{An implementation of the Spotify Meta API.}
+  s.summary     = %q{A Ruby implementation of the Spotify Meta API}
+  s.description = %q{A Ruby implementation of the Spotify Meta API.}
 
   s.rubyforge_project = "spotify"
 
