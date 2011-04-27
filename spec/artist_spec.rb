@@ -1,5 +1,5 @@
 require "spec_helper"
-require "lib/spotify/artist"
+require "./lib/spotify/artist"
 
 describe SpotifyContainer::Artist do
   before(:each) do
