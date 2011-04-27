@@ -1,12 +1,11 @@
 # -*- encoding : utf-8 -*-
-
+require "./lib/spotify/song"
+require "./lib/spotify/artist"
+require "./lib/spotify/album"
 require "json/pure"
 require "rest-client"
 require "uri"
 require "levenshteinish"
-require "./lib/spotify/song"
-require "./lib/spotify/artist"
-require "./lib/spotify/album"
 require "rchardet19"
 require "iconv"
 require "yaml"
