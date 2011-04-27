@@ -1,7 +1,7 @@
-require "./lib/spotify/base"
+require "./lib/spot/base"
 
-module SpotifyContainer
-  class Artist < SpotifyContainer::Base 
+module SpotContainer
+  class Artist < SpotContainer::Base 
     def valid?; true; end
     
     protected

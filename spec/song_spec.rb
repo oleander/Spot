@@ -1,9 +1,9 @@
 require "spec_helper"
-require "./lib/spotify/song"
+require "./lib/spot/song"
 
-describe SpotifyContainer::Song do
+describe SpotContainer::Song do
   before(:each) do
-    @song = SpotifyContainer::Song.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
+    @song = SpotContainer::Song.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
   end
   
   context "the available? method" do
@@ -17,11 +17,11 @@ describe SpotifyContainer::Song do
   end
   
   it "should have an artist" do
-    @song.artist.should be_instance_of(SpotifyContainer::Artist)
+    @song.artist.should be_instance_of(SpotContainer::Artist)
   end
   
   it "should have an album" do
-    @song.album.should be_instance_of(SpotifyContainer::Album)
+    @song.album.should be_instance_of(SpotContainer::Album)
   end
   
   it "should have the correct accessors" do
@@ -45,7 +45,7 @@ describe SpotifyContainer::Song do
   end
   
   it "should inherit from base" do
-    @song.class.ancestors.should include(SpotifyContainer::Base)
+    @song.class.ancestors.should include(SpotContainer::Base)
   end
   
   it "should have a title method that equals the name method" do

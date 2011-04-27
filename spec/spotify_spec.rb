@@ -1,8 +1,8 @@
 # -*- encoding : utf-8 -*-
 
-describe Spotify do
+describe Spot do
   before(:each) do
-    @spotify = Spotify.new
+    @spot = Spot.new
   end
   
   context "tracks if success" do
@@ -16,11 +16,11 @@ describe Spotify do
     
     it "should contain the right amounts of songs" do
       set_up(100, true)
-      Spotify.find_all_songs("kaizers orchestra").should have(100).results
+      Spot.find_all_songs("kaizers orchestra").should have(100).results
     end
     
-    it "should call SpotifyContainer::Song with the right arguments" do
-      SpotifyContainer::Song.should_receive(:new) do |args|
+    it "should call SpotContainer::Song with the right arguments" do
+      SpotContainer::Song.should_receive(:new) do |args|
         args["album"]["released"].should match(/^\d{4}$/)
         args["album"]["href"].should match(/^spotify\:album\:[a-zA-Z0-9]+$/)
         args["album"]["name"].should_not be_empty
@@ -36,18 +36,18 @@ describe Spotify do
         mock_media(true)
       end.exactly(100).times
       
-      Spotify.find_all_songs("kaizers orchestra").results
+      Spot.find_all_songs("kaizers orchestra").results
     end
     
     it "should be able to cache a request" do
       set_up(100, true)
-      spotify = Spotify.find_all_songs("kaizers orchestra")
-      10.times { spotify.results }
+      spot = Spot.find_all_songs("kaizers orchestra")
+      10.times { spot.results }
     end
   
     it "should not have any songs if nothing is valid" do
       set_up(100, false)
-      Spotify.find_all_songs("kaizers orchestra").results.should be_empty
+      Spot.find_all_songs("kaizers orchestra").results.should be_empty
     end
   end
   
@@ -61,30 +61,30 @@ describe Spotify do
     end  
   
     it "should contain the right amounts of artists" do
-      set_up(100, true, SpotifyContainer::Artist)
-      Spotify.find_all_artists("kaizers orchestra").should have(100).results
+      set_up(100, true, SpotContainer::Artist)
+      Spot.find_all_artists("kaizers orchestra").should have(100).results
     end
     
-    it "should call SpotifyContainer::Artist with the right arguments" do
-      SpotifyContainer::Artist.should_receive(:new) do |args|
+    it "should call SpotContainer::Artist with the right arguments" do
+      SpotContainer::Artist.should_receive(:new) do |args|
         args["name"].should_not be_empty
         args["popularity"].should match(/[0-9\.]+/)
         args["href"].should match(/^spotify\:artist\:[a-zA-Z0-9]+$/)
         mock_media(true)
       end.exactly(100).times
       
-      Spotify.find_all_artists("kaizers orchestra").results
+      Spot.find_all_artists("kaizers orchestra").results
     end
     
     it "should be able to cache a request" do
-      set_up(100, true, SpotifyContainer::Artist)
-      spotify = Spotify.find_all_artists("kaizers orchestra")
-      10.times { spotify.results }
+      set_up(100, true, SpotContainer::Artist)
+      spot = Spot.find_all_artists("kaizers orchestra")
+      10.times { spot.results }
     end
     
     it "should not have any songs if nothing is valid" do
-      set_up(100, false, SpotifyContainer::Artist)
-      Spotify.find_all_artists("kaizers orchestra").results.should be_empty
+      set_up(100, false, SpotContainer::Artist)
+      Spot.find_all_artists("kaizers orchestra").results.should be_empty
     end
   end
   
@@ -98,12 +98,12 @@ describe Spotify do
     end  
   
     it "should contain the right amounts of albums" do
-      set_up(100, true, SpotifyContainer::Album)
-      Spotify.find_all_albums("kaizers orchestra").should have(100).results
+      set_up(100, true, SpotContainer::Album)
+      Spot.find_all_albums("kaizers orchestra").should have(100).results
     end
     
-    it "should call SpotifyContainer::Album with the right arguments" do
-      SpotifyContainer::Album.should_receive(:new) do |args|
+    it "should call SpotContainer::Album with the right arguments" do
+      SpotContainer::Album.should_receive(:new) do |args|
         validate_artists(args["artists"])
         
         args["href"].should match(/^spotify\:album\:[a-zA-Z0-9]+$/)
@@ -114,22 +114,22 @@ describe Spotify do
         mock_media(true)
       end.exactly(100).times
       
-      Spotify.find_all_albums("kaizers orchestra").results
+      Spot.find_all_albums("kaizers orchestra").results
     end
     
     it "should be possible to specify a territories" do
-      Spotify.territory("RANDOM").find_all_albums("kaizers orchestra").results.should be_empty
+      Spot.territory("RANDOM").find_all_albums("kaizers orchestra").results.should be_empty
     end
     
     it "should be able to cache a request" do
-      set_up(100, true, SpotifyContainer::Album)
-      spotify = Spotify.find_all_albums("kaizers orchestra")
-      10.times { spotify.results }
+      set_up(100, true, SpotContainer::Album)
+      spot = Spot.find_all_albums("kaizers orchestra")
+      10.times { spot.results }
     end
     
     it "should not have any songs if nothing is valid" do
-      set_up(100, false, SpotifyContainer::Album)
-      Spotify.find_all_albums("kaizers orchestra").results.should be_empty
+      set_up(100, false, SpotContainer::Album)
+      Spot.find_all_albums("kaizers orchestra").results.should be_empty
     end
   end
   
@@ -143,13 +143,13 @@ describe Spotify do
     end
     
     it "should only return one element" do
-      Spotify.find_song("kaizers orchestra").result.should be_instance_of(SpotifyContainer::Song)
+      Spot.find_song("kaizers orchestra").result.should be_instance_of(SpotContainer::Song)
     end
   end
   
   it "should be possible to set a page variable" do
     url = stubs("track", "kaizers orchestra", 11)
-    Spotify.page(11).find_song("kaizers orchestra").result.should be_instance_of(SpotifyContainer::Song)
+    Spot.page(11).find_song("kaizers orchestra").result.should be_instance_of(SpotContainer::Song)
     a_request(:get, url).should have_been_made.once
   end
   
@@ -163,7 +163,7 @@ describe Spotify do
     end
     
     it "should return the best match" do
-      Spotify.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
+      Spot.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
     end
   end
   
@@ -174,120 +174,120 @@ describe Spotify do
     
     it "Song - Artist => Song Artist" do
       @url = stubs("track", "this is a string this to")
-      Spotify.strip.find_song("this is a string - this to").result
+      Spot.strip.find_song("this is a string - this to").result
     end
     
     it "Song - A + B + C => Song A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song - A + B + C").result
+      Spot.strip.find_song("Song - A + B + C").result
     end
     
     it "Song - A abc/def => Song - A abc" do
       @url = stubs("track", "song a abc")
-      Spotify.strip.find_song("Song - A abc/def").result
+      Spot.strip.find_song("Song - A abc/def").result
     end
     
     it "Song - A & abc def => Song - A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song - A & abc def").result
+      Spot.strip.find_song("Song - A & abc def").result
     end
     
     it "Song A \"abc def\" => Song - A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song A \"abc def\"").result
+      Spot.strip.find_song("Song A \"abc def\"").result
     end
     
     it "Song - A [B + C] => Song - A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song - A [B + C]").result
+      Spot.strip.find_song("Song - A [B + C]").result
     end
     
     it "Song - A (Super Song) => Song - A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song - A (Super Song)").result
+      Spot.strip.find_song("Song - A (Super Song)").result
     end
     
     it "Song A feat. (Super Song) => Song A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song A feat. (Super Song)").result
+      Spot.strip.find_song("Song A feat. (Super Song)").result
     end
     
     it "Song A feat.(Super Song) => Song A" do
       @url = stubs("track", "song a")
-      Spotify.strip.find_song("Song A feat. (Super Song)").result
+      Spot.strip.find_song("Song A feat. (Super Song)").result
     end
     
     it "Song A feat.Super B C => Song A B C" do
       @url = stubs("track", "song a b c")
-      Spotify.strip.find_song("Song A feat.Super B C").result
+      Spot.strip.find_song("Song A feat.Super B C").result
     end
     
     it "Song A feat Super B C => Song A B C" do
       @url = stubs("track", "song a b c")
-      Spotify.strip.find_song("Song A feat Super B C").result
+      Spot.strip.find_song("Song A feat Super B C").result
     end
     
     it "A -- B => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song("A -- B").result
+      Spot.strip.find_song("A -- B").result
     end
     
     it "123 A B => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song("123 A B").result
+      Spot.strip.find_song("123 A B").result
     end
     
     it "123 A B.mp3 => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song("123 A B.mp3").result
+      Spot.strip.find_song("123 A B.mp3").result
     end
     
     it "01. A B => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song("01. A B").result
+      Spot.strip.find_song("01. A B").result
     end
     
     it " 01. A B => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song(" 01. A B").result
+      Spot.strip.find_song(" 01. A B").result
     end
     
     it "123 A B.mp3(whitespace) => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song("123 A B.mp3 ").result
+      Spot.strip.find_song("123 A B.mp3 ").result
     end
     
     it "A_B_C_D_E => A B C D E" do
       @url = stubs("track", "a b c d e")
-      Spotify.strip.find_song("A_B_C_D_E").result
+      Spot.strip.find_song("A_B_C_D_E").result
     end
     
     it "100_A=> A" do
       @url = stubs("track", "a")
-      Spotify.strip.find_song("100_A").result
+      Spot.strip.find_song("100_A").result
     end
     
     it "A 1.2.3.4.5 => A 1 2 3 4 5" do
       @url = stubs("track", "a 1 2 3 4 5")
-      Spotify.strip.find_song("A 1.2.3.4.5").result
+      Spot.strip.find_song("A 1.2.3.4.5").result
     end
     
     # I've not figured out how to handle "ÅÄÖ" correctly in Ruby 1.8.
     unless RUBY_VERSION =~ /1\.8/
       it "ÅÄÖ åäö å ä ö Å Ä Ö => AAO aao a a o A A O" do
         @url = stubs("track", "aao aao a a o a a o")
-        Spotify.strip.find_song("ÅÄÖ åäö å ä ö Å Ä Ö").result
+        Spot.strip.find_song("ÅÄÖ åäö å ä ö Å Ä Ö").result
       end
     end
     
     it "don't => don't (no change)" do
       @url = stubs("track", "don't")
-      Spotify.strip.find_song("don't").result
+      Spot.strip.find_song("don't").result
     end
     
     it "A 'don' B => A B" do
       @url = stubs("track", "a b")
-      Spotify.strip.find_song("A 'don' B").result
+      Spot.strip.find_song("A 'don' B").result
     end
   end
   
@@ -297,21 +297,21 @@ describe Spotify do
     end
     
     it "should raise no method error if the method does't exist (plain value)" do
-      lambda { Spotify.find_song("string").random_method }.should raise_error(NoMethodError)
+      lambda { Spot.find_song("string").random_method }.should raise_error(NoMethodError)
     end
     
     it "should raise an error if the method matches find_*_*" do
-      lambda { Spotify.find_song("string").find_by_song }.should raise_error(NoMethodError)
+      lambda { Spot.find_song("string").find_by_song }.should raise_error(NoMethodError)
     end
     
     it "should raise an error if the method matches find_all_* " do
-      lambda { Spotify.find_song("string").find_all_random }.should raise_error(NoMethodError)
+      lambda { Spot.find_song("string").find_all_random }.should raise_error(NoMethodError)
     end
   end
   
   context "exclude" do
     it "should contain a list of non wanted words" do
-      @spotify.instance_eval do
+      @spot.instance_eval do
         [
           "tribute", 
           "cover", 
@@ -353,7 +353,7 @@ describe Spotify do
         "club random mix"                  => false,
         "random"                           => false
       }.each do |comp, outcome|
-        @spotify.exclude?(comp).should eq(outcome)
+        @spot.exclude?(comp).should eq(outcome)
       end
     end
   end
@@ -364,15 +364,15 @@ describe Spotify do
     end
     
     it "should not find any songs when using a non valid territory" do
-      @spotify.territory("RANDOM").find_all_songs("search").results.should be_empty
+      @spot.territory("RANDOM").find_all_songs("search").results.should be_empty
     end
     
     it "should find some songs when using a valid territory" do
-      @spotify.territory("SE").find_all_songs("search").results.should_not be_empty
+      @spot.territory("SE").find_all_songs("search").results.should_not be_empty
     end
     
     it "should be ignored if nil" do
-      @spotify.territory(nil).find_all_songs("search").results.count.should eq(@spotify.find_all_songs("search").results.count)
+      @spot.territory(nil).find_all_songs("search").results.count.should eq(@spot.find_all_songs("search").results.count)
     end
   end
   
@@ -383,7 +383,7 @@ describe Spotify do
     end
     
     it "should not raise an error" do
-      lambda { Spotify.prime.strip.find_song("013 - The Rolling Stones - It's Only Rock 'N Roll.mp3").result }.should_not raise_error
+      lambda { Spot.prime.strip.find_song("013 - The Rolling Stones - It's Only Rock 'N Roll.mp3").result }.should_not raise_error
     end
   end
   
@@ -394,24 +394,24 @@ describe Spotify do
     end
     
     it "should not return anything" do
-      Spotify.prime.strip.find_song("Britney Spears Tribute").result.should be_nil
+      Spot.prime.strip.find_song("Britney Spears Tribute").result.should be_nil
     end
   end
   
   context "prefix" do    
     it "should be possible to add a prefix - without strip" do
       @url = stubs("track", "-A B C C")
-      @spotify.prefix("-A B C").find_song("C").result
+      @spot.prefix("-A B C").find_song("C").result
     end
     
     it "should be possible to add a prefix - with strip" do
       @url = stubs("track", "a b c c")
-      @spotify.strip.prefix("-A B C").find_song("C").result
+      @spot.strip.prefix("-A B C").find_song("C").result
     end
     
     it "should be possible to add a prefix, 123 A B.mp3=> A B" do
       @url = stubs("track", "random a b")
-      @spotify.strip.prefix("random").find_song("123 A B.mp3 ").result
+      @spot.strip.prefix("random").find_song("123 A B.mp3 ").result
     end
     
     after(:each) do
@@ -426,11 +426,11 @@ describe Spotify do
     
     it "should have some info" do
       @url = stubs("track", "kaizers orchestra")      
-      spotify = Spotify.strip.find_song("kaizers orchestra")
-      spotify.num_results.should eq(188)
-      spotify.limit.should eq(100)
-      spotify.offset.should eq(0)
-      spotify.query.should eq("kaizers orchestra")
+      spot = Spot.strip.find_song("kaizers orchestra")
+      spot.num_results.should eq(188)
+      spot.limit.should eq(100)
+      spot.offset.should eq(0)
+      spot.query.should eq("kaizers orchestra")
     end
   end
 end

@@ -1,13 +1,13 @@
-require "./lib/spotify/base"
+require "./lib/spot/base"
 
-module SpotifyContainer
-  class Album < SpotifyContainer::Base
+module SpotContainer
+  class Album < SpotContainer::Base
     def valid?
       available?(@territory) or !@territory
     end
     
     def artist
-      @_artist ||= SpotifyContainer::Artist.new(@artists.first)
+      @_artist ||= SpotContainer::Artist.new(@artists.first)
     end
     
     protected

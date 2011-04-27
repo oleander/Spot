@@ -1,7 +1,7 @@
-require "./lib/spotify/base"
+require "./lib/spot/base"
 
-module SpotifyContainer
-  class Song < SpotifyContainer::Base
+module SpotContainer
+  class Song < SpotContainer::Base
     attr_reader :length
     attr_writer :territory
     
@@ -11,11 +11,11 @@ module SpotifyContainer
     end
     
     def artist
-      @_artist ||= SpotifyContainer::Artist.new(@artists.first)
+      @_artist ||= SpotContainer::Artist.new(@artists.first)
     end
     
     def album
-      @_album ||= SpotifyContainer::Album.new(@album)
+      @_album ||= SpotContainer::Album.new(@album)
     end
     
     def to_s

@@ -1,6 +1,6 @@
 require "abstract"
 
-module SpotifyContainer
+module SpotContainer
   class Base
     attr_reader :name
     

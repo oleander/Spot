@@ -1,6 +1,6 @@
 require "rspec"
 require "webmock/rspec"
-require "spotify"
+require "spot"
 
 RSpec.configure do |config|
   config.mock_with :rspec
@@ -19,7 +19,7 @@ def validate_artists(artists)
   end
 end
 
-def set_up(times = 100, ret = true, klass = SpotifyContainer::Song)
+def set_up(times = 100, ret = true, klass = SpotContainer::Song)
   klass.should_receive(:new).exactly(times).times.and_return(mock_media(ret))
 end
 

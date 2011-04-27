@@ -1,4 +1,4 @@
-# Spotify
+# Spot
 
 A Ruby implementation of the [Spotify Meta API](http://developer.spotify.com/en/metadata-api/overview/).
 
@@ -10,10 +10,10 @@ Follow me on [Twitter](http://twitter.com/linusoleander) for more info and updat
 
 ### Find a song
 
-The `Spotify.find_song` method returns the first hit.
+The `Spot.find_song` method returns the first hit.
 
 ```` ruby
-Spotify.find_song("Like Glue")
+Spot.find_song("Like Glue")
 ````
 
 ### Find all songs
@@ -21,15 +21,15 @@ Spotify.find_song("Like Glue")
 The `find_all_songs` method returns a list of `Song` objects.
 
 ```` ruby
-Spotify.find_all_songs("Like Glue")
+Spot.find_all_songs("Like Glue")
 ````
 
 ### Find an artist
 
-The `Spotify.find_artist` method returns the first hit.
+The `Spot.find_artist` method returns the first hit.
 
 ```` ruby
-Spotify.find_artist("Madonna")
+Spot.find_artist("Madonna")
 ````
 
 ### Find all artists
@@ -37,15 +37,15 @@ Spotify.find_artist("Madonna")
 The `find_all_artists` method returns a list of `Artist` objects.
 
 ```` ruby
-Spotify.find_all_artists("Madonna")
+Spot.find_all_artists("Madonna")
 ````
 
 ### Find an album
 
-The `Spotify.find_album` method returns the first hit.
+The `Spot.find_album` method returns the first hit.
 
 ```` ruby
-Spotify.find_album("Old Skool Of Rock")
+Spot.find_album("Old Skool Of Rock")
 ````
 
 ### Find all albums
@@ -53,7 +53,7 @@ Spotify.find_album("Old Skool Of Rock")
 The `find_all_albums` method returns a list of `Album` objects.
 
 ```` ruby
-Spotify.find_all_albums("Old Skool Of Rock")
+Spot.find_all_albums("Old Skool Of Rock")
 ````
 
 ### Find best match
@@ -62,15 +62,15 @@ The `prime` method makes it possible to fetch the best matching result based on 
 
 Here is what is being returned *without* the `prime` method.
  
-    >> Spotify.find_song("sweet home").result
+    >> Spot.find_song("sweet home").result
     => Home Sweet Home - Mötley Crüe
 
 Here is what is being returned *with* the `prime` method.
     
-    >> Spotify.prime.find_song("sweet home").result
+    >> Spot.prime.find_song("sweet home").result
     => Sweet Home Alabama - Lynyrd Skynyrd
 
-The `prime` method will reject data (songs, artists and albums) that contains any of the [these words](https://github.com/oleander/Spotify/blob/master/lib/spotify/exclude.yml).
+The `prime` method will reject data (songs, artists and albums) that contains any of the [these words](https://github.com/oleander/Spot/blob/master/lib/spot/exclude.yml).
 
 Here is the short version.
 
@@ -88,7 +88,7 @@ Here is the short version.
 - instrumental
 - ringtone
 
-Take a look at the [source code](https://github.com/oleander/Spotify/blob/master/lib/spotify.rb#L94) for more information.
+Take a look at the [source code](https://github.com/oleander/Spot/blob/master/lib/spot.rb#L94) for more information.
 
 ### Specify a territory
 
@@ -98,7 +98,7 @@ Therefore it might be usefull to specify a location, also know as a *territory*.
 If you for example want to find all songs available in Sweden, then you might do something like this.
 
 ```` ruby
-Spotify.territory("SE").find_song("Sweet Home Alabama")
+Spot.territory("SE").find_song("Sweet Home Alabama")
 ````
 
 You can find the complete territory list [here](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
@@ -109,21 +109,21 @@ Sometimes it may be useful to filer ingoing params.
 You can filter the ingoing string by using the `strip` method.
 
 ```` ruby
-Spotify.strip.find_song("3. Who's That Chick ? feat.Rihanna [Singel Version] - (Single)")
+Spot.strip.find_song("3. Who's That Chick ? feat.Rihanna [Singel Version] - (Single)")
 ````
 
-This is the string that is being passed to Spotify.
+This is the string that is being passed to Spot.
 
     "who's that chick ?"
 
-Take a look at the [source code](https://github.com/oleander/Spotify/blob/master/lib/spotify.rb#L136) if you want to know what regexp is being used.
+Take a look at the [source code](https://github.com/oleander/Spot/blob/master/lib/spot.rb#L136) if you want to know what regexp is being used.
 
 ### Specify a page
 
 You can easily select any page you want by defining the `page` method.
 
 ```` ruby
-Spotify.page(11).find_song("sweet home")
+Spot.page(11).find_song("sweet home")
 ````
 
 The default page is of course `1`. :)
@@ -133,7 +133,7 @@ The default page is of course `1`. :)
 You can easily combine method like this.
 
 ```` ruby
-Spotify.page(11).territory("SE").prime.strip.find_song("sweet home")
+Spot.page(11).territory("SE").prime.strip.find_song("sweet home")
 ````
 
 ## Data to work with
@@ -142,17 +142,17 @@ As soon as the `result` or `results` method is applied to the query a request to
 
 Here is an example using the `result` method.
 
-    >> song = Spotify.find_song("sweet home").result
+    >> song = Spot.find_song("sweet home").result
     
     >> puts song.title
     => Home Sweet Home
     
     >> puts song.class
-    => SpotifyContainer::Song
+    => SpotContainer::Song
  
 Here is an example using the `results` method.
    
-    >> songs = Spotify.find_all_songs("sweet home").results
+    >> songs = Spot.find_all_songs("sweet home").results
     >> puts songs.count
     => 100
 
@@ -194,17 +194,17 @@ Methods available for the `Album` class.
     
 - **artist** (*Artist*) The artist.
 
-### Spotify
+### Spot
 
 This one is easier to explain in plain code.
 
 ```` ruby
-spotify = Spotify.find_song("kaizers orchestra")
+spot = Spot.find_song("kaizers orchestra")
 
-puts spotify.num_results # => 188
-puts spotify.limit       # => 100
-puts spotify.offset      # => 0
-puts spotify.query       # => "kaizers orchestra"
+puts spot.num_results # => 188
+puts spot.limit       # => 100
+puts spot.offset      # => 0
+puts spot.query       # => "kaizers orchestra"
 ````
 
 - **num_results** (*Fixnum*) The amount of hits.
@@ -219,7 +219,7 @@ Which means that you can't just use it like this.
 
 ```` ruby
 ["song1", "song2" ... ].each do |song|
-  Spotify.find_song(song)
+  Spot.find_song(song)
   # Do something with the data.
 end
 ````
@@ -229,12 +229,12 @@ Instead use something like [Wire](https://github.com/oleander/Wire) to limit the
 ```` ruby
 require "rubygems"
 require "wire"
-require "spotify"
+require "spot"
 
 wires = []
 ["song1", "song2" ... ].each do |s|
   wires << Wire.new(max: 10, wait: 1, vars: [s]) do |song|
-    Spotify.find_song(song)
+    Spot.find_song(song)
     # Do something with the data.
   end
 end
@@ -244,12 +244,12 @@ wires.map(&:join)
 
 ## How do install
 
-    [sudo] gem install spotify
+    [sudo] gem install spot
 
 ## Requirements
 
-*Spotify* is tested in *OS X 10.6.7* using Ruby *1.8.7*, *1.9.2*.
+*Spot* is tested in *OS X 10.6.7* using Ruby *1.8.7*, *1.9.2*.
 
 ## License
 
-*Spotify* is released under the *MIT license*.
+*Spot* is released under the *MIT license*.

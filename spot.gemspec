@@ -2,16 +2,16 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "spotify"
+  s.name        = "spot"
   s.version     = "0.1.0"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Linus Oleander"]
   s.email       = ["linus@oleander.nu"]
-  s.homepage    = "https://github.com/oleander/Spotify"
+  s.homepage    = "https://github.com/oleander/Spot"
   s.summary     = %q{A Ruby implementation of the Spotify Meta API}
   s.description = %q{A Ruby implementation of the Spotify Meta API.}
 
-  s.rubyforge_project = "spotify"
+  s.rubyforge_project = "spot"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

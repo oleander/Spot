@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
-require "./lib/spotify/song"
-require "./lib/spotify/artist"
-require "./lib/spotify/album"
+require "./lib/spot/song"
+require "./lib/spot/artist"
+require "./lib/spot/album"
 require "json/pure"
 require "rest-client"
 require "uri"
@@ -10,29 +10,29 @@ require "rchardet19"
 require "iconv"
 require "yaml"
 
-class Spotify
+class Spot
   def initialize
     @methods = {
       :artists => {
         :selector => :artists,
-        :class    => SpotifyContainer::Artist,
+        :class    => SpotContainer::Artist,
         :url      => generate_url("artist")
       }, 
       :songs => {
         :selector => :tracks,
-        :class    => SpotifyContainer::Song,
+        :class    => SpotContainer::Song,
         :url      => generate_url("track")
       },
       :albums => {
         :selector => :albums,
-        :class    => SpotifyContainer::Album,
+        :class    => SpotContainer::Album,
         :url      => generate_url("album")
       }
     }
     
     @cache = {}
     
-    @exclude = YAML.load(File.read("#{File.dirname(__FILE__)}/spotify/exclude.yml"))
+    @exclude = YAML.load(File.read("#{File.dirname(__FILE__)}/spot/exclude.yml"))
     
     @config = {
       :exclude    => 2,
@@ -45,7 +45,7 @@ class Spotify
   end
   
   def self.method_missing(method, *args, &blk)
-    Spotify.new.send(method, *args, &blk)
+    Spot.new.send(method, *args, &blk)
   end
   
   def method_missing(method, *args, &blk)
@@ -202,7 +202,7 @@ class Spotify
     def errors(error)
       case error.to_s
       when "403 Forbidden"
-        raise SpotifyContainer::RequestLimitError.new(url)
+        raise SpotContainer::RequestLimitError.new(url)
       else
         raise error
       end

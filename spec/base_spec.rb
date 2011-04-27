@@ -1,9 +1,9 @@
 require "spec_helper"
-require "./lib/spotify/base"
+require "./lib/spot/base"
 
-describe SpotifyContainer::Base do
+describe SpotContainer::Base do
   before(:each) do
-    @base = SpotifyContainer::Base.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
+    @base = SpotContainer::Base.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
   end
   
   it "should have the correct accessors" do
