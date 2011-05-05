@@ -272,9 +272,11 @@ describe Spot do
       Spot.strip.find_song("A 1.2.3.4.5").result
     end
     
-    it "ÅÄÖ åäö å ä ö Å Ä Ö => AAO aao a a o A A O" do
-      @url = stubs("track", "aao aao a a o a a o")
-      Spot.strip.find_song("ÅÄÖ åäö å ä ö Å Ä Ö").result
+    unless RUBY_VERSION =~ /1\.8\.7/
+      it "ÅÄÖ åäö å ä ö Å Ä Ö => AAO aao a a o A A O" do
+        @url = stubs("track", "aao aao a a o a a o")
+        Spot.strip.find_song("ÅÄÖ åäö å ä ö Å Ä Ö").result
+      end
     end
     
     it "don't => don't (no change)" do
