@@ -91,8 +91,9 @@ class Spot
   end
   
   def result
-    @prime ? results.map do |r|
-      
+    @prime ? results.sort_by do |res|
+      res.popularity
+    end.reverse[0..4].map do |r|
       song, artist = type_of(r)
       
       match = "#{song} #{artist}".split(" ")
@@ -116,7 +117,7 @@ class Spot
       
       [res - r.popularity/@config[:popularity], r]
     end.reject do |distance, value|
-      exclude?(value.to_s)
+      exclude?(value.to_s) or not value.valid?
     end.sort_by do |distance, _|
       distance
     end.map(&:last).first : results.first
@@ -183,7 +184,7 @@ class Spot
       
       @cache[@type] = []; content[@methods[@type][:selector].to_s].each do |item|
         item = @methods[@type][:class].new(item.merge(@options)) 
-        @cache[@type] << item if item.valid?
+        @cache[@type] << item if item.valid? or @prime
       end
       @cache[@type]
     end
