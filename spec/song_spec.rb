@@ -5,7 +5,7 @@ describe SpotContainer::Song do
   before(:each) do
     @song = SpotContainer::Song.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
   end
-  
+    
   context "the available? method" do
     it "should contain the AM territory" do
       @song.should be_available("AM")
@@ -54,5 +54,15 @@ describe SpotContainer::Song do
   
   it "should have a working to string method" do
     @song.to_s.should eq("#{@song.title} - #{@song.artist.name}")
+  end
+  
+  context "user requst" do
+    before(:all) do
+      WebMock.allow_net_connect!
+    end
+    
+    it "should match user request" do
+      Spot.territory("SE").prime.strip.find_song("Call My Name - Tove Styrke").result.to_s.should eq("Call My Name - Tove Styrke")
+    end
   end
 end

@@ -125,11 +125,11 @@ class Spot
   
   def type_of(r)
     if @type == :songs
-      return r.name.to_s, r.artist.name.to_s
+      return r.name.to_s.downcase, r.artist.name.to_s.downcase
     elsif @type == :artists
-      return r.song.title.to_s, r.name.to_s
+      return r.song.title.to_s.downcase, r.name.to_s.downcase
     else
-      return "", r.artist.to_s
+      return "", r.artist.to_s.downcase
     end
   end
   
