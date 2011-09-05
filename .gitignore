@@ -3,3 +3,5 @@
 Gemfile.lock
 pkg/*
 spec/run_spec.rb
+.DS_Store
+.rake_tasks~
