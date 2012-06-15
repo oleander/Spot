@@ -4912,4 +4912,67 @@ http_interactions:
         "5"}]}'
     http_version: !!null 
   recorded_at: Fri, 15 Jun 2012 20:59:31 GMT
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=smooth%20undercover%20lover
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 21:03:31 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 20:38:03 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '1222'
+      X-Varnish:
+      - 1855703178 1855630952
+      Age:
+      - '1534'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 1, "limit": 100, "offset": 0, "query": "smooth
+        undercover lover", "type": "track", "page": 1}, "tracks": [{"album": {"released":
+        "1995", "href": "spotify:album:3JIyQRXTJMNcg6CrzOw8NF", "name": "Smooth",
+        "availability": {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AT AZ BA
+        BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BW BY BZ CA CD CF CG CH CI CK CL
+        CM CN CO CR CU CV CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM
+        FO FR GA GB GD GE GF GH GI GL GM GN GP GQ GR GT GU GW GY HK HN HR HT HU ID
+        IE IL IN IO IQ IR IS IT JM JO KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI
+        LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MO MP MQ MR MS MT MU MV
+        MW MX MY MZ NA NC NE NG NI NL NO NP NR NU OM PA PE PF PG PH PK PL PM PN PR
+        PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SK SL SM SN SO SR ST
+        SV SY SZ TC TD TF TG TJ TK TL TM TN TO TR TT TV TZ UA UG US UY UZ VA VC VE
+        VG VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Undercover Lover", "popularity":
+        "0.16422", "external-ids": [{"type": "isrc", "id": "USJI10300820"}], "length":
+        368.64, "href": "spotify:track:5pGvw5sv5j0NcPq9A5aWhE", "artists": [{"href":
+        "spotify:artist:7yRkgZyRXaO7oh1hTEyKNo", "name": "Smooth"}], "track-number":
+        "11"}]}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 21:03:37 GMT
 recorded_with: VCR 2.2.2

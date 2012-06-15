@@ -205,5 +205,9 @@ describe Spot::Search do
       song.artist.name.should eq("Iron Maiden")
       song.title.should match(%r{Can I Play With Madness})
     end
+
+    it "should handle 'Smooth - Undercover Lover'" do
+      Spot::Search.territory("SE").strip.prime.find_song("Smooth - Undercover Lover").result.to_s.should eq("Smooth - Undercover Lover")
+    end
   end
 end

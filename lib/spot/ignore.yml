@@ -1,12 +1,12 @@
 ---
-- tribute
-- cover
-- remix
+- \btribute\b
+- \bcover\b
+- \bremix\b
 - \blive\b
 - club mix
 - karaoke
 - club version
-- demo
+- \bdemo\b
 - made famous by
 - remixes
 - "[^a-z]+mix[^a-z]+"
