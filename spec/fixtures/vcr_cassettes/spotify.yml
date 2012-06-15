@@ -5165,4 +5165,92 @@ http_interactions:
         "5"}]}'
     http_version: !!null 
   recorded_at: Fri, 15 Jun 2012 21:07:03 GMT
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=wtf!%20da%20bop
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 21:36:24 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 12:19:58 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '3507'
+      X-Varnish:
+      - 1855802140 1854211143
+      Age:
+      - '33392'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 8, "limit": 100, "offset": 0, "query": "wtf!
+        da bop", "type": "track", "page": 1}, "tracks": [{"album": {"released": "2012",
+        "href": "spotify:album:1MGzzpBoleCvmNYUIs28py", "name": "Da Bop", "availability":
+        {"territories": "NL"}}, "name": "Da Bop", "popularity": "0.55937", "external-ids":
+        [{"type": "isrc", "id": "DEHK91261011"}], "length": 183.616, "href": "spotify:track:6JkXkjHtGdh8Ty77s1DrGk",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:3DYy340dIbQLC1TC5RaYMD",
+        "name": "Da Bop", "availability": {"territories": "AT CH DE"}}, "name": "Da
+        Bop - Extended Mix", "popularity": "0.29829", "external-ids": [{"type": "isrc",
+        "id": "DEHK91261002"}], "length": 332.598, "href": "spotify:track:60avRdAiWiv33zLkXsM0Ws",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "2"}, {"album": {"released": "2012", "href": "spotify:album:4qfIHJOtvKB5wwJJFJWnTl",
+        "name": "Da Bop", "availability": {"territories": "BE"}}, "name": "Da Bop",
+        "popularity": "0.25662", "external-ids": [{"type": "isrc", "id": "DEHK91261011"}],
+        "length": 183.76, "href": "spotify:track:7FEBGbDppeCQrmNH6py9jv", "artists":
+        [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}], "track-number":
+        "1"}, {"album": {"released": "2012", "href": "spotify:album:3DYy340dIbQLC1TC5RaYMD",
+        "name": "Da Bop", "availability": {"territories": "AT CH DE"}}, "name": "Da
+        Bop - Video Edit", "popularity": "0.16412", "external-ids": [{"type": "isrc",
+        "id": "DEHK91261001"}], "length": 188.533, "href": "spotify:track:6DMWrGms17o906GUlqTg9y",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:4qfIHJOtvKB5wwJJFJWnTl",
+        "name": "Da Bop", "availability": {"territories": "BE"}}, "name": "Da Bop
+        - Video Edit", "popularity": "0.10330", "external-ids": [{"type": "isrc",
+        "id": "DEHK91261001"}], "length": 188.68, "href": "spotify:track:3n5Hnwg9XZ0G032W0e58sg",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "2"}, {"album": {"released": "2012", "href": "spotify:album:1fxVV9usZsp3zJ6MHjiLWs",
+        "name": "Da Bop", "availability": {"territories": "DK FI NO SE"}}, "name":
+        "Da Bop - Video Edit", "popularity": "0.03883", "external-ids": [{"type":
+        "isrc", "id": "DEHK91261001"}], "length": 191.546, "href": "spotify:track:1oddTak6i4Dq2CqSCEgCML",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:3DYy340dIbQLC1TC5RaYMD",
+        "name": "Da Bop", "availability": {"territories": "AT CH DE"}}, "name": "Da
+        Bop - Bastian Van Shield Remix", "popularity": "0.02819", "external-ids":
+        [{"type": "isrc", "id": "DEHK91258501"}], "length": 422.423, "href": "spotify:track:4mBLY3fnwSOTr8lXiEICTG",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "3"}, {"album": {"released": "2012", "href": "spotify:album:3DYy340dIbQLC1TC5RaYMD",
+        "name": "Da Bop", "availability": {"territories": "AT CH DE"}}, "name": "Da
+        Bop - Instrumental Edit", "popularity": "0.03113", "external-ids": [{"type":
+        "isrc", "id": "DEHK91261003"}], "length": 188.145, "href": "spotify:track:0vjRv2vyR5yk8VLQapiAlk",
+        "artists": [{"href": "spotify:artist:3MKmfwdKHiENnsxQpzbrck", "name": "WTF!"}],
+        "track-number": "4"}]}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 21:36:30 GMT
 recorded_with: VCR 2.2.2

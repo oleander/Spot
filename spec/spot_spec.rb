@@ -213,5 +213,9 @@ describe Spot::Search do
     it "should handle 'Basto! - Live Tonight (Gregory's Theme) (extended mix)'" do
       Spot::Search.territory("SE").strip.prime.find_song("Basto! - Live Tonight (Gregory's Theme) (extended mix)").result.to_s.should eq("Basto - Live Tonight (Gregory's Theme) - Radio Edit")
     end
+
+    it "should handle 'Wtf! - Da Bop'" do
+      Spot::Search.territory("SE").strip.prime.find_song("Wtf! - Da Bop").result.to_s.should eq("WTF! - Da Bop - Video Edit")
+    end
   end
 end

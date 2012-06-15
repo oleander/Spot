@@ -80,7 +80,11 @@ module Spot
     end
     
     def results
-      @_results ||= scrape
+      unless @prime
+        @_results ||= scrape.select(&:valid?)
+      else
+        @_results ||= scrape
+      end
     end
     
     def strip
@@ -94,11 +98,11 @@ module Spot
     def result
       @prime ? results.sort_by do |res|
         res.popularity
-      end.reverse[0..4].map do |r|
+      end.reverse[0..6].map do |r|
         song, artist = type_of(r)
         
-        match = [song, artist]
-        raw = clean!(search).split(/\s+/, 2)
+        match = clean!([song, artist].join(" ")).split(/\s+/)
+        raw = clean!(search).split(/\s+/)
 
         if raw.length < match.length
           diff = match - raw
@@ -118,10 +122,10 @@ module Spot
         
         [res - r.popularity/@config[:popularity], r]
       end.reject do |distance, song|
-        exclude?(value.to_s) or not song.valid?
+        exclude?(song.to_s) or not song.valid?
       end.sort_by do |distance, _|
         distance
-      end.map(&:last).first : results.first
+      end.map(&:last).first : results.select(&:valid?).first
     end
     
     def type_of(r)
