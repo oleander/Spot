@@ -98,7 +98,7 @@ module Spot
         song, artist = type_of(r)
         
         match = [song, artist]
-        raw = clean!(search).split(" ")
+        raw = clean!(search).split(/\s+/, 2)
 
         if raw.length < match.length
           diff = match - raw
@@ -117,8 +117,8 @@ module Spot
         end
         
         [res - r.popularity/@config[:popularity], r]
-      end.reject do |distance, value|
-        exclude?(value.to_s) or not value.valid?
+      end.reject do |distance, song|
+        exclude?(value.to_s) or not song.valid?
       end.sort_by do |distance, _|
         distance
       end.map(&:last).first : results.first
@@ -135,7 +135,9 @@ module Spot
     end
     
     def exclude?(compare)
-      @exclude.map { |value| compare.match(/#{value}/i) }.any?
+      @exclude.
+        reject{ |value| @search.to_s.match(/#{value}/i) }.
+        map{ |value| compare.match(/#{value}/i) }.any?
     end
 
     #

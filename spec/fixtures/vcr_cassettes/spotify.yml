@@ -4975,4 +4975,194 @@ http_interactions:
         "11"}]}'
     http_version: !!null 
   recorded_at: Fri, 15 Jun 2012 21:03:37 GMT
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=basto!%20live%20tonight
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 21:06:57 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 20:21:13 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '12165'
+      X-Varnish:
+      - 1855714667 1855587786
+      Age:
+      - '2750'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 26, "limit": 100, "offset": 0, "query":
+        "basto! live tonight", "type": "track", "page": 1}, "tracks": [{"album": {"released":
+        "2011", "href": "spotify:album:6gL7zqfXSyHqi4bTUcZIcX", "name": "Live Tonight
+        (Gregory''s Theme)", "availability": {"territories": "DK FI NO SE"}}, "name":
+        "Live Tonight (Gregory''s Theme) - Radio Edit", "popularity": "0.54849", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 162.613, "href": "spotify:track:19uHqaMYxCn61EhMh1KdfU",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "1"}, {"album": {"released": "2011", "href": "spotify:album:0svMRvzTyfZo0qvHofVtjG",
+        "name": "Flaix Summer 2011", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Radio Edit", "popularity": "0.39503", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775, "href": "spotify:track:4djudVOorsyIDEThmyDnlW",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "13"}, {"album": {"released": "2011", "href": "spotify:album:6gL7zqfXSyHqi4bTUcZIcX",
+        "name": "Live Tonight (Gregory''s Theme)", "availability": {"territories":
+        "DK FI NO SE"}}, "name": "Live Tonight (Gregory''s Theme) - Extended Mix",
+        "popularity": "0.34461", "external-ids": [{"type": "isrc", "id": "NLC281110463"}],
+        "length": 410.973, "href": "spotify:track:5szZ3PjNLiWxnlfPSVruOa", "artists":
+        [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}], "track-number":
+        "2"}, {"album": {"released": "2011", "href": "spotify:album:2OF8bn8i00AJcGkU0yHfuV",
+        "name": "Live Tonight (Gregory''s Theme)", "availability": {"territories":
+        "AT CH DE"}}, "name": "Live Tonight (Gregory''s Theme) - Radio Edit", "popularity":
+        "0.30397", "external-ids": [{"type": "isrc", "id": "NLC281110462"}], "length":
+        161.775, "href": "spotify:track:0BQbRuJwXE6PjckmcUgH1F", "artists": [{"href":
+        "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}], "track-number":
+        "1"}, {"album": {"released": "2010", "href": "spotify:album:7tViUWnzph272ivLcGEGt2",
+        "name": "Pioneer The Album", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Radio Edit", "popularity": "0.27124", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775, "href": "spotify:track:14uG9VNDpysPGdriU4OqGG",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "21"}, {"album": {"released": "2011", "href": "spotify:album:6AVytT51pdDD09kaj3TzpT",
+        "name": "Gregory''s Theme", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Radio Edit", "popularity": "0.25812", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775, "href": "spotify:track:3lXdcSgdeDPRTi1NGNaIHc",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "6"}, {"album": {"released": "2011", "href": "spotify:album:3SV51eMBLZXarBWnYmUTjS",
+        "name": "Blanco y Negro Hits 2011", "availability": {"territories": "ES"}},
+        "name": "Gregory''s Theme - Live Tonight Radio Edit", "popularity": "0.25753",
+        "external-ids": [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775,
+        "href": "spotify:track:5cInThoyzFZN810UHZ3Zck", "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji",
+        "name": "Basto"}], "track-number": "28"}, {"album": {"released": "2011", "href":
+        "spotify:album:2OF8bn8i00AJcGkU0yHfuV", "name": "Live Tonight (Gregory''s
+        Theme)", "availability": {"territories": "AT CH DE"}}, "name": "Gregory''s
+        Theme - Extended Mix", "popularity": "0.23531", "external-ids": [{"type":
+        "isrc", "id": "NLC281011637"}], "length": 423.79, "href": "spotify:track:09UWn1A7BJ4EvSucoWXx0a",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "4"}, {"album": {"released": "2011", "href": "spotify:album:25yNlvJiu12mT0TgUBQ6yl",
+        "name": "Europa Baila", "availability": {"territories": "ES"}}, "name": "Gregory''s
+        Theme - Live Tonight Radio Edit", "popularity": "0.21098", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775, "href": "spotify:track:46HVhO9Oyj8fWQaEELl7zn",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "17"}, {"album": {"released": "2011", "href": "spotify:album:1hr1O1VfOfYmi6iwehP2hW",
+        "name": "Clubsolute: 2011.04", "availability": {"territories": "AT CH DE"}},
+        "name": "Live Tonight (Gregory''s Theme) - Extended Mix", "popularity": "0.18226",
+        "external-ids": [{"type": "isrc", "id": "NLC281110463"}], "length": 408.79,
+        "href": "spotify:track:7KHCe7SY8licFTvqsYL5fH", "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji",
+        "name": "Basto"}], "track-number": "32"}, {"album": {"released": "2011", "href":
+        "spotify:album:6AVytT51pdDD09kaj3TzpT", "name": "Gregory''s Theme", "availability":
+        {"territories": "ES"}}, "name": "Gregory''s Theme - Live Tonight Extended",
+        "popularity": "0.14524", "external-ids": [{"type": "isrc", "id": "NLC281110463"}],
+        "length": 408.79, "href": "spotify:track:0sDouNdz4WrG8X80pGF3mA", "artists":
+        [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}], "track-number":
+        "7"}, {"album": {"released": "2011", "href": "spotify:album:5ru1E1kep88SSD7rkbcm9V",
+        "name": "Steez The Album", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Radio Edit", "popularity": "0.14274", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775, "href": "spotify:track:4GoLqkj2n5XU3m8adR4o61",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "31"}, {"album": {"released": "2011", "href": "spotify:album:3nPZ2eeWMiagRFEK7vqrdu",
+        "name": "Ibiza Beach Party", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Radio Edit", "popularity": "0.13684", "external-ids":
+        [{"type": "isrc", "id": "NLC281110462"}], "length": 161.775, "href": "spotify:track:4Wt99B6AtvkWxD26qWmToy",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "10"}, {"album": {"released": "2011", "href": "spotify:album:7suF1Ae39vtUcgSAk42gFF",
+        "name": "Where Is The Limit", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Extended", "popularity": "0.10581", "external-ids":
+        [{"type": "isrc", "id": "NLC281110463"}], "length": 408.79, "href": "spotify:track:3lkDhzQ3qpkv9FajwxA8Cp",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "2"}, {"album": {"released": "2011", "href": "spotify:album:63mQRRNgRqwFHJc27Fna6X",
+        "name": "Dirty Electro House IX", "availability": {"territories": "AT CH DE"}},
+        "name": "Live Tonight (Gregory''s Theme) - Extended Mix", "popularity": "0.10749",
+        "external-ids": [{"type": "isrc", "id": "NLC281110463"}], "length": 408.79,
+        "href": "spotify:track:04rkNBpuGwj55sue5YO2Ss", "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji",
+        "name": "Basto"}], "track-number": "21"}, {"album": {"released": "2011", "href":
+        "spotify:album:2OF8bn8i00AJcGkU0yHfuV", "name": "Live Tonight (Gregory''s
+        Theme)", "availability": {"territories": "AT CH DE"}}, "name": "Gregory''s
+        Theme - Short Radio Edit", "popularity": "0.10122", "external-ids": [{"type":
+        "isrc", "id": "NLC281011635"}], "length": 157.953, "href": "spotify:track:0NZZasxZuF7j0iscygfaA9",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "3"}, {"album": {"released": "2011", "href": "spotify:album:2OF8bn8i00AJcGkU0yHfuV",
+        "name": "Live Tonight (Gregory''s Theme)", "availability": {"territories":
+        "AT CH DE"}}, "name": "Live Tonight (Gregory''s Theme) - Extended Mix", "popularity":
+        "0.05971", "external-ids": [{"type": "isrc", "id": "NLC281110463"}], "length":
+        408.79, "href": "spotify:track:23UFAECHnrmHvRijXYK73M", "artists": [{"href":
+        "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}], "track-number":
+        "2"}, {"album": {"released": "2011", "href": "spotify:album:4PV6YFaNvxbCRnRH8i3Jut",
+        "name": "Hits Mix 02.11", "availability": {"territories": "ES"}}, "name":
+        "Gregory''s Theme - Live Tonight Extended", "popularity": "0.07732", "external-ids":
+        [{"type": "isrc", "id": "NLC281110463"}], "length": 408.79, "href": "spotify:track:2FJjX74bOOgV79ObmtXDGo",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "19"}, {"album": {"released": "2012", "href": "spotify:album:54NLoMxh9iPm8QKkV0yA57",
+        "name": "100% Trance - The Complete Trance Collection", "availability": {"territories":
+        "AT CH DE"}}, "name": "Live Tonight (Gregory''s Theme) - Extended Mix", "popularity":
+        "0.05786", "external-ids": [{"type": "isrc", "id": "NLC281110463"}], "length":
+        408.79, "href": "spotify:track:5Bn7gQdkAivuE3N8fMbhdR", "artists": [{"href":
+        "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}], "track-number":
+        "72"}, {"album": {"released": "2012", "href": "spotify:album:2aNnnYM9l3bw69zMCRDmmr",
+        "name": "House Top 40", "availability": {"territories": "AT CH DE"}}, "name":
+        "Live Tonight (Gregory''s Theme) - Extended Mix", "popularity": "0.05821",
+        "external-ids": [{"type": "isrc", "id": "NLC281110463"}], "length": 408.79,
+        "href": "spotify:track:7pI3gGB0qOl0A4H1qSty77", "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji",
+        "name": "Basto"}], "track-number": "34"}, {"album": {"released": "2011", "href":
+        "spotify:album:4g8VKBjg3bvetc2k99pk8n", "name": "Blanco y Negro Hits 11.07",
+        "availability": {"territories": "ES"}}, "name": "Gregory''s Theme - Live Tonight
+        Extended", "popularity": "0.04307", "external-ids": [{"type": "isrc", "id":
+        "NLC281110463"}], "length": 408.79, "href": "spotify:track:32fpYWGOTYk3fXZ8IuNTmk",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "3"}, {"album": {"released": "2011", "href": "spotify:album:43p0fOT0PtZJK7vV1tGLkH",
+        "name": "Orbital Top Mix (Mixed by DJ Fernando & DJ Digital)", "availability":
+        {"territories": "PT"}}, "name": "Live Tonight (Gregory''s Theme)", "popularity":
+        "0.00000", "external-ids": [{"type": "isrc", "id": "USA371359734"}], "length":
+        150.253, "href": "spotify:track:2O3PkHtdzRbtFkPlPg2zRd", "artists": [{"href":
+        "spotify:artist:7z4ztp6dQVM3L86TXs9ohC", "name": "Basto!"}], "track-number":
+        "21"}, {"album": {"released": "2011", "href": "spotify:album:0P05uPBgz2spsOl6nzarBG",
+        "name": "Papeete Beach Compilation vol. 15", "availability": {"territories":
+        "IT"}}, "name": "Live Tonight - Gregory''s Theme (Extended Version)", "popularity":
+        "0.00000", "external-ids": [{"type": "isrc", "id": "NLC281110463"}], "length":
+        255.746, "href": "spotify:track:5Yom9xi9lXUWfAQhvvFi8G", "artists": [{"href":
+        "spotify:artist:7z4ztp6dQVM3L86TXs9ohC", "name": "Basto!"}], "track-number":
+        "17"}, {"album": {"released": "2011", "href": "spotify:album:2kJoqyC9J1X2YbJsqFNw6T",
+        "name": "Summer Hitz", "availability": {"territories": "CA"}}, "name": "Live
+        Tonight (Gregory''s Theme) [Extended Mix]", "popularity": "0.00000", "external-ids":
+        [{"type": "isrc", "id": "NLC281110463"}], "length": 266.266, "href": "spotify:track:0Hx6ekXJyPCZcDOFIzZHPI",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "7"}, {"album": {"released": "2011", "href": "spotify:album:270222S2hpZV2XmnBcn3N3",
+        "name": "Dirty House", "availability": {"territories": "ES"}}, "name": "Gregory''s
+        Theme - Live Tonight Extended", "popularity": "0.02940", "external-ids": [{"type":
+        "isrc", "id": "NLC281110463"}], "length": 408.79, "href": "spotify:track:1MHzFS1QEDKQtxyu4UjmXW",
+        "artists": [{"href": "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}],
+        "track-number": "19"}, {"album": {"released": "2011", "href": "spotify:album:2OF8bn8i00AJcGkU0yHfuV",
+        "name": "Live Tonight (Gregory''s Theme)", "availability": {"territories":
+        "AT CH DE"}}, "name": "Gregory''s Theme - Olav Basoski Remix", "popularity":
+        "0.00391", "external-ids": [{"type": "isrc", "id": "NLC281110127"}], "length":
+        442.235, "href": "spotify:track:5ECWAAnjQhyMZwyD3yiwQs", "artists": [{"href":
+        "spotify:artist:2BJTwV4IpFe2gWL46KKlji", "name": "Basto"}], "track-number":
+        "5"}]}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 21:07:03 GMT
 recorded_with: VCR 2.2.2
