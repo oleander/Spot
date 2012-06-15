@@ -98,4 +98,8 @@ describe SpotContainer::Clean do
     SpotContainer::Clean.new("r.e.m").process.should eq("r.e.m")
     SpotContainer::Clean.new("r.e.m.").process.should eq("r.e.m.")
   end
+
+  it "Knockin' On Heaven's Door" do
+    SpotContainer::Clean.new("Knockin' On Heaven's Door").process.should eq("knockin' on heaven's door")
+  end
 end
