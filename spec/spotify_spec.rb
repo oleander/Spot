@@ -161,137 +161,17 @@ describe Spot do
     end
 
     it "should solve previous errors" do
-      [{artist: "Lana Del Rey", song: "Video Games"}].each do |media|
-        song = Spot.prime.find_song("#{media[:song]} #{media[:artist]}").result
+      [{
+        artist: "Lana Del Rey", 
+        song: "Video Games"
+      }].each do |media|
+        song = Spot.territory("SE").prime.find_song("#{media[:song]} #{media[:artist]}").result
         song.title.should match(/#{media[:song]}/i)
         song.artist.name.should match(/#{media[:artist]}/i)
       end
     end
   end
-  
-  context "the cleaner" do
-    after(:each) do
-      a_request(:get, @url).should have_been_made.once
-    end
     
-    it "Song - Artist => Song Artist" do
-      @url = stubs("track", "this is a string this to")
-      Spot.strip.find_song("this is a string - this to").result
-    end
-    
-    it "Song - A + B + C => Song A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song - A + B + C").result
-    end
-    
-    it "Song - A abc/def => Song - A abc" do
-      @url = stubs("track", "song a abc")
-      Spot.strip.find_song("Song - A abc/def").result
-    end
-    
-    it "Song - A & abc def => Song - A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song - A & abc def").result
-    end
-    
-    it "Song A \"abc def\" => Song - A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song A \"abc def\"").result
-    end
-    
-    it "Song - A [B + C] => Song - A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song - A [B + C]").result
-    end
-    
-    it "Song - A (Super Song) => Song - A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song - A (Super Song)").result
-    end
-    
-    it "Song A feat. (Super Song) => Song A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song A feat. (Super Song)").result
-    end
-    
-    it "Song A feat.(Super Song) => Song A" do
-      @url = stubs("track", "song a")
-      Spot.strip.find_song("Song A feat. (Super Song)").result
-    end
-    
-    it "Song A feat.Super B C => Song A B C" do
-      @url = stubs("track", "song a b c")
-      Spot.strip.find_song("Song A feat.Super B C").result
-    end
-    
-    it "Song A feat Super B C => Song A B C" do
-      @url = stubs("track", "song a b c")
-      Spot.strip.find_song("Song A feat Super B C").result
-    end
-    
-    it "A -- B => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song("A -- B").result
-    end
-    
-    it "123 A B => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song("123 A B").result
-    end
-    
-    it "123 A B.mp3 => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song("123 A B.mp3").result
-    end
-    
-    it "01. A B => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song("01. A B").result
-    end
-    
-    it " 01. A B => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song(" 01. A B").result
-    end
-    
-    it "123 A B.mp3(whitespace) => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song("123 A B.mp3 ").result
-    end
-    
-    it "A_B_C_D_E => A B C D E" do
-      @url = stubs("track", "a b c d e")
-      Spot.strip.find_song("A_B_C_D_E").result
-    end
-    
-    it "100_A=> A" do
-      @url = stubs("track", "a")
-      Spot.strip.find_song("100_A").result
-    end
-    
-    it "A 1.2.3.4.5 => A 1 2 3 4 5" do
-      @url = stubs("track", "a 1 2 3 4 5")
-      Spot.strip.find_song("A 1.2.3.4.5").result
-    end
-    
-    unless RUBY_VERSION =~ /1\.8\.7/
-      it "ÅÄÖ åäö å ä ö Å Ä Ö => AAO aao a a o A A O" do
-        @url = stubs("track", "aao aao a a o a a o")
-        Spot.strip.find_song("ÅÄÖ åäö å ä ö Å Ä Ö").result
-      end
-    end
-    
-    it "don't => don't (no change)" do
-      @url = stubs("track", "don't")
-      Spot.strip.find_song("don't").result
-    end
-    
-    it "A 'don' B => A B" do
-      @url = stubs("track", "a b")
-      Spot.strip.find_song("A 'don' B").result
-    end
-  end
-  
   context "method does not exist" do
     before(:each) do
       stubs("track", "string")

@@ -2,6 +2,7 @@
 require "spot/song"
 require "spot/artist"
 require "spot/album"
+require "spot/clean"
 require "json/pure"
 require "rest-client"
 require "uri"
@@ -96,9 +97,11 @@ class Spot
     end.reverse[0..4].map do |r|
       song, artist = type_of(r)
       
-      match = "#{song} #{artist}".split(" ")
+      match = [song, artist]
       raw = clean!(search).split(" ")
 
+      puts "RAW: #{raw}"
+      puts "MATCH: #{match}"
       if raw.length < match.length
         diff = match - raw
         res = diff.length.to_f/match.length
@@ -150,6 +153,9 @@ class Spot
     
     [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./, /\_/].each do |reg|
        string = string.gsub(reg, ' ').strip
+    end
+
+    ["album version", "remastered"].each do ||
     end
     
     {"ä" => "a", "å" => "a", "ö" => "o"}.each do |from, to|
