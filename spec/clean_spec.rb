@@ -76,14 +76,6 @@ describe SpotContainer::Clean do
     SpotContainer::Clean.new("100_A").process.should eq("a")
   end
   
-  it "A 1.2.3.4.5 => A 1 2 3 4 5" do
-    SpotContainer::Clean.new("A 1.2.3.4.5").process.should eq("a 1 2 3 4 5")
-  end
-
-  it "A 1.2.3.4.5 => A 1 2 3 4 5" do
-    SpotContainer::Clean.new("A 1.2.3.4.5 ").process.should eq("a 1 2 3 4 5")
-  end
-  
   unless RUBY_VERSION =~ /1\.8\.7/
     it "ÅÄÖ åäö å ä ö Å Ä Ö => AAO aao a a o A A O" do
       SpotContainer::Clean.new("ÅÄÖ åäö å ä ö Å Ä Ö").process.should eq("aao aao a a o a a o")
@@ -100,5 +92,10 @@ describe SpotContainer::Clean do
 
   it "Video Games - Album Version Remastered => Video Games" do
     SpotContainer::Clean.new("Video Games - Album Version Remastered").process.should eq("video games")
+  end
+
+  it "r.e.m - Losing My Religion" do
+    SpotContainer::Clean.new("r.e.m").process.should eq("r.e.m")
+    SpotContainer::Clean.new("r.e.m.").process.should eq("r.e.m.")
   end
 end

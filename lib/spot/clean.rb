@@ -10,7 +10,7 @@ module SpotContainer
 
     def process
       string = content.strip
-        
+
       @exclude.each do |exclude|
         string = string.gsub(/#{exclude}/i, "")
       end
@@ -21,7 +21,6 @@ module SpotContainer
       # Song - A "abc def" => Song - A
       # Song - A [B + C] => Song - A
       # Song A B.mp3 => Song A B
-      # Song a.b.c.d.e => Song a b c d e
       # 10. Song => Song
       [
         /\.[a-z0-9]{2,3}$/, 
@@ -39,7 +38,6 @@ module SpotContainer
         /feat(.*?)\s*[^\s]+/i, 
         /[-]+/, 
         /[\s]+/m, 
-        /\./, 
         /\_/
       ].each do |reg|
          string = string.gsub(reg, ' ').strip
