@@ -100,8 +100,6 @@ class Spot
       match = [song, artist]
       raw = clean!(search).split(" ")
 
-      puts "RAW: #{raw}"
-      puts "MATCH: #{match}"
       if raw.length < match.length
         diff = match - raw
         res = diff.length.to_f/match.length
