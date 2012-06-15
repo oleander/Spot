@@ -1,17 +1,17 @@
 require "spec_helper"
 require "./lib/spot/album"
 
-describe SpotContainer::Album do
+describe Spot::Album do
   before(:each) do
-    @album = SpotContainer::Album.new(JSON.load(File.read("spec/fixtures/album.json"))["albums"].first)
+    @album = Spot::Album.new(JSON.load(File.read("spec/fixtures/album.json"))["albums"].first)
   end
   
   it "should have an artist" do
-    @album.artist.should be_instance_of(SpotContainer::Artist)
+    @album.artist.should be_instance_of(Spot::Artist)
   end
   
   it "should inherit from base" do
-    @album.class.ancestors.should include(SpotContainer::Base)
+    @album.class.ancestors.should include(Spot::Base)
   end
   
   context "the available? method" do

@@ -1,9 +1,9 @@
 require "spec_helper"
 require "./lib/spot/artist"
 
-describe SpotContainer::Artist do
+describe Spot::Artist do
   before(:each) do
-    @artist = SpotContainer::Artist.new(JSON.load(File.read("spec/fixtures/artist.json"))["artists"].first)
+    @artist = Spot::Artist.new(JSON.load(File.read("spec/fixtures/artist.json"))["artists"].first)
   end
   
   it "should always be valid" do
@@ -11,7 +11,7 @@ describe SpotContainer::Artist do
   end
   
   it "should inherit from base" do
-    @artist.class.ancestors.should include(SpotContainer::Base)
+    @artist.class.ancestors.should include(Spot::Base)
   end
   
   it "should have a working to string method" do

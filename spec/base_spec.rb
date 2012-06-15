@@ -1,9 +1,9 @@
 require "spec_helper"
 require "./lib/spot/base"
 
-describe SpotContainer::Base do
+describe Spot::Base do
   before(:each) do
-    @base = SpotContainer::Base.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
+    @base = Spot::Base.new(JSON.load(File.read("spec/fixtures/track.json"))["tracks"].first)
   end
   
   it "should have the correct accessors" do

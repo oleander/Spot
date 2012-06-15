@@ -1,19 +1,19 @@
 # -*- encoding : utf-8 -*-
 
-describe Spot do
+describe Spot::Search do
   use_vcr_cassette "spotify"
 
   before(:each) do
-    @spot = Spot.new
+    @spot = Spot::Search.new
   end
   
   context "tracks if success" do
     it "should contain the right amounts of songs" do
-      Spot.find_all_songs("kaizers orchestra").should have(100).results
+      Spot::Search.find_all_songs("kaizers orchestra").should have(100).results
     end
     
-    it "should call SpotContainer::Song with the right arguments" do
-      SpotContainer::Song.should_receive(:new) do |args|
+    it "should call Spot::Song with the right arguments" do
+      Spot::Song.should_receive(:new) do |args|
         args["album"]["released"].should match(/^\d{4}$/)
         args["album"]["href"].should match(/^spotify\:album\:[a-zA-Z0-9]+$/)
         args["album"]["name"].should_not be_empty
@@ -29,11 +29,11 @@ describe Spot do
         mock_media(true)
       end.exactly(100).times
       
-      Spot.find_all_songs("kaizers orchestra").results
+      Spot::Search.find_all_songs("kaizers orchestra").results
     end
       
     it "should not have any songs" do
-      Spot.find_all_songs("d41d8cd98f00b204e9800998ecf8427e").results.should be_empty
+      Spot::Search.find_all_songs("d41d8cd98f00b204e9800998ecf8427e").results.should be_empty
     end
   end
   
@@ -47,39 +47,39 @@ describe Spot do
     end  
   
     it "should contain the right amounts of artists" do
-      Spot.find_all_artists("kaizers orchestra").results.should have(1).results
+      Spot::Search.find_all_artists("kaizers orchestra").results.should have(1).results
     end
     
-    it "should call SpotContainer::Artist with the right arguments" do
-      SpotContainer::Artist.should_receive(:new) do |args|
+    it "should call Spot::Artist with the right arguments" do
+      Spot::Artist.should_receive(:new) do |args|
         args["name"].should_not be_empty
         args["popularity"].should match(/[0-9\.]+/)
         args["href"].should match(/^spotify\:artist\:[a-zA-Z0-9]+$/)
         mock_media(true)
       end.exactly(1).times
       
-      Spot.find_all_artists("kaizers orchestra").results
+      Spot::Search.find_all_artists("kaizers orchestra").results
     end
     
     it "should be able to cache a request" do
-      set_up(1, true, SpotContainer::Artist)
-      spot = Spot.find_all_artists("kaizers orchestra")
+      set_up(1, true, Spot::Artist)
+      spot = Spot::Search.find_all_artists("kaizers orchestra")
       10.times { spot.results }
     end
     
     it "should not have any songs if nothing is valid" do
-      set_up(1, false, SpotContainer::Artist)
-      Spot.find_all_artists("kaizers orchestra").results.should be_empty
+      set_up(1, false, Spot::Artist)
+      Spot::Search.find_all_artists("kaizers orchestra").results.should be_empty
     end
   end
   
   context "album if success" do  
     it "should contain the right amounts of albums" do
-      Spot.find_all_albums("kaizers orchestra").should have(55).results
+      Spot::Search.find_all_albums("kaizers orchestra").should have(55).results
     end
     
-    it "should call SpotContainer::Album with the right arguments" do
-      SpotContainer::Album.should_receive(:new) do |args|
+    it "should call Spot::Album with the right arguments" do
+      Spot::Album.should_receive(:new) do |args|
         validate_artists(args["artists"])
         
         args["href"].should match(/^spotify\:album\:[a-zA-Z0-9]+$/)
@@ -90,43 +90,43 @@ describe Spot do
         mock_media(true)
       end.exactly(55).times
       
-      Spot.find_all_albums("kaizers orchestra").results
+      Spot::Search.find_all_albums("kaizers orchestra").results
     end
     
     it "should be possible to specify a territories" do
-      Spot.territory("RANDOM").find_all_albums("kaizers orchestra").results.should be_empty
+      Spot::Search.territory("RANDOM").find_all_albums("kaizers orchestra").results.should be_empty
     end
   end
   
   context "find_*" do    
     it "should only return one element" do
-      Spot.find_song("kaizers orchestra").result.should be_instance_of(SpotContainer::Song)
+      Spot::Search.find_song("kaizers orchestra").result.should be_instance_of(Spot::Song)
     end
   end
   
   it "should be possible to set a page variable" do
     url = generate_url("track", "kaizers orchestra", 11)
-    Spot.page(11).find_song("kaizers orchestra").result
+    Spot::Search.page(11).find_song("kaizers orchestra").result
     a_request(:get, url).should have_been_made.once
   end
   
   context "the prime method" do
     it "should return the best match" do
-      Spot.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
+      Spot::Search.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
     end
   end
     
   context "method does not exist" do
     it "should raise no method error if the method does't exist (plain value)" do
-      lambda { Spot.find_song("string").random_method }.should raise_error(NoMethodError)
+      lambda { Spot::Search.find_song("string").random_method }.should raise_error(NoMethodError)
     end
     
     it "should raise an error if the method matches find_*_*" do
-      lambda { Spot.find_song("string").find_by_song }.should raise_error(NoMethodError)
+      lambda { Spot::Search.find_song("string").find_by_song }.should raise_error(NoMethodError)
     end
     
     it "should raise an error if the method matches find_all_* " do
-      lambda { Spot.find_song("string").find_all_random }.should raise_error(NoMethodError)
+      lambda { Spot::Search.find_song("string").find_all_random }.should raise_error(NoMethodError)
     end
   end
   
@@ -200,7 +200,7 @@ describe Spot do
     
     it "should have some info" do
       @url = generate_url("track", "kaizers orchestra")
-      spot = Spot.strip.find_song("kaizers orchestra")
+      spot = Spot::Search.strip.find_song("kaizers orchestra")
       spot.num_results.should be > 0
       spot.limit.should eq(100)
       spot.offset.should eq(0)
@@ -210,11 +210,11 @@ describe Spot do
 
   context "bugs" do
     it "handles 'Jason Derulo - Undefeated'" do
-      Spot.strip.find_song("Jason Derulo - Undefeated").result.to_s.should eq("Jason Derulo - Undefeated")
+      Spot::Search.strip.find_song("Jason Derulo - Undefeated").result.to_s.should eq("Jason Derulo - Undefeated")
     end
 
     it "handles 'Call My Name - Tove Styrke'" do
-      Spot.territory("SE").prime.strip.find_song("Tove Styrke - Call My Name").result.to_s.should eq("Tove Styrke - Call My Name")
+      Spot::Search.territory("SE").prime.strip.find_song("Tove Styrke - Call My Name").result.to_s.should eq("Tove Styrke - Call My Name")
     end
   end
 end

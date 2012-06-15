@@ -1,6 +1,6 @@
 require "abstract"
 
-module SpotContainer
+module Spot
   class Base
     attr_reader :name
     

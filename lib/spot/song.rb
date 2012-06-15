@@ -1,7 +1,7 @@
 require "spot/base"
 
-module SpotContainer
-  class Song < SpotContainer::Base
+module Spot
+  class Song < Spot::Base
     attr_reader :length
     attr_writer :territory
     
@@ -11,11 +11,11 @@ module SpotContainer
     end
     
     def artist
-      @_artist ||= SpotContainer::Artist.new(@artists.first)
+      @_artist ||= Spot::Artist.new(@artists.first)
     end
     
     def album
-      @_album ||= SpotContainer::Album.new(@album)
+      @_album ||= Spot::Album.new(@album)
     end
     
     def to_s

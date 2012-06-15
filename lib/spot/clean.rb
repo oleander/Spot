@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 
-module SpotContainer
+module Spot
   class Clean
     attr_reader :content
     def initialize(content)

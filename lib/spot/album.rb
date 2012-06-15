@@ -1,13 +1,13 @@
 require "spot/base"
 
-module SpotContainer
-  class Album < SpotContainer::Base
+module Spot
+  class Album < Spot::Base
     def valid?
       available?(@territory) or !@territory
     end
     
     def artist
-      @_artist ||= SpotContainer::Artist.new(@artists.first)
+      @_artist ||= Spot::Artist.new(@artists.first)
     end
     
     protected

@@ -10,10 +10,10 @@ Follow me on [Twitter](http://twitter.com/linusoleander) for more info and updat
 
 ### Find a song
 
-The `Spot.find_song` method returns the first hit.
+The `Spot::Search.find_song` method returns the first hit.
 
 ```` ruby
-Spot.find_song("Like Glue")
+Spot::Search.find_song("Like Glue")
 ````
 
 ### Find all songs
@@ -21,7 +21,7 @@ Spot.find_song("Like Glue")
 The `find_all_songs` method returns a list of `Song` objects.
 
 ```` ruby
-Spot.find_all_songs("Like Glue")
+Spot::Search.find_all_songs("Like Glue")
 ````
 
 ### Find an artist
@@ -37,7 +37,7 @@ Spot.find_artist("Madonna")
 The `find_all_artists` method returns a list of `Artist` objects.
 
 ```` ruby
-Spot.find_all_artists("Madonna")
+Spot::Search.find_all_artists("Madonna")
 ````
 
 ### Find an album
@@ -53,7 +53,7 @@ Spot.find_album("Old Skool Of Rock")
 The `find_all_albums` method returns a list of `Album` objects.
 
 ```` ruby
-Spot.find_all_albums("Old Skool Of Rock")
+Spot::Search.find_all_albums("Old Skool Of Rock")
 ````
 
 ### Find best match
@@ -62,12 +62,12 @@ The `prime` method makes it possible to fetch the best matching result based on 
 
 Here is what is being returned *without* the `prime` method.
  
-    >> Spot.find_song("sweet home").result
+    >> Spot::Search.find_song("sweet home").result
     => Home Sweet Home - Mötley Crüe
 
 Here is what is being returned *with* the `prime` method.
     
-    >> Spot.prime.find_song("sweet home").result
+    >> Spot::Search.prime.find_song("sweet home").result
     => Sweet Home Alabama - Lynyrd Skynyrd
 
 The `prime` method will reject data (songs, artists and albums) that contains any of the [these words](https://github.com/oleander/Spot/blob/master/lib/spot/exclude.yml).
@@ -98,7 +98,7 @@ Therefore it might be usefull to specify a location, also know as a *territory*.
 If you for example want to find all songs available in Sweden, then you might do something like this.
 
 ```` ruby
-Spot.territory("SE").find_song("Sweet Home Alabama")
+Spot::Search.territory("SE").find_song("Sweet Home Alabama")
 ````
 
 You can find the complete territory list [here](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
@@ -109,7 +109,7 @@ Sometimes it may be useful to filer ingoing params.
 You can filter the ingoing string by using the `strip` method.
 
 ```` ruby
-Spot.strip.find_song("3. Who's That Chick ? feat.Rihanna [Singel Version] - (Single)")
+Spot::Search.strip.find_song("3. Who's That Chick ? feat.Rihanna [Singel Version] - (Single)")
 ````
 
 This is the string that is being passed to Spot.
@@ -123,7 +123,7 @@ Take a look at the [source code](https://github.com/oleander/Spot/blob/master/li
 You can easily select any page you want by defining the `page` method.
 
 ```` ruby
-Spot.page(11).find_song("sweet home")
+Spot::Search.page(11).find_song("sweet home")
 ````
 
 The default page is of course `1`. :)
@@ -133,7 +133,7 @@ The default page is of course `1`. :)
 You can easily combine method like this.
 
 ```` ruby
-Spot.page(11).territory("SE").prime.strip.find_song("sweet home")
+Spot::Search.page(11).territory("SE").prime.strip.find_song("sweet home")
 ````
 
 ## Data to work with
@@ -142,17 +142,17 @@ As soon as the `result` or `results` method is applied to the query a request to
 
 Here is an example using the `result` method.
 
-    >> song = Spot.find_song("sweet home").result
+    >> song = Spot::Search.find_song("sweet home").result
     
     >> puts song.title
     => Home Sweet Home
     
     >> puts song.class
-    => SpotContainer::Song
+    => Spot::Song
  
 Here is an example using the `results` method.
    
-    >> songs = Spot.find_all_songs("sweet home").results
+    >> songs = Spot::Search.find_all_songs("sweet home").results
     >> puts songs.count
     => 100
 
@@ -199,7 +199,7 @@ Methods available for the `Album` class.
 This one is easier to explain in plain code.
 
 ```` ruby
-spot = Spot.find_song("kaizers orchestra")
+spot = Spot::Search.find_song("kaizers orchestra")
 
 puts spot.num_results # => 188
 puts spot.limit       # => 100
@@ -219,7 +219,7 @@ Which means that you can't just use it like this.
 
 ```` ruby
 ["song1", "song2" ... ].each do |song|
-  Spot.find_song(song)
+  Spot::Search.find_song(song)
   # Do something with the data.
 end
 ````
@@ -234,7 +234,7 @@ require "spot"
 wires = []
 ["song1", "song2" ... ].each do |s|
   wires << Wire.new(max: 10, wait: 1, vars: [s]) do |song|
-    Spot.find_song(song)
+    Spot::Search.find_song(song)
     # Do something with the data.
   end
 end

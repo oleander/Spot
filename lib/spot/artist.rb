@@ -1,7 +1,7 @@
 require "spot/base"
 
-module SpotContainer
-  class Artist < SpotContainer::Base 
+module Spot
+  class Artist < Spot::Base 
     def valid?; true; end
     
     protected
