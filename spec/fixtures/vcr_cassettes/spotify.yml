@@ -4366,4 +4366,189 @@ http_interactions:
         "name": "Loosegoats"}], "track-number": "3"}]}'
     http_version: !!null 
   recorded_at: Fri, 15 Jun 2012 19:27:43 GMT
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=d'banj%20oliver%20twist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 20:31:53 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 15:14:57 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '11018'
+      X-Varnish:
+      - 1855614820 1854719652
+      Age:
+      - '19022'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 12, "limit": 100, "offset": 0, "query":
+        "d''banj oliver twist", "type": "track", "page": 1}, "tracks": [{"album":
+        {"released": "2012", "href": "spotify:album:0AFI2LjGH2uZ5Xe3AiSmRe", "name":
+        "Oliver Twist", "availability": {"territories": "BE CH DK ES FR GB HU IE SE"}},
+        "name": "Oliver Twist", "popularity": "0.72974", "external-ids": [{"type":
+        "isrc", "id": "GBUM71201695"}], "length": 234.893, "href": "spotify:track:27eniaCdcAbXMigvOtlnK1",
+        "artists": [{"href": "spotify:artist:5RCdjio4ASMQ8CFaSuAl6C", "name": "D''banj"}],
+        "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:0mW9nUYHxmWA6yC8O2cTrc",
+        "name": "Oliver Twist (Tribute to D''Banj)", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Oliver
+        Twist (Tribute to D''banj)", "popularity": "0.34344", "external-ids": [{"type":
+        "isrc", "id": "USA561163303"}], "length": 235.911, "href": "spotify:track:0s7wyfLjAKbvTzMiwayNzj",
+        "artists": [{"href": "spotify:artist:6LYGxFCmlJvAG6loQiNeox", "name": "Cover
+        Pop"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:4pILQMq3dtz5epiX62XPAj",
+        "name": "R&B In The Mix 2012", "availability": {"territories": "GB IE"}},
+        "name": "Oliver Twist", "popularity": "0.34369", "external-ids": [{"type":
+        "isrc", "id": "GBUM71201695"}], "length": 234.893, "href": "spotify:track:3C4SeAycreobo7CAmmdGRy",
+        "artists": [{"href": "spotify:artist:5RCdjio4ASMQ8CFaSuAl6C", "name": "D''banj"}],
+        "track-number": "2"}, {"album": {"released": "2012", "href": "spotify:album:60fi5EM55e1k9YQD1c48xR",
+        "name": "Oliver Twist (Dubstep Tribute to D''banj)", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Oliver
+        Twist (Dubstep Tribute to D''banj)", "popularity": "0.30324", "external-ids":
+        [{"type": "isrc", "id": "USA561162908"}], "length": 215.652, "href": "spotify:track:52NWq6JlVC4x0jNfAIM0fj",
+        "artists": [{"href": "spotify:artist:00LOnYkeGDHqysY5LvyiqT", "name": "Dubstep
+        Kings"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:5OnWLrmdiWxWiPmS5fZIGM",
+        "name": "Oliver Twist (Originally Performed By D''Banj) [Instrumental Version]",
+        "availability": {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU
+        AW AX AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD
+        CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH
+        ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT
+        GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG
+        KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD MG MH
+        MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP
+        NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RU RW SA SB
+        SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL
+        TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT
+        ZA ZM ZW ZZ"}}, "name": "Oliver Twist (Originally Performed By D''banj) [Instrumental
+        Version]", "popularity": "0.23310", "external-ids": [{"type": "isrc", "id":
+        "USA561163301"}], "length": 235.911, "href": "spotify:track:5ja7QQcwtJdhk4HTSQH7Uv",
+        "artists": [{"href": "spotify:artist:46Ii49KGTckWh6cx3wObIo", "name": "Karaoke
+        All Hits"}], "track-number": "1"}, {"album": {"released": "2012", "href":
+        "spotify:album:09Y8g6NR8fJ6ftzrNwfNWC", "name": "Oliver Twist (Originally
+        Performed By D''banj) [Karaoke Audio Version]", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Oliver
+        Twist (Originally Performed By D''banj) [Karaoke Audio Version]", "popularity":
+        "0.18893", "external-ids": [{"type": "isrc", "id": "USA561163304"}], "length":
+        235.911, "href": "spotify:track:0HnuSQOd3tTxJbF8JRINxj", "artists": [{"href":
+        "spotify:artist:1E9DBDUrRyU1rOXXj6xQOh", "name": "2010s Karaoke Band"}], "track-number":
+        "1"}, {"album": {"released": "2012", "href": "spotify:album:4cUHBkgaS1ezxXtV88HnP0",
+        "name": "Oliver Twist (Drum & Bass Tribute to D''banj)", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Oliver
+        Twist (Drum & Bass Tribute to D''banj)", "popularity": "0.18727", "external-ids":
+        [{"type": "isrc", "id": "USA561164114"}], "length": 215.652, "href": "spotify:track:5UXL2ZkqFsyzYvuME4rOYc",
+        "artists": [{"href": "spotify:artist:1nuc9oILpbPjLeYqt7uGtT", "name": "DNB
+        Kings"}], "track-number": "1"}, {"album": {"released": "2012", "href": "spotify:album:77b92rh2jC8VzPjbHVyNVl",
+        "name": "Oliver Twist (In the Style of D''Banj) [Karaoke Version]", "availability":
+        {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB
+        BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK
+        CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ
+        FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM
+        HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP
+        KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO
+        MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA
+        PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH
+        SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT
+        TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}},
+        "name": "Oliver Twist (In the Style of D''banj) [Karaoke Version]", "popularity":
+        "0.13754", "external-ids": [{"type": "isrc", "id": "USA561160768"}], "length":
+        242.136, "href": "spotify:track:09uzpakmyscgj46m7zFSFD", "artists": [{"href":
+        "spotify:artist:6aLDS9oOXpit8wJTtueP8g", "name": "Ameritz - Karaoke"}], "track-number":
+        "1"}, {"album": {"released": "2012", "href": "spotify:album:2jUSAeXWldze0jmEgeX2q9",
+        "name": "SF316", "availability": {"territories": "worldwide"}}, "name": "Oliver
+        Twist Originally Performed By D''banj", "popularity": "0.09369", "external-ids":
+        [{"type": "isrc", "id": "FR6V80277200"}], "length": 232.727, "href": "spotify:track:3FtHUIK2Jr0JnW0ZSLTCiQ",
+        "artists": [{"href": "spotify:artist:3tCGqGQclabrpQfcHRmDtK", "name": "Sunfly
+        Karaoke"}], "track-number": "13"}, {"album": {"released": "2012", "href":
+        "spotify:album:1SW1H1N8HOhPnX2ndB3WTo", "name": "UK Chart Hits Volume Five
+        2012", "availability": {"territories": "worldwide"}}, "name": "Oliver Twist
+        - Karaoke Version in the Style of D''Banj", "popularity": "0.06861", "external-ids":
+        [{"type": "isrc", "id": "USJ3V1181907"}], "length": 235.128, "href": "spotify:track:249NgHW2tCDWF8Dz2Koy27",
+        "artists": [{"href": "spotify:artist:5aChaGbuNya16HNAqdgwfR", "name": "SBI
+        Audio Karaoke"}], "track-number": "14"}, {"album": {"released": "2012", "href":
+        "spotify:album:1GGMY9cHZynTls0OFretxl", "name": "Radio 1 Big Weekend Hackney",
+        "availability": {"territories": "IE"}}, "name": "Oliver Twist", "popularity":
+        "0.00000", "external-ids": [{"type": "isrc", "id": "GBUM71201695"}], "length":
+        235.053, "href": "spotify:track:7gQoRi5NtsHSGo7DcgnuRG", "artists": [{"href":
+        "spotify:artist:5RCdjio4ASMQ8CFaSuAl6C", "name": "D''banj"}], "track-number":
+        "4"}, {"album": {"released": "2012", "href": "spotify:album:6vCXKzaBOyBJtAB7wSWFhK",
+        "name": "Oliver Twist (Drum & Bass Tribute to D''banj)", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Oliver
+        Twist (Drum & Bass Tribute to D''banj)", "popularity": "0.01401", "external-ids":
+        [{"type": "isrc", "id": "USA561181399"}], "length": 215.652, "href": "spotify:track:3RsFU3uhb4u7Q2ep4KhwBH",
+        "artists": [{"href": "spotify:artist:00LOnYkeGDHqysY5LvyiqT", "name": "Dubstep
+        Kings"}], "track-number": "1"}]}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 20:31:59 GMT
 recorded_with: VCR 2.2.2

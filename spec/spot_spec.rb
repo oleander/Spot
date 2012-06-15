@@ -130,29 +130,7 @@ describe Spot::Search do
     end
   end
   
-  context "exclude" do
-    it "should contain a list of non wanted words" do
-      @spot.instance_eval do
-        [
-          "tribute", 
-          "cover", 
-          "remix", 
-          "live", 
-          "club mix", 
-          "karaoke", 
-          "club version",
-          "remaster",
-          "demo",
-          "made famous by",
-          "remixes",
-          "instrumental(s)?",
-           "ringtone(s)?"
-        ].each do |value|
-          @exclude.include?(value).should == true
-        end
-      end
-    end
-    
+  context "exclude" do    
     it "should have a working exclude? method" do
       {
         "tribute"                          => true,
@@ -172,7 +150,8 @@ describe Spot::Search do
         "ringtones"                        => true,
         "riingtonerandom"                  => false,
         "club random mix"                  => false,
-        "random"                           => false
+        "random"                           => false,
+        "oliver"                           => false
       }.each do |comp, outcome|
         @spot.exclude?(comp).should eq(outcome)
       end
@@ -215,6 +194,10 @@ describe Spot::Search do
 
     it "handles 'Call My Name - Tove Styrke'" do
       Spot::Search.territory("SE").prime.strip.find_song("Tove Styrke - Call My Name").result.to_s.should eq("Tove Styrke - Call My Name")
+    end
+
+    it "handles 'D'Banj - Oliver Twist'" do
+      Spot::Search.territory("SE").prime.strip.find_song("D'Banj - Oliver Twist").result.to_s.downcase.should eq("D'Banj - Oliver Twist".downcase)
     end
   end
 end

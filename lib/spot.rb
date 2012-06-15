@@ -135,7 +135,7 @@ module Spot
     end
     
     def exclude?(compare)
-      @exclude.map { |value| !! compare.match(/#{value}/i) }.any?
+      @exclude.map { |value| compare.match(/#{value}/i) }.any?
     end
 
     #
