@@ -1,0 +1,15 @@
+---
+- tribute
+- cover
+- remix
+- live
+- club mix
+- karaoke
+- remaster
+- club version
+- demo
+- made famous by
+- remixes
+- "[^a-z]+mix[^a-z]+"
+- instrumental(s)?
+- ringtone(s)?

@@ -136,39 +136,16 @@ class Spot
     end
   end
   
-  def clean!(string)
-    string.strip!
-    
-    # Song - A + B + C => Song - A
-    # Song - A abc/def => Song - A abc
-    # Song - A & abc def => Song - A
-    # Song - A "abc def" => Song - A
-    # Song - A [B + C] => Song - A
-    # Song A B.mp3 => Song A B
-    # Song a.b.c.d.e => Song a b c d e
-    # 10. Song => Song
-    [/\.[a-z0-9]{2,3}$/, /\[[^\]]*\]/,/".*"/, /'.*'/, /[&|\/|\+][^\z]*/, /^(\d+.*?[^a-z]+?)/i].each do |reg|
-      string = string.gsub(reg, '').strip
-    end
-    
-    [/\(.+?\)/m, /feat(.*?)\s*[^\s]+/i, /[-]+/, /[\s]+/m, /\./, /\_/].each do |reg|
-       string = string.gsub(reg, ' ').strip
-    end
-
-    ["album version", "remastered"].each do ||
-    end
-    
-    {"ä" => "a", "å" => "a", "ö" => "o"}.each do |from, to|
-      string.gsub!(/#{from}/i, to)
-    end
-    
-    string.gsub(/\A\s|\s\z/, '').gsub(/\s+/, ' ').strip.downcase
-  rescue Encoding::CompatibilityError
-    return string
-  end
-  
   def exclude?(compare)
     @exclude.map { |value| !! compare.match(/#{value}/i) }.any?
+  end
+
+  #
+  # @value String To be cleaned
+  # @return String A cleaned string
+  #
+  def clean!(value)
+    SpotContainer::Clean.new(value).process
   end
   
   private

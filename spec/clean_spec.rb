@@ -97,4 +97,8 @@ describe SpotContainer::Clean do
   it "A 'don' B => A B" do
     SpotContainer::Clean.new("A 'don' B").process.should eq("a b")
   end
+
+  it "Video Games - Album Version Remastered => Video Games" do
+    SpotContainer::Clean.new("Video Games - Album Version Remastered").process.should eq("video games")
+  end
 end

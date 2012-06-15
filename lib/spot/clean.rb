@@ -1,10 +1,20 @@
 # -*- encoding : utf-8 -*-
 
 module SpotContainer
-  class Clean < Struct.new(:content)
+  class Clean
+    attr_reader :content
+    def initialize(content)
+      @content = content
+      @exclude = YAML.load_file(File.join(File.expand_path(File.dirname(__FILE__)), "exclude.yml"))
+    end
+
     def process
       string = content.strip
-      
+        
+      @exclude.each do |exclude|
+        string = string.gsub(/#{exclude}/i, "")
+      end
+
       # Song - A + B + C => Song - A
       # Song - A abc/def => Song - A abc
       # Song - A & abc def => Song - A
@@ -13,7 +23,6 @@ module SpotContainer
       # Song A B.mp3 => Song A B
       # Song a.b.c.d.e => Song a b c d e
       # 10. Song => Song
-
       [
         /\.[a-z0-9]{2,3}$/, 
         /\[[^\]]*\]/, 
@@ -34,9 +43,6 @@ module SpotContainer
         /\_/
       ].each do |reg|
          string = string.gsub(reg, ' ').strip
-      end
-
-      ["album version", "remastered"].each do ||
       end
       
       {"ä" => "a", "å" => "a", "ö" => "o"}.each do |from, to|

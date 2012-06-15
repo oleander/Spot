@@ -159,17 +159,6 @@ describe Spot do
     it "should return the best match" do
       Spot.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
     end
-
-    it "should solve previous errors" do
-      [{
-        artist: "Lana Del Rey", 
-        song: "Video Games"
-      }].each do |media|
-        song = Spot.territory("SE").prime.find_song("#{media[:song]} #{media[:artist]}").result
-        song.title.should match(/#{media[:song]}/i)
-        song.artist.name.should match(/#{media[:artist]}/i)
-      end
-    end
   end
     
   context "method does not exist" do
