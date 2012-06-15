@@ -1,6 +1,8 @@
 # -*- encoding : utf-8 -*-
 
 describe Spot do
+  use_vcr_cassette "spotify"
+
   before(:each) do
     @spot = Spot.new
   end
@@ -154,16 +156,16 @@ describe Spot do
   end
   
   context "the prime method" do
-    before(:each) do
-      @url = stubs("track", "kaizers orchestra")
-    end
-    
-    after(:each) do
-      a_request(:get, @url).should have_been_made.once
-    end
-    
     it "should return the best match" do
       Spot.prime.find_song("kaizers orchestra").result.artist.name.should eq("Kaizers Orchestra")  
+    end
+
+    it "should solve previous errors" do
+      [{artist: "Lana Del Rey", song: "Video Games"}].each do |media|
+        song = Spot.prime.find_song("#{media[:song]} #{media[:artist]}").result
+        song.title.should match(/#{media[:song]}/i)
+        song.artist.name.should match(/#{media[:artist]}/i)
+      end
     end
   end
   
