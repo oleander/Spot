@@ -102,4 +102,8 @@ describe SpotContainer::Clean do
   it "Knockin' On Heaven's Door" do
     SpotContainer::Clean.new("Knockin' On Heaven's Door").process.should eq("knockin' on heaven's door")
   end
+
+  it "Jason Derulo - Undefeated" do
+    SpotContainer::Clean.new("Undefeated").process.should eq("undefeated")
+  end
 end

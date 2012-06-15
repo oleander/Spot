@@ -1,0 +1,123 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=jason%20derulo%20unde
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 17:45:15 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 12:23:03 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '127'
+      X-Varnish:
+      - 1855156614 1854220397
+      Age:
+      - '19339'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 0, "limit": 100, "offset": 0, "query": "jason
+        derulo unde", "type": "track", "page": 1}, "tracks": []}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 17:45:21 GMT
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=jason%20derulo%20undefeated
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 17:48:51 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 17:48:57 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '2002'
+      X-Varnish:
+      - '1855166608'
+      Age:
+      - '0'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 2, "limit": 100, "offset": 0, "query": "jason
+        derulo undefeated", "type": "track", "page": 1}, "tracks": [{"album": {"released":
+        "2012", "href": "spotify:album:5JlOynCaRIZcfxilYXIpBa", "name": "Undefeated",
+        "availability": {"territories": "AD AI AL AM AT AU AW AX AZ BA BE BG BM BV
+        BY CA CH CY CZ DE DK EE ES FI FK FO FR GE GF GG GI GL GP GR GS HR HU IM IO
+        IS IT JE KY LI LT LU LV MC MD ME MK MQ MS MT NL NO NZ PL PM PT RE RO RS RU
+        SE SH SI SJ SK SM TC TF TR UA US VA VG YT"}}, "name": "Undefeated", "popularity":
+        "0.64018", "external-ids": [{"type": "isrc", "id": "USWB11200987"}], "length":
+        216.28, "href": "spotify:track:5jAgU2QzailYWu02FzkxsT", "artists": [{"href":
+        "spotify:artist:07YZf4WDAMNwqr4jfgOZ8y", "name": "Jason Derulo"}], "track-number":
+        "1"}, {"album": {"released": "2012", "href": "spotify:album:1UGVcAr9q3MQ4W4WecFlve",
+        "name": "Undefeated (Dubstep Tribute to Jason Derulo)", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Undefeated
+        (Dubstep Tribute to Jason Derulo)", "popularity": "0.00000", "external-ids":
+        [{"type": "isrc", "id": "USA561181406"}], "length": 214.565, "href": "spotify:track:7BXai1m9oI3u0VQIIXJxgV",
+        "artists": [{"href": "spotify:artist:00LOnYkeGDHqysY5LvyiqT", "name": "Dubstep
+        Kings"}], "track-number": "1"}]}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 17:48:57 GMT
+recorded_with: VCR 2.2.2

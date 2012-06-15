@@ -303,4 +303,10 @@ describe Spot do
       spot.query.should eq("kaizers orchestra")
     end
   end
+
+  context "bugs" do
+    it "handles Jason Derulo - Undefeated" do
+      Spot.strip.find_song("Jason Derulo - Undefeated").result.to_s.should eq("Undefeated - Jason Derulo")
+    end
+  end
 end

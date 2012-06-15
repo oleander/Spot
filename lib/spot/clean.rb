@@ -35,7 +35,7 @@ module SpotContainer
       
       [
         /\(.+?\)/m, 
-        /feat(.*?)\s*[^\s]+/i, 
+        /[^a-z0-9]feat(.*?)\s*[^\s]+/i, 
         /[-]+/, 
         /[\s]+/m, 
         /\_/
