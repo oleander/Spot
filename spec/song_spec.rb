@@ -53,16 +53,6 @@ describe SpotContainer::Song do
   end
   
   it "should have a working to string method" do
-    @song.to_s.should eq("#{@song.title} - #{@song.artist.name}")
-  end
-  
-  context "user requst" do
-    before(:all) do
-      WebMock.allow_net_connect!
-    end
-    
-    it "should match user request" do
-      Spot.territory("SE").prime.strip.find_song("Call My Name - Tove Styrke").result.to_s.should eq("Call My Name - Tove Styrke")
-    end
-  end
+    @song.to_s.should eq("#{@song.artist.name} - #{@song.title}")
+  end  
 end

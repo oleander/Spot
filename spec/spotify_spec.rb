@@ -199,7 +199,7 @@ describe Spot do
     end
     
     it "should have some info" do
-      @url = generate_url("track", "kaizers orchestra")      
+      @url = generate_url("track", "kaizers orchestra")
       spot = Spot.strip.find_song("kaizers orchestra")
       spot.num_results.should be > 0
       spot.limit.should eq(100)
@@ -209,8 +209,12 @@ describe Spot do
   end
 
   context "bugs" do
-    it "handles Jason Derulo - Undefeated" do
+    it "handles 'Jason Derulo - Undefeated'" do
       Spot.strip.find_song("Jason Derulo - Undefeated").result.to_s.should eq("Jason Derulo - Undefeated")
+    end
+
+    it "handles 'Call My Name - Tove Styrke'" do
+      Spot.territory("SE").prime.strip.find_song("Tove Styrke - Call My Name").result.to_s.should eq("Tove Styrke - Call My Name")
     end
   end
 end
