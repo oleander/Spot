@@ -106,4 +106,8 @@ describe SpotContainer::Clean do
   it "Jason Derulo - Undefeated" do
     SpotContainer::Clean.new("Undefeated").process.should eq("undefeated")
   end
+
+  it "Da Bop - Video Edit" do
+    SpotContainer::Clean.new("Da Bop - Video Edit").process.should eq("da bop")
+  end
 end
