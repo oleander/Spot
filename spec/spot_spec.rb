@@ -199,5 +199,11 @@ describe Spot::Search do
     it "handles 'D'Banj - Oliver Twist'" do
       Spot::Search.territory("SE").prime.strip.find_song("D'Banj - Oliver Twist").result.to_s.downcase.should eq("D'Banj - Oliver Twist".downcase)
     end
+
+    it "should handle 'Iron Maiden - Can I Play With Madness'" do
+      song = Spot::Search.territory("SE").prime.strip.find_song("Iron Maiden - Can I Play With Madness").result
+      song.artist.name.should eq("Iron Maiden")
+      song.title.should match(%r{Can I Play With Madness})
+    end
   end
 end

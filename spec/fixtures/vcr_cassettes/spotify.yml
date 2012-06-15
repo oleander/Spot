@@ -4551,4 +4551,365 @@ http_interactions:
         Kings"}], "track-number": "1"}]}'
     http_version: !!null 
   recorded_at: Fri, 15 Jun 2012 20:31:59 GMT
+- request:
+    method: get
+    uri: http://ws.spotify.com/search/1/track.json?page=1&q=iron%20maiden%20can%20i%20play%20with%20madness
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*; q=0.5, application/xml'
+      Accept-Encoding:
+      - gzip, deflate
+      Timeout:
+      - '10'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 15 Jun 2012 20:59:25 GMT
+      Server:
+      - lighttpd/1.4.19 smisk/1.1.6
+      Vary:
+      - Accept-Charset
+      Expires:
+      - Sat, 16 Jun 2012 20:51:28 GMT
+      Last-Modified:
+      - Thu, 14 Jun 2012 15:51:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '24811'
+      X-Varnish:
+      - 1855689145 1855667459
+      Age:
+      - '465'
+      Via:
+      - 1.1 varnish
+      Access-Control-Allow-Origin:
+      - ! '*'
+    body:
+      encoding: US-ASCII
+      string: ! '{"info": {"num_results": 25, "limit": 100, "offset": 0, "query":
+        "iron maiden can i play with madness", "type": "track", "page": 1}, "tracks":
+        [{"album": {"released": "2008", "href": "spotify:album:0SmIkzc7YgxqBV0V5RcbPt",
+        "name": "Somewhere Back In Time", "availability": {"territories": "AD AE AG
+        AI AL AM AN AO AQ AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BL BN BO BR
+        BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE
+        DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GH GI
+        GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT
+        JM JO JP KE KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA
+        MC MD ME MF MG MH ML MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG
+        NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PT PW PY QA RE RO RS
+        RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG
+        TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UY UZ VC VE VG VI VN VU WF WS YE
+        YT ZA ZM ZW ZZ"}}, "name": "Can I Play With Madness - 1998 Digital Remaster",
+        "popularity": "0.50604", "external-ids": [{"type": "isrc", "id": "GBAYE9801422"}],
+        "length": 212.28, "href": "spotify:track:4lXH1smoMUHWTUDc05Facc", "artists":
+        [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron Maiden"}],
+        "track-number": "12"}, {"album": {"released": "1998", "href": "spotify:album:7cdDal1Z1YFYfqH2nFGOJa",
+        "name": "Seventh Son Of A Seventh Son", "availability": {"territories": "AD
+        AE AG AI AL AM AN AO AQ AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BL BN
+        BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY
+        CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF
+        GH GI GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR
+        IS IT JM JO JP KE KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV
+        LY MA MC MD ME MF MG MH ML MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE
+        NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PT PW PY QA RE
+        RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD
+        TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UY UZ VC VE VG VI VN VU WF
+        WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play With Madness - 1998 Digital Remaster",
+        "popularity": "0.43172", "external-ids": [{"type": "isrc", "id": "GBAYE9801422"}],
+        "length": 211.026, "href": "spotify:track:0der44SzM8j3KYyB9HZQPj", "artists":
+        [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron Maiden"}],
+        "track-number": "3"}, {"album": {"released": "2008", "href": "spotify:album:3UTHwcAoCaKkm9InXHp0wm",
+        "name": "Somewhere Back In Time: The Best of 1980-1989", "availability": {"territories":
+        "US"}}, "name": "Can I Play With Madness", "popularity": "0.38423", "external-ids":
+        [{"type": "isrc", "id": "GBAYE9801422"}], "length": 211.0, "href": "spotify:track:55uXWpXyy53Fl9sBjVh9hM",
+        "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron
+        Maiden"}], "track-number": "12"}, {"album": {"released": "1998", "href": "spotify:album:4MA3tRypbMVe0pBppCGbmV",
+        "name": "Seventh Son Of A Seventh Son", "availability": {"territories": "US"}},
+        "name": "Can I Play With Madness", "popularity": "0.33567", "external-ids":
+        [{"type": "isrc", "id": "USSM10108329"}], "length": 211.053, "href": "spotify:track:2bLgpfvEwnENQhZN9Ny51z",
+        "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron
+        Maiden"}], "track-number": "3"}, {"album": {"released": "2009", "href": "spotify:album:3yTneaS0Z3xsAmCafaYjPw",
+        "name": "Flight 666: The Original Soundtrack", "availability": {"territories":
+        "AD AE AG AI AL AM AN AO AQ AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BL
+        BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX
+        CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE
+        GF GH GI GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ
+        IR IS IT JM JO JP KE KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU
+        LV LY MA MC MD ME MF MG MH ML MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC
+        NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PT PW PY QA
+        RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC
+        TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UY UZ VC VE VG VI VN VU
+        WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play With Madness - Live In Mexico
+        City 24/2/08", "popularity": "0.34722", "external-ids": [{"type": "isrc",
+        "id": "GBCHB0910457"}], "length": 216.573, "href": "spotify:track:7DvR9PXAp0ArxPp1ia1Bhw",
+        "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron
+        Maiden"}], "track-number": "8"}, {"album": {"released": "2009", "href": "spotify:album:12vTiEGN96ZQtGb3zfpKE8",
+        "name": "A Real Live One", "availability": {"territories": "AD AE AG AI AL
+        AM AN AO AQ AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BN BO BR BS BT BV
+        BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM
+        DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GH GI GM GN GP
+        GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT JM JO JP
+        KE KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD MG
+        MH ML MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR
+        NU NZ OM PA PE PF PG PH PK PL PM PN PR PT PW PY QA RE RO RU RW SA SB SC SD
+        SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN
+        TO TR TT TV TW TZ UA UG UY UZ VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}},
+        "name": "Can I Play With Madness (Live)", "popularity": "0.32606", "external-ids":
+        [{"type": "isrc", "id": "GB01A0801408"}], "length": 282.466, "href": "spotify:track:4n1S9h1qbEo9UHk6XBjBY0",
+        "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron
+        Maiden"}], "track-number": "3"}, {"album": {"released": "2005", "href": "spotify:album:2rVdAYBUuEnciOvQRrn4YL",
+        "name": "Death On The Road", "availability": {"territories": "AD AE AG AI
+        AL AM AN AO AQ AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BL BN BO BR BS
+        BT BV BW BY BZ CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK
+        DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GH GI GM GN
+        GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT JM JO
+        JP KE KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD
+        ME MF MG MH ML MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL
+        NO NP NR NU NZ OM PA PE PF PG PH PK PL PN PR PT PW PY QA RE RO RS RU RW SA
+        SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK
+        TL TM TN TO TR TT TV TW TZ UA UG UY UZ VC VE VG VI VN VU WF WS YE YT ZA ZM
+        ZW ZZ"}}, "name": "Can I Play With Madness - Live In Dortmund", "popularity":
+        "0.28738", "external-ids": [{"type": "isrc", "id": "GBCHB0510359"}], "length":
+        210.306, "href": "spotify:track:4RPnagR1LxnYExpeO1Yyj4", "artists": [{"href":
+        "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron Maiden"}], "track-number":
+        "3"}, {"album": {"released": "2006", "href": "spotify:album:77SZJrj0HAxMGvZtDzhvw7",
+        "name": "Live At Donington 1992", "availability": {"territories": "AD AE AG
+        AI AL AM AN AO AQ AR AS AT AU AW AZ BA BB BD BE BF BG BH BI BJ BN BO BR BS
+        BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ
+        DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GH GI GM
+        GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT JM
+        JO JP KE KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC
+        MD MG MH ML MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO
+        NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PT PW PY QA RE RO RU RW SA SB
+        SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL
+        TM TN TO TR TT TV TW TZ UA UG UY UZ VC VE VG VI VN VU WF WS YE YT ZA ZM ZW
+        ZZ"}}, "name": "Can I Play With Madness (Live At Donnington)", "popularity":
+        "0.27530", "external-ids": [{"type": "isrc", "id": "GBCHB9810027"}], "length":
+        213.026, "href": "spotify:track:5BKoP1nYfcRcjHFKMTeeiJ", "artists": [{"href":
+        "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron Maiden"}], "track-number":
+        "5"}, {"album": {"released": "2009", "href": "spotify:album:5d0p0fj6yJ8GfvpTi7klwV",
+        "name": "Flight 666 - The Original Soundtrack", "availability": {"territories":
+        "US"}}, "name": "Can I Play With Madness - Live", "popularity": "0.25236",
+        "external-ids": [{"type": "isrc", "id": "GBCHB0910457"}], "length": 216.573,
+        "href": "spotify:track:4ohNY76yiKXu4O39SgmiP9", "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao",
+        "name": "Iron Maiden"}], "track-number": "8"}, {"album": {"released": "1998",
+        "href": "spotify:album:3DRvgymMVPG0TQ2DugHJRb", "name": "A Real Live Dead
+        One", "availability": {"territories": "AD AE AG AI AL AM AN AO AQ AR AS AT
+        AU AW AZ BA BB BD BE BF BG BH BI BJ BL BN BO BR BS BT BV BW BY BZ CA CC CD
+        CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH
+        ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GH GI GM GN GP GQ GR GS GT GU GW
+        GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT JM JO JP KE KH KI KM KN KP
+        KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH ML MN MO
+        MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA
+        PE PF PG PH PK PL PM PN PR PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH
+        SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT
+        TV TW TZ UA UG UY UZ VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name":
+        "Can I Play With Madness - Live; 1998 Digital Remaster", "popularity": "0.23012",
+        "external-ids": [{"type": "isrc", "id": "GBCHB9810057"}], "length": 282.493,
+        "href": "spotify:track:1IXe62duXQeTDXgvlKSOAW", "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao",
+        "name": "Iron Maiden"}], "track-number": "3"}, {"album": {"released": "2005",
+        "href": "spotify:album:6D7zQfuJLzHA9rlGKZY785", "name": "Death On The Road",
+        "availability": {"territories": "US"}}, "name": "Can I Play With Madness -
+        Live", "popularity": "0.18065", "external-ids": [{"type": "isrc", "id": "USSM10505034"}],
+        "length": 210.293, "href": "spotify:track:09I4ze4Fda7kT5YC5Mpd62", "artists":
+        [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron Maiden"}],
+        "track-number": "3"}, {"album": {"released": "1998", "href": "spotify:album:6plQE1CTDEkJQjVp2z022H",
+        "name": "Live At Donington", "availability": {"territories": "US"}}, "name":
+        "Can I Play With Madness - Live At Donington", "popularity": "0.17192", "external-ids":
+        [{"type": "isrc", "id": "GBCHB9810027"}], "length": 213.0, "href": "spotify:track:5rnVQM6GS46UCpw1tMLDFD",
+        "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao", "name": "Iron
+        Maiden"}], "track-number": "5"}, {"album": {"released": "1998", "href": "spotify:album:3zM5ToWVdAYPuoHNbqJOGU",
+        "name": "A Real Live Dead One", "availability": {"territories": "US"}}, "name":
+        "Can I Play With Madness - Live In the Holland - 1992", "popularity": "0.15534",
+        "external-ids": [{"type": "isrc", "id": "GBCHB9810057"}], "length": 282.453,
+        "href": "spotify:track:159qriPXoZNZzRqJYDgnRJ", "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao",
+        "name": "Iron Maiden"}], "track-number": "3"}, {"album": {"released": "2011",
+        "href": "spotify:album:42T79Y46rn27IGeDwRMi2j", "name": "Lullaby Versions
+        of Iron Maiden", "availability": {"territories": "AD AE AF AG AI AL AM AN
+        AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BV
+        BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM
+        DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM
+        GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IN IO IQ IR IS IT JM
+        JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA
+        MC MD ME MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF
+        NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE
+        RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD
+        TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI
+        VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play With Madness", "popularity":
+        "0.08433", "external-ids": [{"type": "isrc", "id": "USQY51160280"}], "length":
+        245.772, "href": "spotify:track:7BecwoDCgtMwzDVcIs6C2Y", "artists": [{"href":
+        "spotify:artist:3mGCLimuzOdod4Lnegny4d", "name": "Twinkle Twinkle Little Rock
+        Star"}], "track-number": "8"}, {"album": {"released": "2006", "href": "spotify:album:4fyGNn0KZzL6aqcCzwDF63",
+        "name": "A Tribute To Iron Maiden: 666 The Number One Beast", "availability":
+        {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB
+        BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK
+        CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ
+        FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM
+        HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP
+        KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO
+        MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA
+        PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH
+        SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT
+        TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}},
+        "name": "Can I Play With Madness", "popularity": "0.09646", "external-ids":
+        [{"type": "isrc", "id": "USA370578144"}], "length": 205.473, "href": "spotify:track:4SDeNyN9HpMouUTztsw8jh",
+        "artists": [{"href": "spotify:artist:0IfiZrtW1RgyQ399NzQaon", "name": "Steve
+        Overland"}], "track-number": "1"}, {"album": {"released": "2009", "href":
+        "spotify:album:1kbP4ZlPrdgU6hpLs2fPQi", "name": "Flight 666: The Original
+        Soundtrack", "availability": {"territories": "AT CH DE IT"}}, "name": "Can
+        I Play With Madness - Live In Mexico City 24/2/08", "popularity": "0.06572",
+        "external-ids": [{"type": "isrc", "id": "GBCHB0910457"}], "length": 216.573,
+        "href": "spotify:track:4ADCl26CgMaEx0uDQ5Nho0", "artists": [{"href": "spotify:artist:6mdiAmATAx73kdxrNrnlao",
+        "name": "Iron Maiden"}], "track-number": "8"}, {"album": {"released": "2011",
+        "href": "spotify:album:2ZsTAFBOVBDz7Nqt1s9xrc", "name": "Rock Tribute to Iron
+        Maiden", "availability": {"territories": "AD AE AF AG AI AL AM AN AO AQ AR
+        AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ
+        CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC
+        EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ
+        GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO
+        JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC
+        MD MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI
+        NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RU
+        RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH
+        TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF
+        WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play With Madness", "popularity":
+        "0.01119", "external-ids": [{"type": "isrc", "id": "USEGX1102758"}], "length":
+        216.008, "href": "spotify:track:2VxbgrQWAig9yKTuvNQKTO", "artists": [{"href":
+        "spotify:artist:63mUiSpYZTSGIdZR4c4kkD", "name": "D\u00e9j\u00e0 Vu"}], "track-number":
+        "6"}, {"album": {"released": "2011", "href": "spotify:album:0F8CCrLW8vYP5w8sHiECh5",
+        "name": "12 Years of Stellar Pieces", "availability": {"territories": "AD
+        AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ
+        BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV
+        CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD
+        GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL
+        IN IO IQ IR IS IT JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK
+        LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW
+        MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN
+        PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO
+        SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US
+        UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play
+        With Madness - 2010 Iron Maiden Cover", "popularity": "0.03233", "external-ids":
+        [{"type": "isrc", "id": "FR6V81122640"}], "length": 225.651, "href": "spotify:track:7FJQ5661gMnwfa5arIqXzf",
+        "artists": [{"href": "spotify:artist:2AT4Fx6z53sH2CuTqY88ns", "name": "Nebuleyes"}],
+        "track-number": "5"}, {"album": {"released": "2011", "href": "spotify:album:16Or8llcW6T1wcoUYUsJyP",
+        "name": "Drew''s Famous # 1 Karaoke Hits: Sing like Metallica & Iron Maiden",
+        "availability": {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU
+        AW AX AZ BA BB BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD
+        CF CG CH CI CK CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH
+        ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT
+        GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG
+        KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD MG MH
+        MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP
+        NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RU RW SA SB
+        SC SD SE SG SH SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL
+        TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT
+        ZA ZM ZW ZZ"}}, "name": "Can I Play with Madness? (As Made Famous by Iron
+        Maiden)", "popularity": "0.04003", "external-ids": [{"type": "isrc", "id":
+        "USTXK1104591"}], "length": 232.013, "href": "spotify:track:54YpXG7CoJTms27Qnq88oI",
+        "artists": [{"href": "spotify:artist:0GRelLAVHzwasg0Ja7gJUy", "name": "The
+        Karaoke Crew"}], "track-number": "10"}, {"album": {"released": "2009", "href":
+        "spotify:album:5m9o4N46iObCaLQARHdqfA", "name": "Most Wanted 881", "availability":
+        {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB
+        BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK
+        CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ
+        FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM
+        HN HR HT HU ID IE IL IN IO IQ IR IS IT JM JO JP KE KG KH KI KM KN KP KR KW
+        KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MO MP
+        MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE
+        PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH
+        SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT
+        TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}},
+        "name": "Can I Play With Madness? In the Style of Iron Maiden", "popularity":
+        "0.02278", "external-ids": [{"type": "isrc", "id": "FR6V80534619"}], "length":
+        232.013, "href": "spotify:track:3ACTMjNhYIEXJGnbp39yf5", "artists": [{"href":
+        "spotify:artist:3tCGqGQclabrpQfcHRmDtK", "name": "Sunfly Karaoke"}], "track-number":
+        "1"}, {"album": {"released": "2008", "href": "spotify:album:6CFPpttPC8llnfAGKSj2vi",
+        "name": "A Tribute To Iron Maiden", "availability": {"territories": "AD AE
+        AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BM
+        BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CX
+        CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE
+        GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM
+        IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI
+        LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW
+        MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN
+        PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR
+        ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY
+        UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play With
+        Madness", "popularity": "0.04460", "external-ids": [{"type": "isrc", "id":
+        "USA560764953"}], "length": 207.453, "href": "spotify:track:2XinN73BFF9Dt3ewRSc8DF",
+        "artists": [{"href": "spotify:artist:3EgkVIynWipaWPwXJ8IRpc", "name": "Steve
+        Overland (FM)"}], "track-number": "3"}, {"album": {"released": "2011", "href":
+        "spotify:album:2L6C0Z338y4ergS7rCnozB", "name": "Karaoke - Iron Maiden", "availability":
+        {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB
+        BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK
+        CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ
+        FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM
+        HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP
+        KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO
+        MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA
+        PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH
+        SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT
+        TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}},
+        "name": "Can I Play With Madness? (In The Style Of Iron Maiden)", "popularity":
+        "0.02632", "external-ids": [{"type": "isrc", "id": "USA371465716"}], "length":
+        214.715, "href": "spotify:track:3JibF38MCI3mAFfuJy7dOy", "artists": [{"href":
+        "spotify:artist:6pxlau9PGA7rC0KhOMsVAx", "name": "Ameritz Audio Karaoke"}],
+        "track-number": "1"}, {"album": {"released": "2011", "href": "spotify:album:4bucLeKQjzyX1MVGSERF42",
+        "name": "Karaoke - Rock Songs Vol 31", "availability": {"territories": "AD
+        AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ
+        BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV
+        CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD
+        GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL
+        IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC
+        LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU MV
+        MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM
+        PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO
+        SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US
+        UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play
+        With Madness (In The Style Of Iron Maiden)", "popularity": "0.00882", "external-ids":
+        [{"type": "isrc", "id": "USA371475355"}], "length": 214.715, "href": "spotify:track:7cRyE2RxV4Lc9SRi6xI6HU",
+        "artists": [{"href": "spotify:artist:6pxlau9PGA7rC0KhOMsVAx", "name": "Ameritz
+        Audio Karaoke"}], "track-number": "6"}, {"album": {"released": "2011", "href":
+        "spotify:album:6FDyk6uqKk5uDzmJ4JYbBH", "name": "Yoga To Iron Maiden", "availability":
+        {"territories": "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB
+        BD BE BF BG BH BI BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK
+        CL CM CN CO CR CU CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ
+        FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM
+        HN HR HT HU ID IE IL IN IO IQ IR IS IT JM JO JP KE KG KH KI KM KN KP KR KW
+        KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MG MH MK ML MM MN MO MP
+        MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE
+        PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH
+        SI SJ SK SL SM SN SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT
+        TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}},
+        "name": "Can I Play With Madness", "popularity": "0.01916", "external-ids":
+        [{"type": "isrc", "id": "USQY51177553"}], "length": 245.772, "href": "spotify:track:6DPabRaPguHuxXfRjJ1FDm",
+        "artists": [{"href": "spotify:artist:5bjeYhabpPFz0ngCDpd1O9", "name": "World"}],
+        "track-number": "8"}, {"album": {"released": "2012", "href": "spotify:album:4XHiRizuESIHp7VenuWLib",
+        "name": "Karaoke - In the Style of Iron Maiden", "availability": {"territories":
+        "AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI
+        BJ BM BN BO BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU
+        CV CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB
+        GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE
+        IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB
+        LC LI LK LR LS LT LU LV LY MA MC MD MG MH MK ML MM MN MO MP MQ MR MS MT MU
+        MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL
+        PM PN PR PS PT PW PY QA RE RO RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN
+        SO SR ST SV SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM
+        US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW ZZ"}}, "name": "Can I Play
+        With Madness (In the Style of Iron Maiden) [Karaoke Version]", "popularity":
+        "0.00499", "external-ids": [{"type": "isrc", "id": "USA561174461"}], "length":
+        214.247, "href": "spotify:track:0sSNsDSx1aCC8uY3ra3YEB", "artists": [{"href":
+        "spotify:artist:6aLDS9oOXpit8wJTtueP8g", "name": "Ameritz - Karaoke"}], "track-number":
+        "5"}]}'
+    http_version: !!null 
+  recorded_at: Fri, 15 Jun 2012 20:59:31 GMT
 recorded_with: VCR 2.2.2
