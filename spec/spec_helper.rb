@@ -37,10 +37,3 @@ end
 def generate_url(type, search, page = 1)
   "http://ws.spotify.com/search/1/#{type}.json?q=#{URI.escape(search)}&page=#{page}"
 end
-
-def stubs(type, search, page = 1)
-  # url = generate_url(type, search, page)
-  # stub_request(:get, url).
-  #   to_return(:body => File.read("spec/fixtures/#{type}.json"), :status => 200)
-  # url
-end

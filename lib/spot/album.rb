@@ -12,7 +12,7 @@ module SpotContainer
     
     protected
       def territories
-        @availability["territories"]
+        @availability["territories"].split(" ")
       end
     alias_method :to_s, :name
   end

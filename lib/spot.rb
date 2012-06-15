@@ -33,7 +33,7 @@ class Spot
     
     @cache = {}
     
-    @exclude = YAML.load(File.read("#{File.dirname(__FILE__)}/spot/exclude.yml"))
+    @exclude = YAML.load(File.read("#{File.dirname(__FILE__)}/spot/ignore.yml"))
     
     @config = {
       :exclude    => 2,
