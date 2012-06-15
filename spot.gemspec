@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency("rest-client")
   s.add_dependency("abstract")
   s.add_dependency("levenshteinish")
-  s.add_dependency("rchardet19")
+  s.add_dependency("charlock_holmes")
   
   s.add_development_dependency("rspec")
   s.add_development_dependency("vcr")

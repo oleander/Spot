@@ -3,13 +3,12 @@ require "spot/song"
 require "spot/artist"
 require "spot/album"
 require "spot/clean"
-require "json/pure"
+require "json"
 require "rest-client"
-require "uri"
 require "levenshteinish"
-require "rchardet19"
-require "iconv"
+require "charlock_holmes/string"
 require "yaml"
+require "uri"
 
 module Spot
   class Search
@@ -173,9 +172,16 @@ module Spot
       
       def content
         data = download
-        cd = CharDet.detect(data)
-        data = cd.confidence > 0.6 ? Iconv.conv(cd.encoding, "UTF-8", data) : data
-        @content ||= JSON.parse(data)
+
+        if encoding = data.detect_encoding[:encoding]
+          data = download.force_encoding(encoding)
+        else
+          data = download.strip
+        end
+
+        JSON.parse(data)
+      rescue ArgumentError
+        JSON.parse(download)
       end
       
       def download
