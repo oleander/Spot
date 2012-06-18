@@ -151,7 +151,9 @@ describe Spot::Search do
         "riingtonerandom"                  => false,
         "club random mix"                  => false,
         "random"                           => false,
-        "oliver"                           => false
+        "oliver"                           => false,
+        "acoustic"                         => true,
+        "aacoustic"                        => false
       }.each do |comp, outcome|
         @spot.exclude?(comp).should eq(outcome)
       end

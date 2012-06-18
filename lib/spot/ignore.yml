@@ -12,3 +12,4 @@
 - "[^a-z]+mix[^a-z]+"
 - instrumental(s)?
 - ringtone(s)?
+- \bacoustic\b
