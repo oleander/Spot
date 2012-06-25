@@ -2,10 +2,10 @@
 require "spot/song"
 require "spot/artist"
 require "spot/album"
+require "spot/prime"
 require "spot/clean"
 require "json"
 require "rest-client"
-require "levenshtein"
 require "charlock_holmes/string"
 require "yaml"
 require "uri"
@@ -96,52 +96,14 @@ module Spot
     end
     
     def result
-      @prime ? results.sort_by do |res|
-        res.popularity
-      end.reverse[0..6].map do |r|
-        song, artist = type_of(r)
-        
-        match = clean!([song, artist].join(" ")).split(/\s+/)
-        raw = clean!(search).split(/\s+/)
-
-        if raw.length < match.length
-          diff = match - raw
-          res = diff.length.to_f/match.length
-        else
-          diff = raw - match
-          res = diff.length.to_f/raw.length
-        end
-
-        if diff.length > 1 and not match.map{ |m| diff.include?(m) }.all?
-          res =+ diff.map do |value|
-            match.map do |m|
-              Levenshtein.normalized_distance(value, m)
-            end.inject(:+)
-          end.inject(:+) / @config[:offset]
-        end
-        
-        [res - r.popularity/@config[:popularity], r]
-      end.reject do |distance, song|
-        exclude?(song.to_s) or not song.valid?
-      end.sort_by do |distance, _|
-        distance
-      end.map(&:last).first : results.select(&:valid?).first
-    end
-    
-    def type_of(r)
-      if @type == :songs
-        return r.name.to_s.downcase, r.artist.name.to_s.downcase
-      elsif @type == :artists
-        return r.song.title.to_s.downcase, r.name.to_s.downcase
+      if @prime
+        Spot::Prime.new(results.sort_by(&:popularity).reverse[0..6], search).
+          results.
+          select(&:valid?).
+          first
       else
-        return "", r.artist.to_s.downcase
+        results.select(&:valid?).first
       end
-    end
-    
-    def exclude?(compare)
-      @exclude.
-        reject{ |value| @search.to_s.match(/#{value}/i) }.
-        map{ |value| compare.match(/#{value}/i) }.any?
     end
 
     #

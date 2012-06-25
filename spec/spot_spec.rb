@@ -130,36 +130,6 @@ describe Spot::Search do
     end
   end
   
-  context "exclude" do    
-    it "should have a working exclude? method" do
-      {
-        "tribute"                          => true,
-        "cover random"                     => true, 
-        "live"                             => true,
-        "club mix random"                  => true,
-        "LIVE"                             => true,
-        "karaoKE"                          => true,
-        "instrumental"                     => true,
-        "Karaoke - Won't Get Fooled Again" => true,
-        "club version"                     => true,
-        "instrumentals"                    => true,
-        "demo"                             => true,
-        "made famous by"                   => true,
-        "remixes"                          => true,
-        "ringtone"                         => true,
-        "ringtones"                        => true,
-        "riingtonerandom"                  => false,
-        "club random mix"                  => false,
-        "random"                           => false,
-        "oliver"                           => false,
-        "acoustic"                         => true,
-        "aacoustic"                        => false
-      }.each do |comp, outcome|
-        @spot.exclude?(comp).should eq(outcome)
-      end
-    end
-  end
-  
   context "territory" do
     it "should not find any songs when using a non valid territory" do
       @spot.territory("RANDOM").find_all_songs("search").results.should be_empty
