@@ -25,7 +25,7 @@ module Spot
     # @return Array<Object>
     #
     def results
-      @results.map do |result|
+      @results.sort_by(&:popularity).map do |result|
         match = clean(result.to_s).split(/\s+/)
         raw = clean(@compare).split(/\s+/)
 
