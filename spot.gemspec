@@ -17,13 +17,13 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
-  
+
   s.add_dependency("json_pure")
   s.add_dependency("rest-client")
   s.add_dependency("abstract")
-  s.add_dependency("levenshteinish")
+  s.add_dependency("levenshtein", "~> 0.2.2")
   s.add_dependency("charlock_holmes")
-  
+
   s.add_development_dependency("rspec")
   s.add_development_dependency("vcr")
   s.add_development_dependency("webmock", "~> 1.8.0")

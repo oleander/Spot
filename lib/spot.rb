@@ -5,7 +5,7 @@ require "spot/album"
 require "spot/clean"
 require "json"
 require "rest-client"
-require "levenshteinish"
+require "levenshtein"
 require "charlock_holmes/string"
 require "yaml"
 require "uri"
@@ -115,7 +115,7 @@ module Spot
         if diff.length > 1 and not match.map{ |m| diff.include?(m) }.all?
           res =+ diff.map do |value|
             match.map do |m|
-              Levenshtein.distance(value, m)
+              Levenshtein.normalized_distance(value, m)
             end.inject(:+)
           end.inject(:+) / @config[:offset]
         end
