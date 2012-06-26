@@ -26,8 +26,8 @@ module Spot
     #
     def results
       @results.sort_by(&:popularity).map do |result|
-        match = clean(result.to_s).split(/\s+/)
-        raw = clean(@compare).split(/\s+/)
+        match = clean(result.to_s).split(/\s+/).sort
+        raw = clean(@compare).split(/\s+/).sort
 
         if raw.length < match.length
           diff = (match - raw)
