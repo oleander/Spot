@@ -26,11 +26,11 @@ module Spot
         /\.[a-z0-9]{2,3}$/, 
         /\[[^\]]*\]/, 
         /".*"/,  
-        /'.*'[^s]/,
+        /(\s+|^)'.*'(\s+|$)/,
         /[&|\/|\+][^\z]*/, 
         /^(\d+.*?[^a-z]+?)/i
       ].each do |reg|
-        string = string.gsub(reg, '').strip
+        string = string.gsub(reg, ' ').strip
       end
       
       [

@@ -20,6 +20,10 @@ describe Spot::Clean do
     Spot::Clean.new("Song A \"abc def\"").process.should eq("song a")
   end
   
+  it "Sweet Child O' Mine by Guns N' Roses => sweet child o' mine by guns n' roses" do
+    Spot::Clean.new("Sweet Child O' Mine by Guns N' Roses").process.should eq("sweet child o' mine by guns n' roses")
+  end
+  
   it "Song - A [B + C] => Song - A" do
     Spot::Clean.new("Song - A [B + C]").process.should eq("song a")
   end
@@ -101,6 +105,10 @@ describe Spot::Clean do
 
   it "Knockin' On Heaven's Door" do
     Spot::Clean.new("Knockin' On Heaven's Door").process.should eq("knockin' on heaven's door")
+  end
+
+  it "I Love Rock'n'roll => i love rock'n'roll" do
+    Spot::Clean.new("I Love Rock'n'roll").process.should eq("i love rock'n'roll")
   end
 
   it "Jason Derulo - Undefeated" do
